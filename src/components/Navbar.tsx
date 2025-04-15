@@ -4,8 +4,6 @@ import SideMenu from "./SideMenu";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const pathname = usePathname();
-
   return (
     <header className="fixed inset-x-0 top-0 z-50 w-full  ">
       

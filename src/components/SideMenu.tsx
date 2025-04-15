@@ -57,7 +57,7 @@ const SideMenu = () => {
 
   {menuOpen && (
     <div className="absolute left-0 w-screen pr-10 bg-gray-100 border-t border-gray-300 shadow-lg">
-    {navLinks.map((item, index) => (
+    {navLinks.map((item) => (
       <a
         key={item.label}
         href={item.href}
