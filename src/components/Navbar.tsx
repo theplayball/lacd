@@ -11,7 +11,8 @@ export default function Navbar() {
             <span className="italic font-cursive">LACD</span>
           </h1>
           <p className="text-sm italic text-gray-300 md:ml-4 mt-2 md:mt-0">
-            “Nam elit agna, enderit sit amet, tincidunt ac, viverra sed, nulla..”
+            “Nam elit agna, enderit sit amet, tincidunt ac, viverra sed,
+            nulla..”
           </p>
         </div>
 
@@ -44,7 +45,7 @@ export default function Navbar() {
             { label: "ABOUT LACD", href: "/" },
             { label: "ACTIVITIES", href: "/" },
             { label: "CONTACT US", href: "/" },
-          ].map((item, index) => (
+          ].map((item) => (
             <Link
               key={item.label}
               href={item.href}

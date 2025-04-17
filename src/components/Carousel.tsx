@@ -80,7 +80,7 @@ const Carousel = () => {
 
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white space-y-4">
               <span className=" text-white text-4xl font-bold whitespace-nowrap">
-                it's time for changes
+                it&apos;s time for changes
               </span>
 
               <h2 className="text-4xl font-bold drop-shadow-lg">
