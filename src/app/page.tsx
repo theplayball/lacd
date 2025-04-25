@@ -1,9 +1,7 @@
-import Carousel from "@/components/CarouselTwo";
 import Footer from "@/components/Footer";
 import HomePage from "@/components/HomePage";
 import Navbar from "@/components/Navbar";
 import NewsEvents from "@/components/NewsEvents";
-import SideColumn from "@/components/SideColumn";
 
 export default function Home() {
   return (
@@ -12,10 +10,8 @@ export default function Home() {
       <main className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center">
         <HomePage />
         <div className="flex flex-col gap-10">
-  
           <NewsEvents />
-</div>
-
+        </div>
       </main>
       <Footer />
     </div>

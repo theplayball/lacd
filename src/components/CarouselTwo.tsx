@@ -32,14 +32,6 @@ const Carousel = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % slides.length);
-  };
-
   const currentSlide = slides[currentIndex];
 
   return (
