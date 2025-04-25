@@ -17,9 +17,9 @@ const HomePage = () => {
   const [selectedAmount, setSelectedAmount] = useState("");
 
   return (
-    <div className="flex flex-col pt-56 lg:flex-row w-full h-full">
+    <div className="flex flex-col pt-56 lg:flex-row w-full bg-white h-full">
 
-      <div className="w-full lg:w-[calc(100%-360px)]">
+      <div className="w-full p-14 lg:w-[calc(100%-360px)]">
         <Carousel />
       </div>
 
@@ -86,6 +86,7 @@ const HomePage = () => {
             </button>
           </div>
         </div>
+        
       </div>
     </div>
   );
@@ -100,9 +101,9 @@ const InfoCard = ({
   title: string;
   text: string;
 }) => (
-  <div className=" bg-blue-50 px-5 py-4 shadow-sm flex items-center gap-4 hover:bg-sky-300 hover:text-white hover:cursor-pointer">
+  <div className=" bg-blue-50 px-5 py-4 shadow-sm flex items-center gap-4 hover:bg-sky-200 hover:text-white hover:cursor-pointer">
     {icon}
-    <div>
+    <div className="hover:text-white">
       <h4 className="text-blue-900 text-lg font-bold text-start ">{title}</h4>
       <p className="text-sm text-gray-400 text-start ">{text}</p>
     </div>
