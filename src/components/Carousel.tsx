@@ -70,7 +70,7 @@ const Carousel = () => {
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white space-y-4">
               <span className="text-3xl font-bold whitespace-nowrap">
-                It's time for changes
+                Its time for changes
               </span>
               <h2 className="text-3xl font-bold drop-shadow-lg">Building Our Future Together!</h2>
               <button className="bg-[#e2eaf2] text-[#274472] hover:bg-[#63B2F5] hover:text-white text-xs sm:text-sm px-4 py-2 rounded-md border-t border-b border-t-[#f3f7fa] border-b-[#bfc8d7]">
