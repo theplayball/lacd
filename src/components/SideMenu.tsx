@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useRef, useEffect } from "react";
 
 const SideMenu = () => {
@@ -32,10 +33,10 @@ const SideMenu = () => {
   ];
 
   return (
-    <div className="md:hidden relative w-full z-50" ref={menuRef}>
+    <div className="relative w-full z-50" ref={menuRef}>
       <button
         onClick={toggleMenu}
-        className="text-gray-600 w-full px-4 py-5 flex items-center gap-2 hover:bg-sky-300 hover:text-blue-50 border border-gray-300 hover:cursor-pointer"
+        className=" text-[#3e474c] w-full px-4 py-5 flex items-center gap-2 hover:bg-[#63B2F5] hover:text-blue-50 border border-gray-300 hover:cursor-pointer"
         aria-expanded={menuOpen}
       >
         <svg
@@ -53,17 +54,15 @@ const SideMenu = () => {
         </svg>
         <span className="font-medium text-lg">Menu</span>
       </button>
-
+      
       {menuOpen && (
-        <div className="absolute left-0 w-screen pr-10 bg-gray-100 border-t border-gray-300 shadow-lg">
+        <div className="absolute left-0 top-0 w-full bg-gray-100 pr-10 border-t border-gray-300 shadow-lg z-40">
           {navLinks.map((item) => (
             <a
               key={item.label}
               href={item.href}
               onClick={() => setMenuOpen(false)}
-              className={
-                "flex items-center border-[0.5px] border-gray-200 justify-between px-4 py-3 hover:bg-sky-200 "
-              }
+              className="flex items-center border-[0.5px] border-gray-200 justify-between px-4 py-3 hover:bg-sky-200"
             >
               <span>{item.label}</span>
             </a>

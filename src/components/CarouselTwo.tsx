@@ -42,13 +42,13 @@ const Carousel = () => {
         className="w-full h-full object-cover transition-opacity duration-700 ease-in-out"
       />
 
-      <div className="absolute top-1/2 left-8 transform -translate-y-1/2 bg-blue-300 text-white px-6 py-4 rounded-md shadow-md max-w-sm">
+      <div className="absolute top-1/2 left-8 transform -translate-y-1/2 bg-[#63B2F5] text-white px-6 py-4 rounded-md shadow-md max-w-sm">
         <p className="uppercase text-xs font-light tracking-wider text-[#2a4365] mb-1">
           {currentSlide.subtitle}
         </p>
         <h2 className="text-2xl font-bold">{currentSlide.title}</h2>
         <p className="text-sm mt-1">{currentSlide.date}</p>
-        <button className="mt-3 px-4 py-2 bg-gray-200 text-gray-600 font-extralight rounded hover:bg-[#2a4365] hover:text-white text-sm hover:cursor-pointer">
+        <button className="mt-3 px-4 py-2 bg-gray-200 text-gray-600 font-extralight rounded hover:bg-[#324e79] hover:text-white text-sm hover:cursor-pointer">
           DETAILS
         </button>
       </div>

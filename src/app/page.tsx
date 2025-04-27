@@ -5,7 +5,7 @@ import NewsEvents from "@/components/NewsEvents";
 
 export default function Home() {
   return (
-    <div className="bg-[#f4f4f4] relative min-h-screen w-full overflow-hidden">
+    <div className="bg-[#f2f4f9] relative min-h-screen w-full overflow-hidden">
       <Navbar />
       <main className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center">
         <HomePage />

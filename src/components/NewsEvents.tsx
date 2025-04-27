@@ -1,9 +1,8 @@
 "use client";
+
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect } from "react";
-import { useSwipeable } from "react-swipeable";
-import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 import Carousel from "./CarouselTwo";
 
 const newsData = {
@@ -79,58 +78,40 @@ export default function NewsEvents() {
     setCurrentNews((prev) => (prev + 1) % newsData.otherStories.length);
   };
 
-  useEffect(() => {
-    const interval = setInterval(nextNews, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const swipeHandlers = useSwipeable({
-    onSwipedLeft: nextNews,
-    onSwipedRight: prevNews,
-    trackMouse: true,
-  });
-
-  const getVisibleStories = () => {
-    const stories = [];
-    for (let i = 0; i < 3; i++) {
-      stories.push(
-        newsData.otherStories[(currentNews + i) % newsData.otherStories.length]
-      );
-    }
-    return stories;
-  };
-
   return (
-    <main className="text-gray-800 px-16 py-8 sm:py-12 md:py-16">
-      <section className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 px-2 sm:px-4">
-        <div className="flex flex-col gap-10 sm:col-span-2 p-2 sm:p-4">
+    <main className="text-gray-800 px-4 py-8 sm:py-12 md:py-16 ml-12">
+      <section className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Left Side*/}
+        <div className="md:col-span-2 flex flex-col gap-10">
+          {/* Latest News */}
           <div>
             <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#003366] text-left">
               LATEST NEWS
             </h2>
 
-            <div className="flex flex-col gap-4">
-              <div className="w-full">
+            <div className="md:col-span-2 flex flex-col gap-10 md:flex-row">
+              <div className="w-full md:w-[50%]">
                 <Image
                   src={newsData.latest.image}
                   alt="Latest news"
                   width={400}
                   height={300}
-                  className="rounded-md object-cover w-full h-[160px] sm:h-[240px]"
+                  className="rounded-md object-cover w-full h-[160px] sm:h-[240px] md:h-[300px]"
                 />
               </div>
 
-              <div className="flex flex-col justify-between w-full text-left text-sm sm:text-base">
-                <h3 className="text-[#003366] font-semibold text-lg sm:text-xl">
+              {/* Text */}
+              <div className="flex flex-col justify-between w-full text-left text-sm sm:text-base md:w-[50%]">
+                <h3 className="text-[#4174c5] font-semibold text-lg sm:text-xl">
                   {newsData.latest.title}
                 </h3>
-                <p className="text-xs text-gray-500 mt-1">
-                  by {newsData.latest.author} • {newsData.latest.date}
+                <p className="text-xs text-[#95999e] mt-1">
+                  by <span className="text-[#4174c5]">{newsData.latest.author}</span> • {newsData.latest.date}
                 </p>
-                <p className="my-2 text-gray-700">{newsData.latest.excerpt}</p>
+                <p className="my-2 text-[#3e474c]">{newsData.latest.excerpt}</p>
 
                 <div className="flex mt-4">
-                  <button className="bg-gray-200 text-gray-600 hover:bg-blue-300 hover:text-white text-xs sm:text-sm px-4 py-2 rounded-md">
+                  <button className="bg-[#e2eaf2] text-[#274472] hover:bg-[#63B2F5] hover:text-white text-xs sm:text-sm px-4 py-2 rounded-md border-t border-b border-t-[#f3f7fa] border-b-[#bfc8d7]">
                     READ MORE
                   </button>
                 </div>
@@ -138,7 +119,8 @@ export default function NewsEvents() {
             </div>
           </div>
 
-          <div {...swipeHandlers}>
+          {/* Other Stories */}
+          <div className="relative overflow-hidden">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl sm:text-2xl font-bold text-[#003366]">
                 OTHER STORIES
@@ -159,49 +141,47 @@ export default function NewsEvents() {
               </div>
             </div>
 
-            <div className="flex gap-4 overflow-x-auto">
-              <AnimatePresence mode="wait">
-                {getVisibleStories().map((story) => (
-                  <motion.div
-                    key={story.title}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.4 }}
-                    className=" p-3  w-[220px] sm:w-[260px] flex-shrink-0 "
-                  >
-                    <Image
-                      src={story.image}
-                      alt={story.title}
-                      width={300}
-                      height={180}
-                      className="rounded-md object-cover w-full h-[140px] sm:h-[180px]"
-                    />
-                    <h4 className="text-[#003366] text-base sm:text-lg mt-2 font-semibold">
-                      {story.title}
-                    </h4>
-                    <p className="text-xs text-gray-500 mt-1">
-                      by {story.author} • {story.date}
-                    </p>
-                    <p className="text-sm text-gray-700 my-2">
-                      {story.excerpt}
-                    </p>
-                    <button className="bg-gray-200 text-gray-600 hover:bg-blue-300 hover:text-white  shadow-md text-xs sm:text-sm px-4 py-2 rounded-md mt-3">
-                      READ MORE →
-                    </button>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateX(-${currentNews * 50}%)`,
+                width: `${newsData.otherStories.length * 50}%`,
+              }}
+            >
+              {newsData.otherStories.map((story) => (
+                <div key={story.title} className="w-[20%] sm:w-[30%] p-3 flex-shrink-0">
+                  <Image
+                    src={story.image}
+                    alt={story.title}
+                    width={100}
+                    height={50}
+                    className="rounded-md object-cover w-full h-[120px] sm:h-[160px]"
+                  />
+                  <h4 className="text-[#003366] text-base sm:text-lg mt-2 font-semibold">
+                    {story.title}
+                  </h4>
+                  <p className="text-xs text-gray-500 mt-1">
+                    by {story.author} • {story.date}
+                  </p>
+                  <p className="text-sm text-gray-700 my-2">{story.excerpt}</p>
+                  <button className="bg-[#e2eaf2] text-[#274472] hover:bg-[#63B2F5] hover:text-white text-xs sm:text-sm px-4 py-2 rounded-md border-t border-b border-t-[#f3f7fa] border-b-[#bfc8d7]">
+                    READ MORE
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
 
+          {/* Carousel */}
           <div className="mt-8 sm:mt-12">
             <Carousel />
           </div>
         </div>
 
-        <div className="flex flex-col gap-16 w-full">
-          <div className="bg-white rounded-md p-4 shadow-md">
+        {/* Right Side*/}
+        <div className="flex flex-col gap-8 items-center">
+          {/* Featured Video */}
+          <div className="bg-white rounded-md p-4 shadow-md w-[300px] md:w-[250px] sm:w-full">
             <h3 className="font-extralight sm:text-lg mb-4 text-[#3b3b3c] text-center">
               FEATURED VIDEO
             </h3>
@@ -214,28 +194,26 @@ export default function NewsEvents() {
                 allowFullScreen
               ></iframe>
             </div>
-            <button className="text-sm text-[#2f70f3] hover:underline text-center w-full mt-2 hover:cursor-pointer">
+            <button className="text-sm text-[#4174c5] hover:underline text-center w-full mt-2 hover:cursor-pointer">
               MORE VIDEOS →
             </button>
           </div>
 
-          {/* Events */}
-          <div className="bg-white rounded-md py-6 w-full">
-            <h3 className="font-extralight sm:text-lg mb-6 text-[#3b3b3c] pb-1 text-center">
+          {/* Upcoming Events */}
+          <div className="bg-white rounded-md p-2 shadow-md w-[300px] md:w-[250px] sm:w-full">
+            <h3 className="font-extralight text-lg mb-6 text-[#3b3b3c] text-center pb-1">
               UPCOMING EVENTS
             </h3>
             <ul className="space-y-14">
               {newsData.events.map((event, index) => (
                 <li key={index} className="flex justify-center">
                   <div className="flex items-center gap-5">
-                    <div className="bg-[#d0e3f6] text-[#0e1317] px-3 py-3 rounded-sm text-center shadow-md text-sm hover:bg-blue-300 hover:text-white">
-                      <p className="text-lg font-bold leading-none">
-                        {event.date}
-                      </p>
+                    <div className="bg-[#e2eaf2] text-[#274472] hover:bg-[#63B2F5] hover:text-white  px-3 py-3 rounded-sm text-center shadow-md text-sm ">
+                      <p className="text-lg font-bold leading-none">{event.date}</p>
                       <p className="text-[10px] uppercase">{event.month}</p>
                     </div>
                     <div>
-                      <p className="text-[#2f70f3] font-light text-sm hover:cursor-pointer">
+                      <p className="text-[#4174c5] font-light text-sm hover:cursor-pointer">
                         {event.title}
                       </p>
                       <p className="text-xs text-gray-400">{event.time}</p>
@@ -245,39 +223,31 @@ export default function NewsEvents() {
                 </li>
               ))}
             </ul>
-
-            <button className="text-sm text-[#32353b] hover:text-blue-300 w-full mt-6 hover:cursor-pointer">
+            <button className="text-sm text-[#274472] hover:text-[#4174c5] w-full mt-6 hover:cursor-pointer">
               MORE EVENTS →
             </button>
           </div>
 
           {/* Main Issues */}
-          <div className="bg-blue-300 hover:bg-blue-500 text-white pb-6 rounded-md shadow-md w-full hover:cursor-pointer">
+          <div className=" bg-[#63B2F5] hover:bg-[#274472] text-white pb-6 rounded-md shadow-md w-[300px] md:w-[250px] sm:w-full hover:cursor-pointer">
             <div className="relative">
               <img
                 src="/issue.jpg"
                 alt="Main Issues"
                 className="w-full h-32 object-cover rounded-t-md"
               />
-              <button className="w-full px-4 mt-3 text-center group">
-                <h3 className="text-xl sm:text-2xl font-bold">
-                  THE MAIN ISSUES
-                </h3>
-                <p className="text-sm sm:text-base mt-1 font-medium">
-                  FIND OUT MORE
-                </p>
-              </button>
+              <div className="w-full px-4 mt-3 text-center">
+                <h3 className="text-xl sm:text-2xl font-bold">THE MAIN ISSUES</h3>
+                <p className="text-sm sm:text-base mt-1 font-medium">FIND OUT MORE</p>
+              </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-md p-4 shadow-md">
+          {/* Flickr Photos */}
+          <div className="bg-white rounded-md p-4 shadow-md w-[300px] md:w-[250px] sm:w-full">
             <h3 className="font-extralight sm:text-lg mb-4 text-[#3b3b3c] text-center">
               FLICKR PHOTOS
             </h3>
-
-            <button className="text-sm text-[#2f70f3] hover:underline text-center w-full mt-2">
-              VIEW MORE PHOTOS →
-            </button>
           </div>
         </div>
       </section>
