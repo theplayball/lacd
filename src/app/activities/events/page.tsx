@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { format, isSameDay, parseISO } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { ChevronLeft, ChevronRight, Search } from 'lucide-react';
 
 const events = [
