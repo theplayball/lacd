@@ -2,7 +2,8 @@ import { FaFacebookF, FaTwitter, FaGooglePlusG, FaFlickr, FaEnvelope, FaInstagra
 
 export default function Footer() {
   return (
-    <footer className="bg-[#274472] text-[#e2eaf2] text-sm ">
+    <footer className="bg-[#274472] text-[#e2eaf2] text-sm mt-auto border-t border-white">
+
       {/* Outer wrapper to match Events page layout */}
       <div className="px-6 max-w-7xl mx-auto py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-12">
