@@ -192,7 +192,7 @@ export default function ActivityDetailPage({ params }: { params: Promise<{ id: s
                     src={src}
                     alt={`${activity.name} photo ${idx + 1}`}
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                    onError={(e) => {
+                    onError={() => {
                       console.error(`Failed to load image: ${src}`);
                     }}
                   />

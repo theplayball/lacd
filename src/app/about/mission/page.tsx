@@ -24,14 +24,14 @@ export default function MissionPage() {
             </div>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">About LACD</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Empowering the Lebanese-American community to restore Lebanon's democracy and strengthen US-Lebanon relations
+              Empowering the Lebanese-American community to restore Lebanon&apos;s democracy and strengthen US-Lebanon relations
             </p>
           </div>
           
           <div className="max-w-4xl mx-auto space-y-8">
             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border-l-4 border-blue-500">
               <p className="text-lg text-gray-800 leading-relaxed">
-                The <strong className="text-blue-700 font-semibold">Lebanese American Commission for Democracy (LACD)</strong> is powered by those in the Lebanese-American community who are dedicated to restoring Lebanon's democracy, stability, integrity, and sovereignty.
+                The <strong className="text-blue-700 font-semibold">Lebanese American Commission for Democracy (LACD)</strong> is powered by those in the Lebanese-American community who are dedicated to restoring Lebanon&apos;s democracy, stability, integrity, and sovereignty.
               </p>
             </div>
             
@@ -42,7 +42,7 @@ export default function MissionPage() {
                 </p>
                 
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Fundamental to the LACD's activity is the indisputable notion that the Lebanese and American people share the same patriotic values; namely, cherishment of democracy, liberty, tolerance, coexistence, peace, and human rights, and therefore, the Lebanese and American people are natural partners.
+                  Fundamental to the LACD&apos;s activity is the indisputable notion that the Lebanese and American people share the same patriotic values; namely, cherishment of democracy, liberty, tolerance, coexistence, peace, and human rights, and therefore, the Lebanese and American people are natural partners.
                 </p>
               </div>
               

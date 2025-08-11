@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabaseClient';
+import { supabaseServer } from '../../../lib/supabaseServer';
 
 // GET - Fetch all events
 export async function GET(request: NextRequest) {
@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '10');
     const offset = parseInt(searchParams.get('offset') || '0');
 
-    let query = supabase
+    let query = supabaseServer
       .from('events')
       .select('*')
       .order('event_date', { ascending: true });
@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Save to Supabase database
-    const { data: newEvent, error: insertError } = await supabase
+    const { data: newEvent, error: insertError } = await supabaseServer
       .from('events')
       .insert([
         {

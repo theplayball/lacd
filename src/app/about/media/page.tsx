@@ -1,6 +1,5 @@
 // app/about/media/page.tsx
 import React from "react";
-import Link from "next/link";
 
 export default function MediaPage() {
   return (
@@ -18,8 +17,7 @@ export default function MediaPage() {
           </p>
         </div>
       {/* <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-10 md:p-16 border border-white/20">
-
-        </div> */}
+      </div> */}
       </main>
     </div>
   );

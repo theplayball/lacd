@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import Link from "next/link";
 
 const SideMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -110,20 +111,20 @@ const SideMenu = () => {
               >
                 LACD Events
               </a>
-              <a
+              <Link
                 href="/activities/photos"
                 onClick={() => setMenuOpen(false)}
                 className="block px-6 py-2 hover:bg-sky-100 text-sm"
               >
                 LACD Photos
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/activities/videos"
                 onClick={() => setMenuOpen(false)}
                 className="block px-6 py-2 hover:bg-sky-100 text-sm"
               >
                 LACD Videos
-              </a>
+              </Link>
             </div>
           )}
 

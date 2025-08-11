@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabaseClient';
+import { supabaseServer } from '../../../lib/supabaseServer';
 
 export async function POST(request: NextRequest) {
   try {
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if subscriber already exists
-    const { data: existingSubscriber, error: checkError } = await supabase
+    const { data: existingSubscriber, error: checkError } = await supabaseServer
       .from('subscribers')
       .select('id')
       .eq('email', email)
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Save to Supabase database
-    const { data: newSubscriber, error: insertError } = await supabase
+    const { data: newSubscriber, error: insertError } = await supabaseServer
       .from('subscribers')
       .insert([
         {

@@ -124,7 +124,7 @@ export default function PhotosPage() {
                       src={activity.photos[0]}
                       alt={activity.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      onError={(e) => {
+                      onError={() => {
                         console.error(`Failed to load image: ${activity.photos[0]}`);
                       }}
                     />

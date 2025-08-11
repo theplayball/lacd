@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -100,7 +99,7 @@ export default function ContactPage() {
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full mb-6"></div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Get in touch with the Lebanese American Commission for Democracy. We're here to help and answer your questions.
+            Get in touch with the Lebanese American Commission for Democracy. We&apos;re here to help and answer your questions.
           </p>
         </div>
 
