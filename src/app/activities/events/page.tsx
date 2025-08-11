@@ -57,8 +57,19 @@ export default function EventsPage() {
   };
 
   return (
-    <div className="px-6 py-10 bg-gray-50 min-h-screen max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">Events</h1>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+      <div className="max-w-5xl mx-auto px-6 py-16">
+        
+        {/* Page Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            Events
+          </h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full mb-6"></div>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Stay updated with our upcoming events and activities
+          </p>
+        </div>
 
       {/* Filter Bar */}
       <div className="bg-white p-6 rounded-md shadow mb-8 flex flex-col md:flex-row gap-4 items-center">
@@ -137,6 +148,7 @@ export default function EventsPage() {
             </div>
           );
         })}
+      </div>
       </div>
     </div>
   );
