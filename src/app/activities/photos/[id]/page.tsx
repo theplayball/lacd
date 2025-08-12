@@ -9,8 +9,8 @@ const activityData = [
     id: "activity1",
     name: "Inauguration of Saint Charbel's Chapel",
     date: "December 15, 2023",
-    chapter: "Los Angeles Chapter",
-    title: "Inauguration of Saint Charbel's Chapel in Murrieta, California",
+    chapter: "California Chapter",
+    title: "Inauguration of Saint Charbel's Chapel",
     description: "LACD Participates in the Inauguration of Saint Charbel's Chapel in Murrieta, California",
     fullText: `The Los Angeles Chapter of the Lebanese American Commission for Democracy (LACD) proudly participated in the inauguration of the Hermitage and Statue of Saint Charbel at the Convent of the Sisters of the Holy Family in Murrieta, California.
 
@@ -44,7 +44,7 @@ This memorable event is a testament to the enduring faith and unity of the Leban
     id: "activity2",
     name: "Fundraising Dinner for AFNDU",
     date: "November 20, 2023",
-    chapter: "Los Angeles Chapter",
+    chapter: "California Chapter",
     title: "LACD Participates in Fundraising Dinner for AFNDU",
     description: "LACD Participates in Fundraising Dinner for AFNDU",
     fullText: `The Los Angeles Chapter of the Lebanese American Commission for Democracy (LACD) proudly participated in a fundraising dinner organized by Mr. Wadih Daher in support of the Association of Friends of Notre Dame University (AFNDU) in the United States.
@@ -69,7 +69,7 @@ This evening served as a gathering of the Lebanese diaspora and academic support
     name: "Dinner Honoring Major General Hassan Choucair",
     date: "October 10, 2023",
     chapter: "Michigan Chapter",
-    title: "LACD - Michigan Chapter Participates in Dinner Honoring Major General Hassan Choucair",
+    title: "LACD Participates in Dinner Honoring Major General Hassan Choucair",
     description: "LACD - Michigan Chapter Participates in Dinner Honoring Major General Hassan Choucair",
     fullText: `The Michigan Chapter of the Lebanese American Commission for Democracy (LACD) proudly participated in a dinner organized by Major General Hassan Choucair's friends to celebrate his recent appointment as the Lebanese General Security Director.
 
@@ -163,9 +163,7 @@ export default function ActivityDetailPage({ params }: { params: Promise<{ id: s
           </span>
         </div>
         <h1 className="text-4xl font-bold text-gray-800 mb-4">{activity.title}</h1>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          {activity.description}
-        </p>
+        
       </div>
 
       {/* Description */}

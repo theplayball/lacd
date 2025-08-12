@@ -5,23 +5,23 @@ import Link from "next/link";
 
 const activityData = [
   {
-    id: "general",
-    name: "General LACD Activities",
-    date: "",
-    chapter: "General LACD",
-    title: "General LACD Activities and Events",
-    description: "Various activities and events across all LACD chapters",
-    fullText: "General LACD activities and events will be displayed here when they become available.",
-    photos: [],
-  },
-  {
     id: "activity1",
-    name: "Community Meeting",
-    date: "March 15, 2024",
-    chapter: "Los Angeles Chapter",
-    title: "Community Meeting and Discussion",
-    description: "Monthly community meeting to discuss current events and plan future activities",
-    fullText: "Our monthly community meeting brought together members from across the Los Angeles area to discuss current events, share updates on ongoing projects, and plan future activities. The meeting featured presentations on upcoming events, volunteer opportunities, and ways to get involved in the community.",
+    name: "Inauguration of Saint Charbel's Chapel",
+    date: "December 15, 2023",
+    chapter: "California Chapter",
+    title: "Inauguration of Saint Charbel's Chapel",
+    description: "LACD Participates in the Inauguration of Saint Charbel's Chapel in Murrieta, California",
+    fullText: `The Los Angeles Chapter of the Lebanese American Commission for Democracy (LACD) proudly participated in the inauguration of the Hermitage and Statue of Saint Charbel at the Convent of the Sisters of the Holy Family in Murrieta, California.
+
+The event started with a Divine Liturgy held at the convent's church, attended by Maronite priests across the state. Father Fadi Bazzi presided over the Mass, emphasizing Saint Charbel's holiness and significance during his homily. He reflected on the Lebanese deep spiritual connection with Saint Charbel, noting that hìs miracles have transcended Lebanon and reached all over the globe.
+
+Following the liturgical celebration, a procession with Saint Charbel's relics took place, concluding in the unveiling and blessing of his statue. Attendees then gathered at the newly completed Saint Charbel's Chapel-referred to as "Saint Charbel's Hermitage"— for its official dedication.
+
+Father Bazzi expressed his heartfelt appreciation to Mr. Wadih Daher for his role in creating the chapel and the statue of Saint Charbel.
+
+The celebration concluded with a festive luncheon in the convent courtyard, attended by more than 300 members of the Lebanese American community from the greater Los Angeles area.
+
+This memorable event is a testament to the enduring faith and unity of the Lebanese diaspora in the United States and their devotion to Saint Charbel, whose legacy continues to inspire people worldwide.`,
     photos: [
       "/activity1/1.jpg",
       "/activity1/2.jpg",
@@ -41,12 +41,16 @@ const activityData = [
   },
   {
     id: "activity2",
-    name: "Cultural Festival",
-    date: "February 28, 2024",
-    chapter: "New York Chapter",
-    title: "Lebanese Cultural Festival",
-    description: "Annual celebration of Lebanese culture, food, and traditions",
-    fullText: "The annual Lebanese Cultural Festival was a vibrant celebration of our heritage, featuring traditional music, dance performances, authentic Lebanese cuisine, and cultural exhibits. The event attracted hundreds of visitors and successfully showcased the rich traditions of Lebanon to the broader community.",
+    name: "Fundraising Dinner for AFNDU",
+    date: "November 20, 2023",
+    chapter: "California Chapter",
+    title: "LACD Participates in Fundraising Dinner for AFNDU",
+    description: "LACD Participates in Fundraising Dinner for AFNDU",
+    fullText: `The Los Angeles Chapter of the Lebanese American Commission for Democracy (LACD) proudly participated in a fundraising dinner organized by Mr. Wadih Daher in support of the Association of Friends of Notre Dame University (AFNDU) in the United States.
+
+The event took place in Glendale, California, and was attended by several prominent figures, including the President of Notre Dame University-Louaize (NDU), Father Bechara Khoury; Armenian Catholic Bishop Parsegh Baghdassarian; and the Consul General of Lebanon in Los Angeles, Mr. Bachir Sarkis.
+
+This evening served as a gathering of the Lebanese diaspora and academic supporters, reinforcing the community's commitment to advancing higher education opportunities through global support for NDU's mission.`,
     photos: [
       "/activity2/1.jpg",
       "/activity2/2.jpg",
@@ -56,18 +60,21 @@ const activityData = [
       "/activity2/6.jpg",
       "/activity2/7.jpg",
       "/activity2/8.jpg",
-      "/activity2/9.jpg",
       "/activity2/10.jpg",
     ],
   },
   {
     id: "activity3",
-    name: "Youth Workshop",
-    date: "January 20, 2024",
-    chapter: "Chicago Chapter",
-    title: "Youth Leadership Workshop",
-    description: "Interactive workshop focused on developing leadership skills in young community members",
-    fullText: "Our youth leadership workshop provided young community members with valuable skills in public speaking, event planning, and community organizing. The interactive sessions included role-playing exercises, group discussions, and hands-on activities designed to build confidence and leadership abilities.",
+    name: "Dinner Honoring Major General Hassan Choucair",
+    date: "October 10, 2023",
+    chapter: "Michigan Chapter",
+    title: "LACD Participates in Dinner Honoring Major General Hassan Choucair",
+    description: "LACD - Michigan Chapter Participates in Dinner Honoring Major General Hassan Choucair",
+    fullText: `The Michigan Chapter of the Lebanese American Commission for Democracy (LACD) proudly participated in a dinner organized by Major General Hassan Choucair's friends to celebrate his recent appointment as the Lebanese General Security Director.
+
+The event was held to honor General Choucair's distinguished service and new leadership role. Religious leaders and a large gathering of members from the Lebanese community in Michigan attended, reflecting widespread support and appreciation for his dedication to national service.
+
+The participation of LACD underscores its ongoing commitment to recognizing Lebanese leadership and fostering unity within the diaspora.`,
     photos: [
       "/activity3/1.jpg",
       "/activity3/2.jpg",
@@ -75,19 +82,49 @@ const activityData = [
   },
   {
     id: "activity4",
-    name: "Fundraising Gala",
-    date: "December 10, 2023",
-    chapter: "Houston Chapter",
-    title: "Annual Fundraising Gala",
-    description: "Elegant evening of dinner, entertainment, and fundraising for community projects",
-    fullText: "The annual fundraising gala was an elegant evening that brought together community leaders, supporters, and friends for an evening of fine dining, entertainment, and fundraising. The event successfully raised significant funds for our community projects and provided an opportunity for networking and celebration.",
+    name: "St. Barbara Association Fundraising Dinner",
+    date: "September 25, 2023",
+    chapter: "Los Angeles Chapter",
+    title: "LACD-Los Angeles Chapter participates in the fundraising dinner organized by St. Barbara association.",
+    description: "LACD-Los Angeles Chapter participates in the fundraising dinner organized by St. Barbara association.",
+    fullText: `LACD-Los Angeles Chapter participates in the fundraising dinner organized by St. Barbara association.`,
     photos: [
       "/activity4/1.jpg",
-      "/activity2/2.jpg",
+      "/activity4/2.jpg",
       "/activity4/3.jpg",
       "/activity4/4.jpg",
       "/activity4/5.jpg",
     ],
+  },
+  {
+    id: "general",
+    name: "General LACD Activities",
+    date: "Ongoing",
+    chapter: "General LACD",
+    title: "General LACD Activities and Events",
+    description: "Various activities and events across all LACD chapters",
+    fullText: `The Lebanese American Commission for Democracy (LACD) is a dynamic organization that engages in a wide range of activities and initiatives across all chapters to promote democracy, civic engagement, and community building.
+
+Our comprehensive activities include:
+
+• Community Meetings & Forums: Regular gatherings that bring together community members to discuss important issues, share ideas, and strengthen bonds within the Lebanese American community.
+
+• Educational Seminars & Workshops: Informative sessions covering topics such as civic engagement, democratic processes, cultural heritage, and community leadership development.
+
+• Cultural Celebrations & Events: Festivals, cultural performances, and heritage celebrations that showcase Lebanese culture and traditions while fostering cross-cultural understanding.
+
+• Fundraising Events & Galas: Annual galas, charity dinners, and fundraising initiatives that support our programs and community projects.
+
+• Collaborative Initiatives: Partnerships with other organizations, government agencies, and community groups to advance our mission and expand our impact.
+
+• Youth Programs & Leadership Development: Special initiatives focused on engaging young members of the community and developing future leaders.
+
+• Advocacy & Outreach: Efforts to represent the interests of the Lebanese American community and promote democratic values at local, state, and national levels.
+
+• Networking & Professional Development: Events that connect community members professionally and provide opportunities for career growth and business development.
+
+Through these diverse activities, LACD strengthens the bonds within our community while advancing our mission of promoting democracy, civic participation, and cultural preservation. Our events bring together people from all walks of life, creating a vibrant and inclusive community that celebrates both our Lebanese heritage and our American democratic values.`,
+    photos: [],
   },
 ];
 

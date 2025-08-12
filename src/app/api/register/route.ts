@@ -3,11 +3,23 @@ import { supabaseServer } from '../../../lib/supabaseServer';
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('Register API called');
+    
+    // Check environment variables
+    console.log('Environment check:', {
+      hasUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+      hasServiceKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
+      url: process.env.NEXT_PUBLIC_SUPABASE_URL?.substring(0, 20) + '...'
+    });
+    
     const body = await request.json();
     const { firstName, lastName, email, phone, dateOfBirth, address, city, state, zipCode } = body;
 
+    console.log('Registration data received:', { firstName, lastName, email, city, state });
+
     // Validate required fields
     if (!firstName || !lastName || !email || !dateOfBirth || !address || !city || !state || !zipCode) {
+      console.log('Missing required fields');
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -24,6 +36,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if user already exists
+    console.log('Checking if user exists...');
     const { data: existingUser, error: checkError } = await supabaseServer
       .from('users')
       .select('id')
@@ -38,6 +51,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    console.log('User check completed, existing user:', existingUser);
+
     if (existingUser) {
       return NextResponse.json(
         { error: 'User with this email already exists' },
@@ -46,6 +61,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Save to Supabase database
+    console.log('Attempting to insert user into database...');
     const { data: newUser, error: insertError } = await supabaseServer
       .from('users')
       .insert([
@@ -68,10 +84,12 @@ export async function POST(request: NextRequest) {
     if (insertError) {
       console.error('Error inserting user:', insertError);
       return NextResponse.json(
-        { error: 'Failed to create user account' },
+        { error: 'Failed to create user account', details: insertError.message },
         { status: 500 }
       );
     }
+
+    console.log('User inserted successfully:', newUser);
 
     console.log('User registered successfully:', newUser);
 
