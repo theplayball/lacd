@@ -4,12 +4,12 @@ import { supabaseServer } from '../../../lib/supabaseServer';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email } = body;
+    const { email, firstName, lastName } = body;
 
-    // Validate email
-    if (!email) {
+    // Validate required fields
+    if (!email || !firstName || !lastName) {
       return NextResponse.json(
-        { error: 'Email is required' },
+        { error: 'Email, first name, and last name are required' },
         { status: 400 }
       );
     }
@@ -51,6 +51,8 @@ export async function POST(request: NextRequest) {
       .insert([
         {
           email,
+          first_name: firstName,
+          last_name: lastName,
           status: 'active',
           subscribed_at: new Date().toISOString()
         }

@@ -6,99 +6,27 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Navbar() {
-  const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-
-  const handleSignupSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    try {
-      // Here you would typically send the email to your backend
-      console.log('Signup email:', email);
-      
-      // Make API call to subscribe endpoint
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Subscription failed');
-      }
-
-      const result = await response.json();
-      console.log('Subscription result:', result);
-      
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setEmail('');
-      
-      // Reset success message after 3 seconds
-      setTimeout(() => setSubmitSuccess(false), 3000);
-      
-    } catch (error) {
-      console.error('Signup error:', error);
-      setIsSubmitting(false);
-      alert('There was an error signing up. Please try again.');
-    }
-  };
-
   return (
     <header className="bg-[#274472]">
   {/* Top Bar */}
   <div className="flex flex-col md:flex-row items-center justify-between max-w-[1200px] mx-auto px-4 py-6 gap-6">
   {/* Logo + Text container */}
-  <div className="flex flex-col items-center gap-2 text-center">
+  <div className="flex items-center gap-4 text-center">
     <Image
       src="/logo.png"
       alt="LACD Logo"
-      width={100}
-      height={100}
+      width={120}
+      height={120}
       priority
+      className="flex-shrink-0"
     />
-          <div className="flex flex-col gap-1">
-        <p className="text-md text-gray-300 font-serif">
-          Lebanese American Commission for Democracy
-        </p>
-        <p className="text-lg font-bold text-gray-300 font-serif">
-          LAC<span className="text-red-500">D</span>
-        </p>
-      </div>
-  </div>
-
-  {/* Signup Box */}
-  <div className="w-full max-w-sm mt-4 md:mt-0">
-    <div className="bg-[#324e79] p-4 rounded text-xs uppercase text-white">
-      <span className="font-bold block mb-4 text-center">
-        Sign Up for Email Updates
-      </span>
-      {submitSuccess ? (
-        <div className="text-center text-green-300 text-xs">
-          ✓ Successfully subscribed!
-        </div>
-      ) : (
-        <form onSubmit={handleSignupSubmit} className="flex flex-col sm:flex-row gap-2 items-center">
-          <input
-            type="email"
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="px-3 py-2 rounded bg-gray-100 text-gray-700 w-full sm:w-[80%] text-xs"
-          />
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="bg-[#63b2f5] hover:bg-[#4ea8de] disabled:bg-gray-400 text-white text-lg rounded px-3 py-[6px] transition-colors"
-          >
-            {isSubmitting ? '...' : '→'}
-          </button>
-        </form>
-      )}
+    <div className="flex flex-col gap-1">
+      <p className="text-lg text-gray-300 font-serif">
+        Lebanese American Commission for Democracy
+      </p>
+      <p className="text-3xl font-bold text-white font-serif">
+        LAC<span className="text-red-500">D</span>
+      </p>
     </div>
   </div>
 </div>
@@ -177,7 +105,7 @@ export default function Navbar() {
         href="/donation"
         className="bg-[#A02012] hover:bg-[#84180F] text-white px-6 py-4 font-bold transition-colors text-sm "
       >
-        DONATE TODAY
+        DONATE
       </Link>
     </div>
   </nav>

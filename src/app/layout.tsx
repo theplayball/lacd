@@ -11,6 +11,18 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="h-full">
+      <head>
+        {/* Facebook SDK */}
+        <script
+          async
+          defer
+          crossOrigin="anonymous"
+          src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"
+          nonce="random_nonce"
+        />
+        {/* Instagram Embed Script */}
+        <script async src="//www.instagram.com/embed.js"></script>
+      </head>
       <body className="flex flex-col min-h-screen">
         <Navbar />
         {/* Main content grows to fill the screen */}

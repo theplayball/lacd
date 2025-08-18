@@ -21,46 +21,54 @@ const newsData = {
     excerpt:
       "Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis.",
   },
-  otherStories: [
-    {
-      image: "/story1.jpeg",
-      title: "Donec porta diam eu massa",
-      author: "admin",
-      date: "October 01, 2013 11:28AM",
-      excerpt:
-        "Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel.",
-    },
-    {
-      image: "/story2.jpeg",
-      title: "Vestibulum iaculis",
-      author: "admin",
-      date: "October 01, 2013 11:28AM",
-      excerpt:
-        "Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel.",
-    },
-    {
-      image: "/story3.jpeg",
-      title: "Praesent justo dolor",
-      author: "admin",
-      date: "October 01, 2013 11:28AM",
-      excerpt:
-        "Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel.",
-    },
-  ],
   events: [] as Event[], // Empty array for no upcoming events
 };
 
 export default function NewsEvents() {
-  const [currentNews, setCurrentNews] = useState(0);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const prevNews = () => {
-    setCurrentNews((prev) =>
-      prev === 0 ? newsData.otherStories.length - 1 : prev - 1
-    );
-  };
+  const handleSubscribeSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Make API call to subscribe endpoint
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          firstName,
+          lastName,
+          email 
+        })
+      });
 
-  const nextNews = () => {
-    setCurrentNews((prev) => (prev + 1) % newsData.otherStories.length);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Subscription failed');
+      }
+
+      const result = await response.json();
+      console.log('Subscription result:', result);
+      
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+      
+      // Reset success message after 3 seconds
+      setTimeout(() => setSubmitSuccess(false), 3000);
+      
+    } catch (error) {
+      console.error('Subscription error:', error);
+      setIsSubmitting(false);
+      alert('There was an error subscribing. Please try again.');
+    }
   };
 
   return (
@@ -104,66 +112,95 @@ export default function NewsEvents() {
             </div>
           </div>
 
-          {/* Other Stories */}
-          <div className="relative overflow-hidden">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl sm:text-2xl font-bold text-[#003366]">
-                OTHER STORIES
+          {/* Subscribe Section */}
+          <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between" style={{ minHeight: '400px' }}>
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold text-[#003366] mb-6">
+                SUBSCRIBE
               </h2>
-              <div className="flex space-x-2">
-                <button
-                  onClick={prevNews}
-                  className="p-2 rounded-md bg-gray-200 hover:bg-gray-300"
-                >
-                  <ChevronLeft size={18} />
-                </button>
-                <button
-                  onClick={nextNews}
-                  className="p-2 rounded-md bg-gray-200 hover:bg-gray-300"
-                >
-                  <ChevronRight size={18} />
-                </button>
-              </div>
-            </div>
-
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{
-                transform: `translateX(-${currentNews * 50}%)`,
-                width: `${newsData.otherStories.length * 50}%`,
-              }}
-            >
-              {newsData.otherStories.map((story) => (
-                <div key={story.title} className="w-[20%] sm:w-[30%] p-3 flex-shrink-0">
-                  <Image
-                    src={story.image}
-                    alt={story.title}
-                    width={100}
-                    height={50}
-                    className="rounded-md object-cover w-full h-[120px] sm:h-[160px]"
-                  />
-                  <h4 className="text-[#003366] text-base sm:text-lg mt-2 font-semibold">
-                    {story.title}
-                  </h4>
-                  <p className="text-xs text-gray-500 mt-1">
-                    by {story.author} • {story.date}
+              
+              {submitSuccess ? (
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Thank You!</h3>
+                  <p className="text-gray-600">
+                    You have been successfully subscribed to our newsletter.
                   </p>
-                  <p className="text-sm text-gray-700 my-2">{story.excerpt}</p>
-                  <button className="bg-[#e2eaf2] text-[#274472] hover:bg-[#63B2F5] hover:text-white text-xs sm:text-sm px-4 py-2 rounded-md border-t border-b border-t-[#f3f7fa] border-b-[#bfc8d7]">
-                    READ MORE
-                  </button>
                 </div>
-              ))}
+              ) : (
+                <form onSubmit={handleSubscribeSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
+                        First Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
+                        Last Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-[#274472] hover:bg-[#1e3559] disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-md transition-colors"
+                  >
+                    {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                  </button>
+                </form>
+              )}
+            </div>
+            
+            {/* Additional spacing to push content to bottom */}
+            <div className="flex-1"></div>
+            
+            {/* Bottom section with additional info */}
+            <div className="mt-8 pt-6 border-t border-gray-200">
+              <p className="text-sm text-gray-500 text-center">
+                Stay updated with our latest news, events, and community activities.
+              </p>
             </div>
           </div>
-
-          
         </div>
 
-        {/* Right Side*/}
-        <div className="flex flex-col gap-8 items-center">
+        {/* Right Side - 1 column */}
+        <div className="flex flex-col gap-8">
           {/* Featured Video */}
-          <div className="bg-white rounded-md p-4 shadow-md w-[300px] md:w-[250px] sm:w-full">
+          <div className="bg-white rounded-md p-4 shadow-md w-full">
             <h3 className="font-extralight sm:text-lg mb-4 text-[#3b3b3c] text-center">
               FEATURED VIDEO
             </h3>
@@ -182,7 +219,7 @@ export default function NewsEvents() {
           </div>
 
           {/* Upcoming Events */}
-          <div className="bg-white rounded-md p-2 shadow-md w-[300px] md:w-[250px] sm:w-full">
+          <div className="bg-white rounded-md p-2 shadow-md w-full">
             <h3 className="font-extralight text-lg mb-6 text-[#3b3b3c] text-center pb-1">
               UPCOMING EVENTS
             </h3>
@@ -218,10 +255,10 @@ export default function NewsEvents() {
           </div>
 
           {/* Social Media Links */}
-          <div className="space-y-4 w-[300px] md:w-[250px] sm:w-full">
+          <div className="space-y-4 w-full">
             {/* Facebook Link */}
             <a 
-              href="https://www.facebook.com/share/15zHHx9UHd/?mibextid=wwXIfr" 
+              href="https://www.facebook.com/profile.php?id=100067370376708" 
               target="_blank" 
               rel="noopener noreferrer"
               className="group bg-gradient-to-r from-[#1877F2] to-[#0d6efd] hover:from-[#0d6efd] hover:to-[#1877F2] text-white p-6 rounded-lg shadow-lg w-full block transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
@@ -273,7 +310,6 @@ export default function NewsEvents() {
               </div>
             </a>
           </div>
-
         </div>
       </section>
     </main>
