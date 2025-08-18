@@ -2,6 +2,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const activityData = [
   {
@@ -131,13 +132,12 @@ export default function PhotosPage() {
                       {/* Preview Image */}
                       <div className="h-48 overflow-hidden flex-shrink-0">
                         {activity.photos && activity.photos.length > 0 ? (
-                          <img
+                          <Image
                             src={activity.photos[0]}
                             alt={activity.name}
+                            width={400}
+                            height={192}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                            onError={() => {
-                              console.error(`Failed to load image: ${activity.photos[0]}`);
-                            }}
                           />
                         ) : (
                           <div className="w-full h-full bg-gray-200 flex items-center justify-center">

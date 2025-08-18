@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 
 interface Subcategory {
@@ -245,10 +246,12 @@ export default function ActivityPage() {
                     {subcategory.photos && subcategory.photos.length > 0 && (
                       <div className="grid grid-cols-3 gap-2">
                         {subcategory.photos.slice(0, 3).map((photo: string, index: number) => (
-                          <img
+                          <Image
                             key={index}
                             src={photo}
                             alt={`${subcategory.name} photo ${index + 1}`}
+                            width={80}
+                            height={80}
                             className="w-full h-20 object-cover rounded-md"
                           />
                         ))}
@@ -272,9 +275,11 @@ export default function ActivityPage() {
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {activity.photos.map((photo: string, index: number) => (
                   <div key={index} className="aspect-square overflow-hidden rounded-lg">
-                    <img
+                    <Image
                       src={photo}
                       alt={`${activity.name} photo ${index + 1}`}
+                      width={300}
+                      height={300}
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                     />
                   </div>

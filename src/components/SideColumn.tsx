@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 
 const infoCards = [
   {
@@ -36,9 +37,11 @@ const SideColumn = () => {
           key={index}
           className="bg-white shadow-md rounded-md text-center p-4 w-full sm:w-[45%] lg:w-[22%] hover:shadow-lg transition"
         >
-          <img
+          <Image
             src={card.image}
             alt={card.title}
+            width={300}
+            height={160}
             className="w-full h-40 object-cover mb-4 rounded-md"
           />
           <h3 className="text-blue-700 font-semibold text-lg mb-2">
