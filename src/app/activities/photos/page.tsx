@@ -89,15 +89,7 @@ const chaptersData = [
   }
 ];
 
-const generalActivitiesData = [
-  {
-    id: "general",
-    name: "General LACD Activities and Events",
-    date: "Ongoing",
-    description: "Various activities and events across all LACD chapters",
-    photos: [],
-  }
-];
+
 
 export default function PhotosPage() {
   const [view, setView] = useState<'main' | 'chapters'>('main');
