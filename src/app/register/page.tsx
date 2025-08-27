@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -12,13 +13,15 @@ export default function RegisterPage() {
     address: '',
     city: '',
     state: '',
-    zipCode: ''
+    zipCode: '',
+    emergencyContact: '',
+    emergencyPhone: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -31,10 +34,6 @@ export default function RegisterPage() {
     setIsSubmitting(true);
     
     try {
-      // Here you would typically send the data to your backend
-      // For now, we'll simulate a successful submission
-      console.log('Registration data:', formData);
-      
       // Make API call to register endpoint
       const response = await fetch('/api/register', {
         method: 'POST',
@@ -63,13 +62,14 @@ export default function RegisterPage() {
         address: '',
         city: '',
         state: '',
-        zipCode: ''
+        zipCode: '',
+        emergencyContact: '',
+        emergencyPhone: ''
       });
       
     } catch (error) {
       console.error('Registration error:', error);
       setIsSubmitting(false);
-      // You could add error handling here
       alert('There was an error submitting your registration. Please try again.');
     }
   };
@@ -113,7 +113,8 @@ export default function RegisterPage() {
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-8">
+            
             {/* Personal Information */}
             <div className="border-b border-gray-200 pb-6">
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Personal Information</h2>
@@ -159,13 +160,14 @@ export default function RegisterPage() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
+                    Phone Number *
                   </label>
                   <input
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
+                    required
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -220,65 +222,14 @@ export default function RegisterPage() {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       State *
                     </label>
-                    <select
+                    <input
+                      type="text"
                       name="state"
                       value={formData.state}
                       onChange={handleInputChange}
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                      <option value="">Select State</option>
-                      <option value="AL">Alabama</option>
-                      <option value="AK">Alaska</option>
-                      <option value="AZ">Arizona</option>
-                      <option value="AR">Arkansas</option>
-                      <option value="CA">California</option>
-                      <option value="CO">Colorado</option>
-                      <option value="CT">Connecticut</option>
-                      <option value="DE">Delaware</option>
-                      <option value="FL">Florida</option>
-                      <option value="GA">Georgia</option>
-                      <option value="HI">Hawaii</option>
-                      <option value="ID">Idaho</option>
-                      <option value="IL">Illinois</option>
-                      <option value="IN">Indiana</option>
-                      <option value="IA">Iowa</option>
-                      <option value="KS">Kansas</option>
-                      <option value="KY">Kentucky</option>
-                      <option value="LA">Louisiana</option>
-                      <option value="ME">Maine</option>
-                      <option value="MD">Maryland</option>
-                      <option value="MA">Massachusetts</option>
-                      <option value="MI">Michigan</option>
-                      <option value="MN">Minnesota</option>
-                      <option value="MS">Mississippi</option>
-                      <option value="MO">Missouri</option>
-                      <option value="MT">Montana</option>
-                      <option value="NE">Nebraska</option>
-                      <option value="NV">Nevada</option>
-                      <option value="NH">New Hampshire</option>
-                      <option value="NJ">New Jersey</option>
-                      <option value="NM">New Mexico</option>
-                      <option value="NY">New York</option>
-                      <option value="NC">North Carolina</option>
-                      <option value="ND">North Dakota</option>
-                      <option value="OH">Ohio</option>
-                      <option value="OK">Oklahoma</option>
-                      <option value="OR">Oregon</option>
-                      <option value="PA">Pennsylvania</option>
-                      <option value="RI">Rhode Island</option>
-                      <option value="SC">South Carolina</option>
-                      <option value="SD">South Dakota</option>
-                      <option value="TN">Tennessee</option>
-                      <option value="TX">Texas</option>
-                      <option value="UT">Utah</option>
-                      <option value="VT">Vermont</option>
-                      <option value="VA">Virginia</option>
-                      <option value="WA">Washington</option>
-                      <option value="WV">West Virginia</option>
-                      <option value="WI">Wisconsin</option>
-                      <option value="WY">Wyoming</option>
-                    </select>
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -290,9 +241,6 @@ export default function RegisterPage() {
                       value={formData.zipCode}
                       onChange={handleInputChange}
                       required
-                      pattern="[0-9]{5}(-[0-9]{4})?"
-                      placeholder="12345 or 12345-6789"
-                      title="Please enter a valid ZIP code (5 digits or ZIP+4 format)"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -300,18 +248,46 @@ export default function RegisterPage() {
               </div>
             </div>
 
-
-
-            {/* Submit Button */}
-            <div className="pt-6">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed font-semibold"
-              >
-                {isSubmitting ? 'Submitting...' : 'Submit Registration'}
-              </button>
+            {/* Emergency Contact */}
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Emergency Contact</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Emergency Contact Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="emergencyContact"
+                    value={formData.emergencyContact}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Emergency Contact Phone *
+                  </label>
+                  <input
+                    type="tel"
+                    name="emergencyPhone"
+                    value={formData.emergencyPhone}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              </div>
             </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed font-semibold text-lg"
+            >
+              {isSubmitting ? 'Submitting Registration...' : 'Submit Registration'}
+            </button>
           </form>
         </div>
       </div>

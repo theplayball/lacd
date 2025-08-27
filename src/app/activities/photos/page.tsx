@@ -95,7 +95,7 @@ export default function PhotosPage() {
   const [view, setView] = useState<'main' | 'chapters'>('main');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen">
       <main className="max-w-5xl mx-auto px-6 py-16">
         
         {/* Page Header */}
@@ -114,13 +114,13 @@ export default function PhotosPage() {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* General LACD Card */}
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
-              <div className="h-48 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+              <div className="h-48 bg-[#274472] flex items-center justify-center">
                 <svg className="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
               </div>
               <div className="p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">General LACD</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">LACD Photos</h2>
                 <p className="text-gray-600 mb-6">
                   Explore general activities and events organized by LACD across all chapters
                 </p>
@@ -141,13 +141,13 @@ export default function PhotosPage() {
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer"
               onClick={() => setView('chapters')}
             >
-              <div className="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+              <div className="h-48 bg-[#274472] flex items-center justify-center">
                 <svg className="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
               <div className="p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">LACD Chapters</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">LACD Chapters Photos</h2>
                 <p className="text-gray-600 mb-6">
                   Browse activities and events organized by specific LACD chapters
                 </p>

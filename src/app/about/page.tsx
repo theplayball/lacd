@@ -33,10 +33,10 @@ export default function AboutLanding() {
             </Link>
             
             <Link href="/about/media" className="group">
-              <div className="bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl p-8 border-l-4 border-green-500 hover:shadow-lg transition-all duration-300">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-green-600 transition-colors">LACD in the Media</h3>
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border-l-4 border-blue-500 hover:shadow-lg transition-all duration-300">
+                <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-blue-600 transition-colors">LACD in the Media</h3>
                 <p className="text-gray-600 mb-4">Explore our media presence and coverage of our activities.</p>
-                <div className="flex items-center text-green-600 font-medium group-hover:text-green-700">
+                <div className="flex items-center text-blue-600 font-medium group-hover:text-blue-700">
                   View Media
                   <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

@@ -11,7 +11,7 @@ export default function Navbar() {
       <div className="max-w-[1200px] mx-auto px-4 py-6">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
           {/* Logo + Text container */}
-          <div className="flex items-center gap-4 text-center">
+          <Link href="/" className="flex items-center gap-4 text-center hover:opacity-90 transition-opacity">
             <Image
               src="/logo.png"
               alt="LACD Logo"
@@ -28,7 +28,7 @@ export default function Navbar() {
                 LAC<span className="text-red-500">D</span>
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* Navigation Bar - positioned to the right */}
           <nav className="hidden lg:block bg-[#274472]  rounded-lg relative overflow-visible">

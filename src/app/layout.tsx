@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Instagram Embed Script */}
         <script async src="//www.instagram.com/embed.js"></script>
       </head>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen bg-gray-50">
         <Navbar />
         {/* Main content grows to fill the screen */}
         <main className="flex-grow">

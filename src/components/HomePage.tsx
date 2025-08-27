@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
   FaCalendarAlt,
   FaCheckSquare,
+  FaStar,
 } from "react-icons/fa";
 import Carousel from "./Carousel";
 
@@ -32,7 +33,12 @@ const HomePage = () => {
             text="Join LACD and become a member of our organization"
             link="/register"
           />
-
+          <InfoCard
+            icon={<FaStar className="text-3xl text-[#C6D0DC]" />}
+            title="ANNUAL CONVENTION"
+            text="Register for the 2025 LACD Annual Convention in Boston"
+            link="/register/event"
+          />
 
           <div className="bg-[#f1e5e5] p-4 text-start rounded-md ">
             <p className="text-[#a82512] text-[14px] tracking-wide uppercase mb-2">

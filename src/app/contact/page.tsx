@@ -69,7 +69,7 @@ export default function ContactPage() {
 
   if (submitSuccess) {
     return (
-      <div className="min-h-screen bg-gray-50 py-12">
+      <div className="min-h-screen py-12">
         <div className="max-w-2xl mx-auto px-4">
           <div className="bg-white rounded-lg shadow-md p-8 text-center">
             <div className="text-green-500 text-6xl mb-4">✓</div>
@@ -90,7 +90,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       <main className="max-w-7xl mx-auto px-4 py-12">
         {/* Page Header */}
         <div className="text-center mb-16">

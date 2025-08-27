@@ -17,7 +17,7 @@ const videoData = [
 
 export default function VideosPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen">
       <main className="max-w-5xl mx-auto px-6 py-16">
         
         {/* Page Header */}
