@@ -14,9 +14,8 @@ interface FormData {
   emergencyContact?: string;
   emergencyPhone?: string;
   lacdChapter?: string;
+  otherState?: string;
   paymentMethod?: string;
-  paymentConfirmation?: string;
-  hotelBooking?: string;
   dietaryRestrictions?: string;
 }
 
@@ -67,16 +66,18 @@ async function submitToGoogleSheet(formData: FormData, formType?: string) {
     
     if (formType === 'event') {
       // Event registration data
+      const chapterInfo = formData.lacdChapter === 'Other' 
+        ? `Other: ${formData.otherState || ''}` 
+        : formData.lacdChapter || '';
+      
       rowData = [
         new Date().toISOString(), // Timestamp
         formData.firstName,
         formData.lastName,
         formData.email,
         formData.phone || '',
-        formData.lacdChapter || '',
+        chapterInfo,
         formData.paymentMethod || '',
-        formData.paymentConfirmation || '',
-        formData.hotelBooking || '',
         formData.dietaryRestrictions || '',
         '2025 LACD Annual Convention', // Event name
         '$200' // Registration cost
@@ -140,12 +141,18 @@ async function sendRegistrationEmail(formData: FormData) {
     // For now, we'll use a simple email service like Resend or SendGrid
     // You can configure this later with your preferred email service
     
+    // Determine if this is an event registration based on the presence of lacdChapter
+    const isEventRegistration = !!formData.lacdChapter;
+    const chapterInfo = formData.lacdChapter === 'Other' 
+      ? `Other: ${formData.otherState || ''}` 
+      : formData.lacdChapter || '';
+
     const emailData = {
       to: ADMIN_EMAIL,
-      subject: 'New LACD Registration',
+      subject: isEventRegistration ? 'New LACD Event Registration' : 'New LACD Registration',
       html: `
-        <h2>New Registration Received</h2>
-        <p>A new user has registered with LACD.</p>
+        <h2>${isEventRegistration ? 'New Event Registration' : 'New Registration'} Received</h2>
+        <p>A new user has registered with LACD${isEventRegistration ? ' for the 2025 Annual Convention' : ''}.</p>
         
         <h3>Registration Details:</h3>
         <table style="border-collapse: collapse; width: 100%;">
@@ -161,34 +168,49 @@ async function sendRegistrationEmail(formData: FormData) {
             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Phone:</td>
             <td style="padding: 8px; border: 1px solid #ddd;">${formData.phone || 'Not provided'}</td>
           </tr>
+          ${isEventRegistration ? `
+          <tr>
+            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">LACD Chapter:</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${chapterInfo}</td>
+          </tr>
+          <tr style="background-color: #f8f9fa;">
+            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Payment Method:</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${formData.paymentMethod || 'Not specified'}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Dietary Restrictions:</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${formData.dietaryRestrictions || 'None specified'}</td>
+          </tr>
+          ` : `
           <tr>
             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Date of Birth:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.dateOfBirth}</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${formData.dateOfBirth || 'Not provided'}</td>
           </tr>
           <tr style="background-color: #f8f9fa;">
             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Address:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.address}</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${formData.address || 'Not provided'}</td>
           </tr>
           <tr>
             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">City:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.city}</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${formData.city || 'Not provided'}</td>
           </tr>
           <tr style="background-color: #f8f9fa;">
             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">State:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.state}</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${formData.state || 'Not provided'}</td>
           </tr>
           <tr>
             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">ZIP Code:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.zipCode}</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${formData.zipCode || 'Not provided'}</td>
           </tr>
           <tr style="background-color: #f8f9fa;">
             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Emergency Contact:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.emergencyContact}</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${formData.emergencyContact || 'Not provided'}</td>
           </tr>
           <tr>
             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Emergency Phone:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.emergencyPhone}</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${formData.emergencyPhone || 'Not provided'}</td>
           </tr>
+          `}
         </table>
         
         <p style="margin-top: 20px; color: #666;">
@@ -259,14 +281,22 @@ export async function POST(request: NextRequest) {
     console.log('Register API called');
     
     const body = await request.json();
-    const { firstName, lastName, email, phone, dateOfBirth, address, city, state, zipCode, emergencyContact, emergencyPhone, formType, lacdChapter, paymentMethod, paymentConfirmation, hotelBooking, dietaryRestrictions } = body;
+    const { firstName, lastName, email, phone, dateOfBirth, address, city, state, zipCode, emergencyContact, emergencyPhone, formType, lacdChapter, otherState, paymentMethod, dietaryRestrictions } = body;
 
     // Validate required fields based on form type
     if (formType === 'event') {
       // Event registration validation
-      if (!firstName || !lastName || !email || !phone || !lacdChapter || !paymentMethod || !paymentConfirmation) {
+      if (!firstName || !lastName || !email || !phone || !lacdChapter || !paymentMethod) {
         return NextResponse.json(
           { error: 'Missing required fields for event registration' },
+          { status: 400 }
+        );
+      }
+      
+      // If "Other" is selected, otherState is required
+      if (lacdChapter === 'Other' && !otherState) {
+        return NextResponse.json(
+          { error: 'State is required when selecting "Other" chapter' },
           { status: 400 }
         );
       }
@@ -366,9 +396,8 @@ export async function POST(request: NextRequest) {
       emergencyContact,
       emergencyPhone,
       lacdChapter,
+      otherState,
       paymentMethod,
-      paymentConfirmation,
-      hotelBooking,
       dietaryRestrictions
     };
 

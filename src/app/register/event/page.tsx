@@ -10,9 +10,8 @@ export default function EventRegisterPage() {
     email: '',
     phone: '',
     lacdChapter: '',
+    otherState: '',
     paymentMethod: 'venmo',
-    paymentConfirmation: '',
-    hotelBooking: 'no',
     dietaryRestrictions: ''
   });
 
@@ -28,7 +27,8 @@ export default function EventRegisterPage() {
     'Jacksonville FL',
     'Michigan',
     'Ohio',
-    'New York/New Jersey'
+    'New York/New Jersey',
+    'Other'
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -68,9 +68,8 @@ export default function EventRegisterPage() {
         email: '',
         phone: '',
         lacdChapter: '',
+        otherState: '',
         paymentMethod: 'venmo',
-        paymentConfirmation: '',
-        hotelBooking: 'no',
         dietaryRestrictions: ''
       });
       
@@ -90,7 +89,7 @@ export default function EventRegisterPage() {
             <h1 className="text-3xl font-bold text-gray-800 mb-4">Event Registration Submitted!</h1>
             <p className="text-gray-600 mb-6">
               Thank you for registering for the 2025 LACD Annual Convention. Your registration has been submitted successfully.
-              Please complete your payment of $200 to confirm your spot.
+              Please complete your payment of $200 using one of the payment methods below to confirm your spot.
             </p>
             <div className="bg-blue-50 rounded-lg p-6 mb-6">
               <h3 className="font-semibold text-blue-800 mb-4">Payment Instructions:</h3>
@@ -267,6 +266,24 @@ export default function EventRegisterPage() {
                   ))}
                 </select>
               </div>
+              
+              {/* Other State Input */}
+              {formData.lacdChapter === 'Other' && (
+                <div className="mt-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    State *
+                  </label>
+                  <input
+                    type="text"
+                    name="otherState"
+                    value={formData.otherState}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="Enter your state"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              )}
             </div>
 
             {/* Hotel Booking */}
@@ -282,7 +299,7 @@ export default function EventRegisterPage() {
                 <div className="bg-white rounded-md p-3 border border-blue-200">
                   <p className="text-blue-800 font-medium mb-2">Book Your Room:</p>
                   <a
-                    href="#"
+                    href="https://www.hilton.com/en/book/reservation/deeplink/?ctyhocn=BOSWAGI&groupCode=91L&arrivaldate=2025-10-10&departuredate=2025-10-12&cid=OM,WW,HILTONLINK,EN,DirectLink&fromId=HILTONLINKDIRECT"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 text-sm font-medium"
@@ -293,21 +310,6 @@ export default function EventRegisterPage() {
                     Link will default to 10/10-10/12 dates
                   </p>
                 </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Do you need hotel booking assistance? *
-                </label>
-                <select
-                  name="hotelBooking"
-                  value={formData.hotelBooking}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="no">No, I&apos;ll book separately</option>
-                  <option value="yes">Yes, please provide booking link</option>
-                </select>
               </div>
             </div>
 
@@ -332,12 +334,12 @@ export default function EventRegisterPage() {
             {/* Payment Information */}
             <div className="border-b border-gray-200 pb-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">Payment Information</h3>
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-                <p className="text-yellow-800 font-semibold mb-2">Registration Cost: $200 per person</p>
-                <p className="text-yellow-700 text-sm">
-                  This includes all food, conference Gala, and activities for the weekend.
-                </p>
-              </div>
+                          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+              <p className="text-yellow-800 font-semibold mb-2">Registration Cost: $200 per person</p>
+              <p className="text-yellow-700 text-sm">
+                The package includes all meals, the conference Gala, and weekend activities.
+              </p>
+            </div>
               
               <div className="space-y-4">
                 <div>
@@ -394,23 +396,7 @@ export default function EventRegisterPage() {
                   </div>
                 </div>
                 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Payment Confirmation Number/ID *
-                  </label>
-                  <input
-                    type="text"
-                    name="paymentConfirmation"
-                    value={formData.paymentConfirmation}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="Enter your payment confirmation number or transaction ID"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">
-                    After making your payment, please enter the confirmation number, transaction ID, or screenshot reference.
-                  </p>
-                </div>
+
               </div>
             </div>
 
