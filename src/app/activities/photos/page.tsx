@@ -151,7 +151,7 @@ export default function PhotosPage() {
                 <p className="text-gray-600 mb-6">
                   Browse activities and events organized by specific LACD chapters
                 </p>
-                <div className="inline-flex items-center text-green-600 font-medium group-hover:text-green-700">
+                <div className="inline-flex items-center text-blue-600 font-medium group-hover:text-green-700">
                   View Chapters
                   <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
