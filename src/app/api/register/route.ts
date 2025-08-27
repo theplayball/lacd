@@ -1,8 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseServer } from '../../../lib/supabaseServer';
 
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  dateOfBirth?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  zipCode?: string;
+  emergencyContact?: string;
+  emergencyPhone?: string;
+  lacdChapter?: string;
+  paymentMethod?: string;
+  paymentConfirmation?: string;
+  hotelBooking?: string;
+  dietaryRestrictions?: string;
+}
+
 // Google Sheets API submission function
-async function submitToGoogleSheet(formData: Record<string, any>, formType?: string) {
+async function submitToGoogleSheet(formData: FormData, formType?: string) {
   const GOOGLE_SHEET_ID = '1wQiWHpQd4Ub8tluqxYCJIbVtdxm9i0dKpUbOK3bmtb0';
   const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n');
@@ -109,7 +128,7 @@ async function submitToGoogleSheet(formData: Record<string, any>, formType?: str
 }
 
 // Email notification function
-async function sendRegistrationEmail(formData: Record<string, any>) {
+async function sendRegistrationEmail(formData: FormData) {
   const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 
   if (!ADMIN_EMAIL) {
