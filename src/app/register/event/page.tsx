@@ -305,7 +305,7 @@ export default function EventRegisterPage() {
                   required
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
-                  <option value="no">No, I'll book separately</option>
+                  <option value="no">No, I&apos;ll book separately</option>
                   <option value="yes">Yes, please provide booking link</option>
                 </select>
               </div>

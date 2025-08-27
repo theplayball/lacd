@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { supabaseServer } from '../../../lib/supabaseServer';
 
 // Google Sheets API submission function
-async function submitToGoogleSheet(formData: any, formType?: string) {
+async function submitToGoogleSheet(formData: Record<string, any>, formType?: string) {
   const GOOGLE_SHEET_ID = '1wQiWHpQd4Ub8tluqxYCJIbVtdxm9i0dKpUbOK3bmtb0';
   const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n');
@@ -14,10 +14,10 @@ async function submitToGoogleSheet(formData: any, formType?: string) {
 
   try {
     // Create JWT token for Google Sheets API
-    const jwt = require('jsonwebtoken');
+    const jwt = await import('jsonwebtoken');
     const now = Math.floor(Date.now() / 1000);
     
-    const token = jwt.sign({
+    const token = jwt.default.sign({
       iss: GOOGLE_SERVICE_ACCOUNT_EMAIL,
       scope: 'https://www.googleapis.com/auth/spreadsheets',
       aud: 'https://oauth2.googleapis.com/token',
@@ -109,12 +109,8 @@ async function submitToGoogleSheet(formData: any, formType?: string) {
 }
 
 // Email notification function
-async function sendRegistrationEmail(formData: any) {
+async function sendRegistrationEmail(formData: Record<string, any>) {
   const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-  const SMTP_HOST = process.env.SMTP_HOST;
-  const SMTP_PORT = process.env.SMTP_PORT;
-  const SMTP_USER = process.env.SMTP_USER;
-  const SMTP_PASS = process.env.SMTP_PASS;
 
   if (!ADMIN_EMAIL) {
     console.error('Admin email not configured');
