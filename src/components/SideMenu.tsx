@@ -68,7 +68,7 @@ const SideMenu = () => {
             onClick={() => setAboutOpen(!aboutOpen)}
             className="flex justify-between items-center w-full px-6 py-3 border-b border-gray-200 hover:bg-sky-200"
           >
-            <span>About LCAD</span>
+            <span>About LACD</span>
             {aboutOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
           </button>
           {aboutOpen && (
