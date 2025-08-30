@@ -154,15 +154,15 @@ export default function EventRegisterPage() {
         {/* Page Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            2025 LACD Annual Convention
+            2025 LAC<span className="text-red-600">D</span> Annual Convention
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full mb-6"></div>
+          
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
             Join us in Boston for the nationwide registration campaign for the 2026 Lebanese Parliamentary Elections
           </p>
           <div className="bg-blue-50 rounded-lg p-6 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-blue-800 mb-4">Event Details</h2>
-            <div className="grid md:grid-cols-2 gap-4 text-left">
+            <h2 className="text-2xl font-bold text-blue-800 mb-4 text-center">Event Details</h2>
+            <div className="grid md:grid-cols-2 gap-4 text-center">
               <div>
                 <p className="font-semibold text-gray-800">Date:</p>
                 <p className="text-gray-600">October 10-12, 2025</p>
@@ -184,12 +184,12 @@ export default function EventRegisterPage() {
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6">Event Registration Form</h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Event Registration Form</h2>
+          <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl mx-auto">
             
             {/* Personal Information */}
             <div className="border-b border-gray-200 pb-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Personal Information</h3>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">Personal Information</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -248,7 +248,7 @@ export default function EventRegisterPage() {
 
             {/* LACD Chapter */}
             <div className="border-b border-gray-200 pb-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">LACD Chapter</h3>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">LACD Chapter</h3>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   LACD Chapter *
@@ -333,12 +333,14 @@ export default function EventRegisterPage() {
 
             {/* Payment Information */}
             <div className="border-b border-gray-200 pb-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Payment Information</h3>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4 ">Payment Information</h3>
                           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-              <p className="text-yellow-800 font-semibold mb-2">Registration Cost: $200 per person</p>
-              <p className="text-yellow-700 text-sm">
-                The package includes all meals, the conference Gala, and weekend activities.
-              </p>
+              <p className="text-yellow-800 font-semibold mb-2">Registration Fee: $200 per person</p>
+              <p className="text-yellow-700 text-sm mb-2">The package includes:</p>
+              <ul className="text-yellow-700 text-sm list-disc list-inside space-y-1">
+                <li>Saturday lunch, coffee break and Gala dinner.</li>
+                <li>Sunday lunch</li>
+              </ul>
             </div>
               
               <div className="space-y-4">
@@ -400,13 +402,15 @@ export default function EventRegisterPage() {
               </div>
             </div>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed font-semibold text-lg"
-            >
-              {isSubmitting ? 'Submitting Registration...' : 'Submit Event Registration'}
-            </button>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full max-w-md bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed font-semibold text-lg"
+              >
+                {isSubmitting ? 'Submitting Registration...' : 'Submit Event Registration'}
+              </button>
+            </div>
           </form>
 
           {/* Back to Main Registration */}
