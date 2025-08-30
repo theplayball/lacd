@@ -151,7 +151,7 @@ export default function PhotosPage() {
                 <p className="text-gray-600 mb-6">
                   Browse activities and events organized by specific LACD chapters
                 </p>
-                <div className="inline-flex items-center text-blue-600 font-medium group-hover:text-green-700">
+                <div className="inline-flex items-center text-blue-600 font-medium group-hover:text-blue-700">
                   View Chapters
                   <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -182,7 +182,7 @@ export default function PhotosPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {chaptersData.map((chapter) => (
                 <div key={chapter.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                  <div className="h-40 bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center">
+                  <div className="h-40 bg-[#274472] flex items-center justify-center">
                     <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                     </svg>
