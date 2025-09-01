@@ -6,7 +6,7 @@ export default function MaintenancePage() {
           Site Under Maintenance
         </h1>
         <p className="text-lg text-gray-600 mb-8">
-          We're currently working on improving our website. Please check back later.
+          We&apos;re currently working on improving our website. Please check back later.
         </p>
         <div className="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
           <h2 className="text-xl font-semibold mb-4">Available Services</h2>
