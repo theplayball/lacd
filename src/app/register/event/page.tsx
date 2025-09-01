@@ -304,7 +304,7 @@ export default function EventRegisterPage() {
                     rel="noopener noreferrer"
                     className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 text-sm font-medium"
                   >
-                    Book your Room for LAC October Event!
+                    Book your Room for LACD October Event!
                   </a>
                   <p className="text-xs text-blue-600 mt-1">
                     Link will default to 10/10-10/12 dates
@@ -412,16 +412,6 @@ export default function EventRegisterPage() {
               </button>
             </div>
           </form>
-
-          {/* Back to Main Registration */}
-          <div className="mt-8 pt-8 border-t border-gray-200 text-center">
-            <Link 
-              href="/register"
-              className="text-blue-600 hover:text-blue-700 font-medium"
-            >
-              ← Back to Main Registration
-            </Link>
-          </div>
         </div>
       </div>
     </div>
