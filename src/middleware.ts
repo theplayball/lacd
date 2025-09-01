@@ -19,8 +19,8 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Allow access to static files
-  if (pathname.startsWith('/_next/') || pathname.startsWith('/favicon.ico')) {
+  // Allow access to static files and images
+  if (pathname.startsWith('/_next/') || pathname.startsWith('/favicon.ico') || pathname.startsWith('/logo.png')) {
     return NextResponse.next()
   }
 
@@ -30,6 +30,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|logo.png).*)',
   ],
 }
