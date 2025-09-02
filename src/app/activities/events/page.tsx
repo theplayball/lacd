@@ -1,18 +1,35 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { format, parseISO } from 'date-fns';
 import { ChevronLeft, ChevronRight, Search } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 
 const events = [
-  
   { id: '4', title: 'LACD Annual Convention', date: '2025-10-10', link: '/register/event' },
+  { id: '5', title: 'LACD Annual Convention', date: '2025-10-11', link: '/register/event' },
+  { id: '6', title: 'LACD Annual Convention', date: '2025-10-12', link: '/register/event' },
 ];
 
 export default function EventsPage() {
+  const searchParams = useSearchParams();
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [searchTerm, setSearchTerm] = useState('');
   const [filterDate, setFilterDate] = useState('');
+
+  // Handle date parameter from URL and navigate to correct month
+  useEffect(() => {
+    const dateParam = searchParams.get('date');
+    if (dateParam) {
+      try {
+        const targetDate = parseISO(dateParam);
+        setCurrentMonth(new Date(targetDate.getFullYear(), targetDate.getMonth(), 1));
+        setFilterDate(dateParam);
+      } catch (error) {
+        console.error('Invalid date parameter:', dateParam);
+      }
+    }
+  }, [searchParams]);
 
   const handlePrevMonth = () => {
     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
@@ -49,8 +66,17 @@ export default function EventsPage() {
   const eventsForDay = (day: number) => {
     return filteredEvents.filter(event => {
       const eventDate = parseISO(event.date);
-      return eventDate.getDate() === day;
+      return eventDate.getDate() === day && 
+             eventDate.getMonth() === month && 
+             eventDate.getFullYear() === year;
     });
+  };
+
+  // Check if a day is part of the LACD Annual Convention (multi-day event)
+  const isLACDConventionDay = (day: number) => {
+    const year = currentMonth.getFullYear();
+    const month = currentMonth.getMonth();
+    return month === 9 && year === 2025 && [10, 11, 12].includes(day); // October is month 9 (0-indexed)
   };
 
   return (
@@ -126,15 +152,18 @@ export default function EventsPage() {
             year === today.getFullYear();
 
           const dayEvents = eventsForDay(day);
+          const isLACDConvention = isLACDConventionDay(day);
 
           return (
             <div
               key={i}
               className={`bg-white min-h-[100px] p-2 text-left text-xs flex flex-col justify-start ${
                 isToday ? 'bg-blue-100 font-semibold' : ''
+              } ${
+                isLACDConvention ? 'bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-300' : ''
               }`}
             >
-              <p className="font-bold">{day}</p>
+              <p className={`font-bold ${isLACDConvention ? 'text-blue-700' : ''}`}>{day}</p>
               <ul className="mt-1 space-y-1 text-blue-600">
                 {dayEvents.length > 0 ? (
                   dayEvents.map(event => (
@@ -152,6 +181,8 @@ export default function EventsPage() {
                       )}
                     </li>
                   ))
+                ) : isLACDConvention ? (
+                  <li className="text-blue-700 font-medium">LACD Annual Convention</li>
                 ) : (
                   <li className="text-gray-400">No events</li>
                 )}

@@ -10,6 +10,7 @@ interface Event {
   title: string;
   time: string;
   location: string;
+  calendarDate: string;
 }
 
 const newsData = {
@@ -23,11 +24,12 @@ const newsData = {
   },
   events: [
     {
-      date: "10",
+      date: "10 11 12",
       month: "OCT",
       title: "LACD Annual Convention",
       time: "All Day",
-      location: "Boston, MA"
+      location: "Boston, MA",
+      calendarDate: "2025-10-10" // First day of the event for calendar linking
     }
   ] as Event[],
 };
@@ -201,67 +203,140 @@ export default function NewsEvents() {
         </div>
 
         {/* Right Side - 1 column */}
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6">
           {/* Featured Video */}
-          <div className="bg-white rounded-md p-4 shadow-md w-full">
-            <h3 className="font-extralight sm:text-lg mb-4 text-[#3b3b3c] text-center">
-              FEATURED VIDEO
-            </h3>
-            <div className="aspect-video mb-2">
-              <video 
-                className="w-full h-full rounded-md"
-                controls
-                preload="metadata"
-              >
-                <source src="/4.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+          <div className="bg-white rounded-xl p-5 shadow-lg border border-gray-100 w-full">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center">
+                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-800 text-lg">
+                  FEATURED VIDEO
+                </h3>
+                <p className="text-sm text-gray-500">Latest from LACD</p>
+              </div>
             </div>
-            <Link 
-              href="/activities/videos" 
-              className="block text-sm text-[#4174c5] hover:underline text-center w-full mt-2 hover:cursor-pointer"
-            >
-              MORE VIDEOS →
-            </Link>
+            
+            <div className="relative group">
+              <div className="aspect-video mb-3 rounded-lg overflow-hidden bg-gray-100">
+                <video 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  controls
+                  preload="metadata"
+                >
+                  <source src="/4.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 rounded-lg flex items-center justify-center">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center">
+                    <svg className="w-8 h-8 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-2">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full border-2 border-white"></div>
+                  <div className="w-6 h-6 bg-green-500 rounded-full border-2 border-white"></div>
+                  <div className="w-6 h-6 bg-purple-500 rounded-full border-2 border-white"></div>
+                </div>
+                <span className="text-sm text-gray-500">3.2k views</span>
+              </div>
+            </div>
+            
+            <div className="pt-3 border-t border-gray-100">
+              <Link 
+                href="/activities/videos" 
+                className="inline-flex items-center justify-center gap-2 w-full py-2 px-4 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg font-medium transition-colors duration-200 group"
+              >
+                <span>MORE VIDEOS</span>
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
           </div>
 
           {/* Upcoming Events */}
-          <div className="bg-white rounded-md p-2 shadow-md w-full">
-            <h3 className="font-extralight text-lg mb-6 text-[#3b3b3c] text-center pb-1">
-              UPCOMING EVENTS
-            </h3>
+          <div className="bg-white rounded-xl p-4 shadow-lg border border-gray-100 w-full">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-800 text-base">
+                  UPCOMING EVENTS
+                </h3>
+                <p className="text-xs text-gray-500">Don&apos;t miss out!</p>
+              </div>
+            </div>
+            
             {newsData.events.length > 0 ? (
-              <ul className="space-y-14">
+              <div className="space-y-2">
                 {newsData.events.map((event, index) => (
-                  <li key={index} className="flex justify-center">
-                    <div className="flex items-center gap-5">
-                      <div className="bg-[#e2eaf2] text-[#274472] hover:bg-[#63B2F5] hover:text-white  px-3 py-3 rounded-sm text-center shadow-md text-sm ">
-                        <p className="text-lg font-bold leading-none">{event.date}</p>
-                        <p className="text-[10px] uppercase">{event.month}</p>
-                      </div>
-                      <div>
-                        <p className="text-[#4174c5] font-light text-sm hover:cursor-pointer">
-                          {event.title}
-                        </p>
-                        <p className="text-xs text-gray-400">{event.time}</p>
-                        <p className="text-xs text-gray-400">{event.location}</p>
+                  <div key={index} className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200">
+                    {/* Event Header */}
+                    <div className="p-3 border-b border-gray-100">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                          </svg>
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-gray-900 text-sm">{event.title}</h4>
+                          <p className="text-xs text-gray-500">LACD Official</p>
+                        </div>
                       </div>
                     </div>
-                  </li>
+                    
+                    {/* Event Content */}
+                    <div className="p-3 text-center">
+                      <a href={`/activities/events?date=${event.calendarDate}`} className="block">
+                        <h3 className="text-base font-semibold text-gray-900 hover:text-blue-600 transition-colors duration-200 cursor-pointer">
+                          {event.title}
+                        </h3>
+                      </a>
+                    </div>
+                    
+
+                  </div>
                 ))}
-              </ul>
+              </div>
             ) : (
               <div className="text-center py-8">
-                <p className="text-gray-500 text-sm">No upcoming events at this time.</p>
-                <p className="text-gray-400 text-xs mt-2">Check back soon for new events!</p>
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <p className="text-gray-500 text-sm font-medium">No upcoming events</p>
+                <p className="text-gray-400 text-xs mt-1">Check back soon for new events!</p>
               </div>
             )}
-            <Link 
-              href="/activities/events" 
-              className="block text-center text-sm text-[#274472] hover:text-[#4174c5] w-full mt-6 hover:cursor-pointer"
-            >
-              MORE EVENTS →
-            </Link>
+            
+            <div className="mt-4 pt-3 border-t border-gray-100">
+              <Link 
+                href="/activities/events" 
+                className="inline-flex items-center justify-center gap-2 w-full py-2 px-4 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg font-medium transition-colors duration-200 group"
+              >
+                <span>VIEW ALL EVENTS</span>
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
           </div>
 
           {/* Social Media Links */}
@@ -304,8 +379,11 @@ export default function NewsEvents() {
                     </div>
                   </div>
                   <div className="text-center">
-                    <span className="text-blue-600 text-xs font-medium group-hover:text-blue-800 transition-colors">
-                      Visit our Facebook page →
+                    <span className="inline-flex items-center justify-center gap-2 w-full py-2 px-4 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg font-medium transition-colors duration-200 group">
+                      <span>VISIT OUR FACEBOOK PAGE</span>
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     </span>
                   </div>
                 </div>
@@ -348,8 +426,11 @@ export default function NewsEvents() {
                     </div>
                   </div>
                   <div className="text-center">
-                    <span className="text-pink-600 text-xs font-medium group-hover:text-pink-800 transition-colors">
-                      Visit our Instagram profile →
+                    <span className="inline-flex items-center justify-center gap-2 w-full py-2 px-4 bg-pink-50 hover:bg-pink-100 text-pink-600 rounded-lg font-medium transition-colors duration-200 group">
+                      <span>VISIT OUR INSTAGRAM PAGE</span>
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     </span>
                   </div>
                 </div>
