@@ -25,7 +25,7 @@ export default function EventsPage() {
         const targetDate = parseISO(dateParam);
         setCurrentMonth(new Date(targetDate.getFullYear(), targetDate.getMonth(), 1));
         setFilterDate(dateParam);
-      } catch (error) {
+      } catch {
         console.error('Invalid date parameter:', dateParam);
       }
     }
