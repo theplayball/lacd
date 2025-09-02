@@ -118,13 +118,41 @@ async function sendSubscriptionEmail(subscriberData: SubscribeData) {
             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Subscription Date:</td>
             <td style="padding: 8px; border: 1px solid #ddd;">${new Date().toLocaleDateString()}</td>
           </tr>
+          ${subscriberData.note ? `
+          <tr>
+            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Note:</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${subscriberData.note}</td>
+          </tr>
+          ` : ''}
         </table>
         
         <p>This subscription has been automatically added to your Google Sheets.</p>
       `
     };
 
-    // Try SendGrid first if configured
+    // Try Resend first if configured (free tier available)
+    if (process.env.RESEND_API_KEY) {
+      const resendResponse = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'onboarding@resend.dev',
+          to: [ADMIN_EMAIL],
+          subject: emailData.subject,
+          html: emailData.html,
+        }),
+      });
+
+      if (resendResponse.ok) {
+        console.log('Email sent successfully via Resend');
+        return { success: true };
+      }
+    }
+
+    // Try SendGrid if configured
     if (process.env.SENDGRID_API_KEY) {
       const sendgridResponse = await fetch('https://api.sendgrid.com/v3/mail/send', {
         method: 'POST',

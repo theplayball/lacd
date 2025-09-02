@@ -15,6 +15,7 @@ interface BaseActivity {
   description?: string;
   photos?: Photo[];
   date?: string;
+  headerImage?: string;
 }
 
 interface SubSubActivity extends BaseActivity {
@@ -53,11 +54,12 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
           description: "As part of the tour organized by LACD for MP Nada Boustani, the second stop took place in the state of New Jersey, hosted at the Assi family's residence, where a luncheon was held in her honor with the participation of several members of LACD – New Jersey.",
           photos: Array.from({ length: 7 }, (_, i) => ({
             url: `/activity5/${i + 1}.jpeg`
-          }))
+          })),
+          headerImage: "/activity5/1.jpeg"
         },
         {
           id: "boston",
-          name: "Visit of MP Nada Boustani to Boston, New England on May 25, 2025",
+          name: "Visit of MP Nada Boustani to Boston, Massachusetts on May 25, 2025",
           type: "subactivity2",
           description: "Visit to Boston including religious and community events",
           subSubActivities: [
@@ -68,7 +70,8 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
               description: "MP Nada Boustani participated in the Divine Liturgy celebrated by Bishop François Beyrouti, Eparch of Newton for the Melkite Greek Catholics, at the Annunciation Melkite Catholic Cathedral in Boston.",
               photos: Array.from({ length: 13 }, (_, i) => ({
                 url: `/activity6/${i + 1}.jpeg`
-              }))
+              })),
+              headerImage: "/activity6/1.jpeg"
             },
             {
               id: "boston-lunch",
@@ -77,7 +80,8 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
               description: "The LACD Boston chapter organized a lunch in honor of MP Nada Boustani, attended by Bishop François Beyrouti and several members of LACD in Boston.",
               photos: Array.from({ length: 11 }, (_, i) => ({
                 url: `/activity7/${i + 1}.jpeg`
-              }))
+              })),
+              headerImage: "/activity7/9.jpeg"
             }
           ]
         },
@@ -94,16 +98,18 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
               description: "MP Nada Boustani visited the Honorary Lebanese Consulate, where she met with Honorary Consul Anthony Asher, in the presence of LACD Ohio representative Jad Badran.",
               photos: Array.from({ length: 1 }, (_, i) => ({
                 url: `/activity8/${i + 1}.jpeg`
-              }))
+              })),
+              headerImage: "/activity8/1.jpeg"
             },
             {
               id: "ohio-lunch",
               name: "Lunch reception organized by LACD Ohio chapter in honor of MP Nada Boustani in Cleveland, Ohio",
               type: "subsubactivity2",
-              description: "LACD Ohio chapter hosted a luncheon in honor of MP Nada Boustani, attended by members of the Lebanese community in Cleveland, Ohio.",
+              description: "The LACD Ohio chapter hosted a luncheon in honor of MP Nada Boustani, attended by members of the Lebanese community in Cleveland, Ohio.",
               photos: Array.from({ length: 15 }, (_, i) => ({
                 url: `/activity9/${i + 1}.jpeg`
-              }))
+              })),
+              headerImage: "/activity9/1.jpeg"
             }
           ]
         },
@@ -120,7 +126,8 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
               description: "",
               photos: Array.from({ length: 8 }, (_, i) => ({
                 url: `/activity10/${i + 1}.jpeg`
-              }))
+              })),
+              headerImage: "/activity10/1.jpeg"
             },
             {
               id: "islamic-center",
@@ -129,16 +136,18 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
               description: "MP Nada Boustani visited the Islamic Center in Michigan, where she met with the center's president, Sheikh Ahmad Hammoud.",
               photos: Array.from({ length: 5 }, (_, i) => ({
                 url: `/activity11/${i + 1}.jpeg`
-              }))
+              })),
+              headerImage: "/activity11/1.jpeg"
             },
             {
               id: "mena-chamber",
               name: "Extended dialogue with MP Nada Boustani hosted by The MENA American Chamber of Commerce",
               type: "subsubactivity5",
               description: "During a broad discussion at the American Chamber of Commerce MENA in Michigan, MP Nada Boustani discussed various topics including energy and infrastructure.",
-              photos: Array.from({ length: 8 }, (_, i) => ({
-                url: `/activity12/${i + 1}.jpeg`
-              }))
+              photos: Array.from({ length: 14 }, (_, i) => ({
+                url: `/activity14/${i + 1}.jpeg`
+              })),
+              headerImage: "/activity14/1.jpeg"
             },
             {
               id: "consul-kabalan",
@@ -147,16 +156,18 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
               description: "MP Nada Boustani visited the building of the Consulate General in Michigan, where she was received by Ambassador Bilal Kabalan.",
               photos: Array.from({ length: 8 }, (_, i) => ({
                 url: `/activity13/${i + 1}.jpeg`
-              }))
+              })),
+              headerImage: "/activity13/7.jpeg"
             },
             {
               id: "arab-chamber",
               name: "Discussion session with MP Nada Boustani at the American Arab Chamber of Commerce",
               type: "subsubactivity4",
               description: "The American Arab Chamber of Commerce in Michigan hosted MP Nada Boustani.",
-              photos: Array.from({ length: 14 }, (_, i) => ({
-                url: `/activity14/${i + 1}.jpeg`
-              }))
+              photos: Array.from({ length: 8 }, (_, i) => ({
+                url: `/activity12/${i + 1}.jpeg`
+              })),
+              headerImage: "/activity12/6.jpeg"
             },
             {
               id: "michigan-dinner",
@@ -165,7 +176,8 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
               description: "LACD Michigan Chapter organized a dinner attended by MP Nada Boustani.",
               photos: Array.from({ length: 8 }, (_, i) => ({
                 url: `/activity15/${i + 1}.jpeg`
-              }))
+              })),
+              headerImage: "/activity15/2.jpeg"
             }
           ]
         },
@@ -182,29 +194,22 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
               description: "An honorary plaque was presented by Honorary Consul Nabil Bahri during a brunch held in honor of MP Nada Boustani in Florida.",
               photos: Array.from({ length: 2 }, (_, i) => ({
                 url: `/activity16/${i + 1}.jpeg`
-              }))
+              })),
+              headerImage: "/activity16/2.jpeg"
             },
             {
               id: "florida-dinner",
               name: "Dinner event organized by LACD Florida chapter in honor of MP Nada Boustani",
               type: "subsubactivity2",
-              description: "The LACD Florida chapter organized a dinner attended by MP Nada Boustani and Consul Nabil Bahri.",
-              photos: Array.from({ length: 31 }, (_, i) => ({
-                url: `/activity17/${i + 1}.jpeg`
-              }))
+              description: "The LACD Florida chapter organized a dinner attended by MP Nada Boustani and Consul Nabil Bahri. At the conclusion of her U.S. tour, MP Nada Boustani was presented with an honorary plaque by the Lebanese American Community Development (LACD) in recognition of her significant contributions.",
+              photos: Array.from({ length: 32 }, (_, i) => ({
+                url: i < 31 ? `/activity17/${i + 1}.jpeg` : `/activity18/1.jpeg`
+              })),
+              headerImage: "/activity17/15.jpeg"
             }
           ]
-        },
-        {
-          id: "tour-conclusion",
-          name: "Honorary plaque presented by LACD to MP Nada Boustani at the conclusion of her U.S. tour",
-          type: "subactivity7",
-          description: "An honorary plaque was presented to MP Nada Boustani by LACD as a token of appreciation and gratitude for her visit and for all her efforts on behalf of Lebanon.",
-          photos: Array.from({ length: 1 }, (_, i) => ({
-            url: `/activity18/${i + 1}.jpeg`
-          }))
         }
-      ]
+      ],
     },
     {
       id: "diaspora-dinner",
@@ -242,7 +247,8 @@ const chaptersData: Chapter[] = [
         type: "chapter-activity",
         photos: Array.from({ length: 9 }, (_, i) => ({
           url: `/activity2/${i + 1}.jpg`
-        }))
+        })),
+        headerImage: "/activity2/1.jpg"
       },
       {
         id: "st-charbel-chapel",
@@ -252,7 +258,8 @@ const chaptersData: Chapter[] = [
         type: "chapter-activity",
         photos: Array.from({ length: 14 }, (_, i) => ({
           url: `/activity1/${i + 1}.jpg`
-        }))
+        })),
+        headerImage: "/activity1/1.jpg"
       },
       {
         id: "st-barbara-fundraising",
@@ -262,9 +269,11 @@ const chaptersData: Chapter[] = [
         type: "chapter-activity",
         photos: Array.from({ length: 5 }, (_, i) => ({
           url: `/activity4/${i + 1}.jpg`
-        }))
+        })),
+        headerImage: "/activity4/1.jpg"
       }
-    ]
+    ],
+    headerImage: "/activity1/1.jpg"
   },
   {
     id: "michigan-chapter",
@@ -280,9 +289,11 @@ const chaptersData: Chapter[] = [
         type: "chapter-activity",
         photos: Array.from({ length: 2 }, (_, i) => ({
           url: `/activity3/${i + 1}.jpg`
-        }))
+        })),
+        headerImage: "/activity3/1.jpg"
       }
-    ]
+    ],
+    headerImage: "/activity3/1.jpg"
   }
 ];
 
@@ -344,11 +355,26 @@ export default function PhotosPage() {
       className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100"
       onClick={onClick}
     >
-      <div className="h-40 bg-gradient-to-br from-[#274472] to-[#1e3a5f] flex items-center justify-center relative">
-        <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-        </svg>
-
+      <div className="h-40 relative overflow-hidden">
+        {activity.headerImage ? (
+          <Image
+            src={activity.headerImage}
+            alt={`${activity.name} header`}
+            width={400}
+            height={160}
+            className="w-full h-full object-contain bg-gray-100"
+            onError={(e) => {
+              console.error(`Failed to load image: ${activity.headerImage}`);
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        ) : (
+          <div className="h-full bg-gradient-to-br from-[#274472] to-[#1e3a5f] flex items-center justify-center">
+            <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+        )}
       </div>
       <div className="p-6">
         <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">{activity.name}</h3>
@@ -548,18 +574,18 @@ export default function PhotosPage() {
 
 
         {/* Main View */}
-        {view === 'main' && !selectedMainActivity && !selectedSubActivity && !selectedSubSubActivity && !selectedChapter && !selectedChapterActivity && (
+        {view === 'main' && !selectedMainActivity && !selectedSubActivity && !selectedSubSubActivity && (
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* LACD Photos Card */}
             <div
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100"
               onClick={() => setView('activity')}
             >
-              <div className="h-48 bg-gradient-to-br from-[#274472] to-[#1e3a5f] flex items-center justify-center">
-                <svg className="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
-              </div>
+                          <div className="h-48 bg-gradient-to-br from-[#274472] to-[#1e3a5f] flex items-center justify-center">
+              <svg className="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            </div>
               <div className="p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">LACD Photos</h2>
                 <p className="text-gray-600 mb-6">
@@ -579,11 +605,11 @@ export default function PhotosPage() {
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100"
               onClick={() => setView('chapters')}
             >
-              <div className="h-48 bg-gradient-to-br from-[#274472] to-[#1e3a5f] flex items-center justify-center">
-                <svg className="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </div>
+                          <div className="h-48 bg-gradient-to-br from-[#274472] to-[#1e3a5f] flex items-center justify-center">
+              <svg className="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </div>
               <div className="p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">LACD Chapters Photos</h2>
                 <p className="text-gray-600 mb-6">
