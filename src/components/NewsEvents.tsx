@@ -232,16 +232,7 @@ export default function NewsEvents() {
               </video>
             </div>
             
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <div className="flex -space-x-2">
-                  <div className="w-6 h-6 bg-blue-500 rounded-full border-2 border-white"></div>
-                  <div className="w-6 h-6 bg-green-500 rounded-full border-2 border-white"></div>
-                  <div className="w-6 h-6 bg-purple-500 rounded-full border-2 border-white"></div>
-                </div>
-                <span className="text-sm text-gray-500">3.2k views</span>
-              </div>
-            </div>
+            
             
             <div className="pt-3 border-t border-gray-100">
               <Link 
