@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function EventRegisterPage() {
   const [formData, setFormData] = useState({
@@ -118,9 +119,11 @@ export default function EventRegisterPage() {
                   <strong>Email:</strong> m***2@gmail.com
                 </p>
                 <div className="text-center">
-                  <img 
+                  <Image 
                     src="/zelle-qr-code.png" 
                     alt="Zelle QR Code" 
+                    width={160}
+                    height={160}
                     className="w-40 h-40 mx-auto mb-2 border border-gray-200 rounded"
                   />
                   <p className="text-xs text-gray-600">Scan QR code to pay with Zelle</p>
@@ -388,9 +391,11 @@ export default function EventRegisterPage() {
                       <p className="text-sm text-gray-600">m***2@gmail.com</p>
                     </div>
                     <div className="text-center">
-                      <img 
+                      <Image 
                         src="/zelle-qr-code.png" 
                         alt="Zelle QR Code" 
+                        width={128}
+                        height={128}
                         className="w-32 h-32 mx-auto mb-2 border border-gray-200 rounded"
                       />
                       <p className="text-xs text-gray-600">Scan to pay</p>

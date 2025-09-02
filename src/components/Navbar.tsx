@@ -3,8 +3,11 @@
 import Link from "next/link";
 import SideMenu from "./SideMenu";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
+  const router = useRouter();
+  
   return (
     <header className="bg-[#274472]">
       {/* Main Header with Logo and Navigation */}
@@ -31,14 +34,14 @@ export default function Navbar() {
           </Link>
 
           {/* Navigation Bar - positioned to the right */}
-          <nav className="hidden lg:block bg-[#274472]  rounded-lg relative overflow-visible">
+          <nav className="hidden lg:block bg-[#274472] rounded-lg relative overflow-visible z-50">
             <div className="flex">
-              <Link
-                href="/"
-                className="text-white text-center px-4 py-3 border-r border-gray-400 hover:bg-gray-600 transition-colors text-sm font-semibold rounded-l-lg"
+              <button
+                onClick={() => router.push('/')}
+                className="text-white text-center px-4 py-3 border-r border-gray-400 hover:bg-gray-600 transition-colors text-sm font-semibold rounded-l-lg cursor-pointer"
               >
                 HOME
-              </Link>
+              </button>
 
               {/* ABOUT LACD Dropdown */}
               <div className="relative group text-center border-r border-gray-400">
@@ -88,24 +91,24 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <Link
-                href="/contact"
-                className="text-center px-4 py-3 border-r border-gray-400 hover:bg-gray-600 transition-colors text-sm font-semibold text-white"
+              <button
+                onClick={() => router.push('/contact')}
+                className="text-center px-4 py-3 border-r border-gray-400 hover:bg-gray-600 transition-colors text-sm font-semibold text-white cursor-pointer"
               >
                 CONTACT US
-              </Link>
-              <Link
-                href="/subscribe"
-                className="text-center px-4 py-3 border-r border-gray-400 hover:bg-gray-600 transition-colors text-sm font-semibold text-white"
+              </button>
+              <button
+                onClick={() => router.push('/subscribe')}
+                className="text-center px-4 py-3 border-r border-gray-400 hover:bg-gray-600 transition-colors text-sm font-semibold text-white cursor-pointer"
               >
                 SUBSCRIBE
-              </Link>
-              <Link
-                href="/donation"
+              </button>
+              <a
+                href="/subscribe"
                 className="bg-[#A02012] hover:bg-[#84180F] text-white px-4 py-3 font-bold transition-colors text-sm rounded-r-lg"
               >
                 DONATE
-              </Link>
+              </a>
             </div>
           </nav>
         </div>

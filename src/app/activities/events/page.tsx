@@ -5,9 +5,8 @@ import { format, parseISO } from 'date-fns';
 import { ChevronLeft, ChevronRight, Search } from 'lucide-react';
 
 const events = [
-  { id: '1', title: 'Community Meetup', date: '2025-05-15' },
-  { id: '2', title: 'Charity Run', date: '2025-05-15' },
-  { id: '3', title: 'Board Meeting', date: '2025-05-20' },
+  
+  { id: '4', title: 'LACD Annual Convention', date: '2025-10-10', link: '/register/event' },
 ];
 
 export default function EventsPage() {
@@ -38,14 +37,12 @@ export default function EventsPage() {
   const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const today = new Date();
 
-  // Filter events by month and search term
+  // Filter events by search term and date filter
   const filteredEvents = events.filter(event => {
-    const eventDate = parseISO(event.date);
-    const matchesMonth = eventDate.getMonth() === month && eventDate.getFullYear() === year;
-    const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = !searchTerm || event.title.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesFilterDate = !filterDate || event.date === filterDate;
 
-    return matchesMonth && matchesSearch && matchesFilterDate;
+    return matchesSearch && matchesFilterDate;
   });
 
   // Helper to get events on a particular day
@@ -71,6 +68,8 @@ export default function EventsPage() {
           </p>
         </div>
 
+
+
       {/* Filter Bar */}
       <div className="bg-white p-6 rounded-md shadow mb-8 flex flex-col md:flex-row gap-4 items-center">
         <input
@@ -88,12 +87,14 @@ export default function EventsPage() {
         />
         <button
           onClick={() => {
-            /* Can add a trigger for filtering if needed */
+            // Clear all filters when button is clicked
+            setSearchTerm('');
+            setFilterDate('');
           }}
-          className="bg-blue-100 text-blue-800 flex items-center gap-2 px-4 py-2 rounded-md hover:bg-blue-200"
+          className="bg-blue-100 text-blue-800 flex items-center gap-2 px-4 py-2 rounded-md hover:bg-blue-200 transition-colors"
         >
           <Search size={16} />
-          Find Events
+          Clear Filters
         </button>
       </div>
 
@@ -138,7 +139,17 @@ export default function EventsPage() {
                 {dayEvents.length > 0 ? (
                   dayEvents.map(event => (
                     <li key={event.id} className="truncate">
-                      {event.title}
+                      {event.link ? (
+                        <a 
+                          href={event.link} 
+                          className="hover:text-blue-800 hover:underline cursor-pointer"
+                          title={event.title}
+                        >
+                          {event.title}
+                        </a>
+                      ) : (
+                        event.title
+                      )}
                     </li>
                   ))
                 ) : (

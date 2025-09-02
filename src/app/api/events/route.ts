@@ -1,44 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabaseServer } from '../../../lib/supabaseServer';
 
 // GET - Fetch all events
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
-    const { searchParams } = new URL(request.url);
-    const status = searchParams.get('status') || 'upcoming';
-    const limit = parseInt(searchParams.get('limit') || '10');
-    const offset = parseInt(searchParams.get('offset') || '0');
-
-    let query = supabaseServer
-      .from('events')
-      .select('*')
-      .order('event_date', { ascending: true });
-
-    // Filter by status if provided
-    if (status && status !== 'all') {
-      query = query.eq('status', status);
-    }
-
-    // Add pagination
-    query = query.range(offset, offset + limit - 1);
-
-    const { data: events, error } = await query;
-
-    if (error) {
-      console.error('Error fetching events:', error);
-      return NextResponse.json(
-        { error: 'Failed to fetch events' },
-        { status: 500 }
-      );
-    }
-
+    // Note: Events are now stored in Google Sheets, not a database
+    // This endpoint is kept for backward compatibility but returns empty data
     return NextResponse.json({
       success: true,
-      events,
+      events: [],
       pagination: {
-        limit,
-        offset,
-        hasMore: events.length === limit
+        limit: 10,
+        offset: 0,
+        hasMore: false
       }
     });
 
@@ -55,20 +28,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const {
-      title,
-      description,
-      eventDate,
-      eventTime,
-      location,
-      address,
-      city,
-      state,
-      zipCode,
-      eventType,
-      maxAttendees,
-      imageUrl
-    } = body;
+    const { title, eventDate } = body;
 
     // Validate required fields
     if (!title || !eventDate) {
@@ -78,45 +38,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Save to Supabase database
-    const { data: newEvent, error: insertError } = await supabaseServer
-      .from('events')
-      .insert([
-        {
-          title,
-          description,
-          event_date: eventDate,
-          event_time: eventTime,
-          location,
-          address,
-          city,
-          state,
-          zip_code: zipCode,
-          event_type: eventType || 'general',
-          max_attendees: maxAttendees,
-          image_url: imageUrl
-        }
-      ])
-      .select()
-      .single();
-
-    if (insertError) {
-      console.error('Error inserting event:', insertError);
-      return NextResponse.json(
-        { error: 'Failed to create event' },
-        { status: 500 }
-      );
-    }
-
-    console.log('Event created successfully:', newEvent);
+    // Note: Events are now stored in Google Sheets, not a database
+    // This endpoint is kept for backward compatibility but doesn't save data
+    console.log('Event creation requested (Google Sheets only):', { title, eventDate });
 
     return NextResponse.json(
       { 
         success: true, 
-        message: 'Event created successfully',
-        event: newEvent
+        message: 'Event creation endpoint reached (Google Sheets only)',
+        note: 'Events are stored in Google Sheets, not a database'
       },
-      { status: 201 }
+      { status: 200 }
     );
 
   } catch (error) {

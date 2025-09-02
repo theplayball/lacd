@@ -1,103 +1,512 @@
 // app/activities/photos/page.tsx
 "use client";
-import React, { useState } from "react";
-import Link from "next/link";
+import React, { useState, MouseEventHandler } from "react";
+import Image from "next/image";
 
-const chaptersData = [
+interface Photo {
+  url: string;
+  caption?: string;
+}
+
+interface BaseActivity {
+  id: string;
+  name: string;
+  type: string;
+  description?: string;
+  photos?: Photo[];
+  date?: string;
+}
+
+interface SubSubActivity extends BaseActivity {
+  type: string;
+}
+
+interface SubActivity extends BaseActivity {
+  subSubActivities?: SubSubActivity[];
+}
+
+interface MainActivity extends BaseActivity {
+  subActivities?: SubActivity[];
+}
+
+interface Chapter extends BaseActivity {
+  activities: BaseActivity[];
+}
+
+interface PhotoGalleryProps {
+  photos?: Photo[];
+  title: string;
+}
+
+const lacdPhotosData: { mainActivities: MainActivity[] } = {
+  mainActivities: [
+    {
+      id: "nada-boustani-tour",
+      name: "MP Nada Boustani's Tour in the United States – May 24 to 29, 2025",
+      type: "main-activity1",
+      description: "A comprehensive tour across multiple states in the United States",
+      subActivities: [
+        {
+          id: "new-york-nj",
+          name: "Visit of MP Nada Boustani to New York – New Jersey on May 24, 2025",
+          type: "subactivity1",
+          description: "As part of the tour organized by LACD for MP Nada Boustani, the second stop took place in the state of New Jersey, hosted at the Assi family's residence, where a luncheon was held in her honor with the participation of several members of LACD – New Jersey.",
+          photos: Array.from({ length: 7 }, (_, i) => ({
+            url: `/activity5/${i + 1}.jpeg`
+          }))
+        },
+        {
+          id: "boston",
+          name: "Visit of MP Nada Boustani to Boston, New England on May 25, 2025",
+          type: "subactivity2",
+          description: "Visit to Boston including religious and community events",
+          subSubActivities: [
+            {
+              id: "divine-liturgy",
+              name: "Participation in the Divine Liturgy at the Annunciation Melkite Catholic Cathedral",
+              type: "subsubactivity1",
+              description: "MP Nada Boustani participated in the Divine Liturgy celebrated by Bishop François Beyrouti, Eparch of Newton for the Melkite Greek Catholics, at the Annunciation Melkite Catholic Cathedral in Boston.",
+              photos: Array.from({ length: 13 }, (_, i) => ({
+                url: `/activity6/${i + 1}.jpeg`
+              }))
+            },
+            {
+              id: "boston-lunch",
+              name: "Lunch reception organized by LACD Boston chapter in honor of MP Nada Boustani",
+              type: "subsubactivity2",
+              description: "The LACD Boston chapter organized a lunch in honor of MP Nada Boustani, attended by Bishop François Beyrouti and several members of LACD in Boston.",
+              photos: Array.from({ length: 11 }, (_, i) => ({
+                url: `/activity7/${i + 1}.jpeg`
+              }))
+            }
+          ]
+        },
+        {
+          id: "ohio",
+          name: "Visit of MP Nada Boustani to Ohio – May 26, 2025",
+          type: "subactivity3",
+          description: "Official meetings and community events in Ohio",
+          subSubActivities: [
+            {
+              id: "consul-meeting",
+              name: "Meeting between MP Nada Boustani and Honorary Consul Antoni Asher at the Honorary Lebanese Consulate in Ohio",
+              type: "subsubactivity1",
+              description: "MP Nada Boustani visited the Honorary Lebanese Consulate, where she met with Honorary Consul Anthony Asher, in the presence of LACD Ohio representative Jad Badran.",
+              photos: Array.from({ length: 1 }, (_, i) => ({
+                url: `/activity8/${i + 1}.jpeg`
+              }))
+            },
+            {
+              id: "ohio-lunch",
+              name: "Lunch reception organized by LACD Ohio chapter in honor of MP Nada Boustani in Cleveland, Ohio",
+              type: "subsubactivity2",
+              description: "LACD Ohio chapter hosted a luncheon in honor of MP Nada Boustani, attended by members of the Lebanese community in Cleveland, Ohio.",
+              photos: Array.from({ length: 15 }, (_, i) => ({
+                url: `/activity9/${i + 1}.jpeg`
+              }))
+            }
+          ]
+        },
+        {
+          id: "michigan",
+          name: "Visit of MP Nada Boustani to Michigan – May 27, 2025",
+          type: "subactivity4",
+          description: "Comprehensive visit to Michigan's religious, diplomatic, and community institutions",
+          subSubActivities: [
+            {
+              id: "st-sharbel",
+              name: "Visit to St. Sharbel Church in Michigan",
+              type: "subsubactivity1",
+              description: "",
+              photos: Array.from({ length: 8 }, (_, i) => ({
+                url: `/activity10/${i + 1}.jpeg`
+              }))
+            },
+            {
+              id: "islamic-center",
+              name: "Visit to the Islamic Center in Michigan",
+              type: "subsubactivity3",
+              description: "MP Nada Boustani visited the Islamic Center in Michigan, where she met with the center's president, Sheikh Ahmad Hammoud.",
+              photos: Array.from({ length: 5 }, (_, i) => ({
+                url: `/activity11/${i + 1}.jpeg`
+              }))
+            },
+            {
+              id: "mena-chamber",
+              name: "Extended dialogue with MP Nada Boustani hosted by The MENA American Chamber of Commerce",
+              type: "subsubactivity5",
+              description: "During a broad discussion at the American Chamber of Commerce MENA in Michigan, MP Nada Boustani discussed various topics including energy and infrastructure.",
+              photos: Array.from({ length: 8 }, (_, i) => ({
+                url: `/activity12/${i + 1}.jpeg`
+              }))
+            },
+            {
+              id: "consul-kabalan",
+              name: "Meeting with Consul Bilal Kabalan at the Lebanese Consulate General in Michigan",
+              type: "subsubactivity2",
+              description: "MP Nada Boustani visited the building of the Consulate General in Michigan, where she was received by Ambassador Bilal Kabalan.",
+              photos: Array.from({ length: 8 }, (_, i) => ({
+                url: `/activity13/${i + 1}.jpeg`
+              }))
+            },
+            {
+              id: "arab-chamber",
+              name: "Discussion session with MP Nada Boustani at the American Arab Chamber of Commerce",
+              type: "subsubactivity4",
+              description: "The American Arab Chamber of Commerce in Michigan hosted MP Nada Boustani.",
+              photos: Array.from({ length: 14 }, (_, i) => ({
+                url: `/activity14/${i + 1}.jpeg`
+              }))
+            },
+            {
+              id: "michigan-dinner",
+              name: "Dinner in honor of MP Nada Boustani organized by LACD Michigan chapter",
+              type: "subsubactivity6",
+              description: "LACD Michigan Chapter organized a dinner attended by MP Nada Boustani.",
+              photos: Array.from({ length: 8 }, (_, i) => ({
+                url: `/activity15/${i + 1}.jpeg`
+              }))
+            }
+          ]
+        },
+        {
+          id: "florida",
+          name: "Visit of MP Nada Boustani to the state of Florida – May 28, 2025",
+          type: "subactivity5",
+          description: "Official and community events in Florida",
+          subSubActivities: [
+            {
+              id: "consul-bahri",
+              name: "Honorary plaque presented by Honorary Consul Nabil Bahri to MP Nada Boustani during a breakfast held in her honor in Florida",
+              type: "subsubactivity1",
+              description: "An honorary plaque was presented by Honorary Consul Nabil Bahri during a brunch held in honor of MP Nada Boustani in Florida.",
+              photos: Array.from({ length: 2 }, (_, i) => ({
+                url: `/activity16/${i + 1}.jpeg`
+              }))
+            },
+            {
+              id: "florida-dinner",
+              name: "Dinner event organized by LACD Florida chapter in honor of MP Nada Boustani",
+              type: "subsubactivity2",
+              description: "The LACD Florida chapter organized a dinner attended by MP Nada Boustani and Consul Nabil Bahri.",
+              photos: Array.from({ length: 31 }, (_, i) => ({
+                url: `/activity17/${i + 1}.jpeg`
+              }))
+            }
+          ]
+        },
+        {
+          id: "tour-conclusion",
+          name: "Honorary plaque presented by LACD to MP Nada Boustani at the conclusion of her U.S. tour",
+          type: "subactivity7",
+          description: "An honorary plaque was presented to MP Nada Boustani by LACD as a token of appreciation and gratitude for her visit and for all her efforts on behalf of Lebanon.",
+          photos: Array.from({ length: 1 }, (_, i) => ({
+            url: `/activity18/${i + 1}.jpeg`
+          }))
+        }
+      ]
+    },
+    {
+      id: "diaspora-dinner",
+      name: "Participation of LACD chapters in the U.S. in the Annual Diaspora Dinner organized by the Free Patriotic Movement's Diaspora Sector at Casino du Liban – August 3, 2025",
+      type: "main-activity2",
+      description: "A delegation from LACD, representing all its branches in the United States, participated in the annual diaspora sector dinner held at Casino Lebanon.",
+      photos: Array.from({ length: 25 }, (_, i) => ({
+        url: `/activity19/${i + 1}.jpeg`
+      }))
+    },
+    {
+      id: "aoun-meeting",
+      name: "Meeting between an LACD delegation and President General Michel Aoun in Rabieh – Beirut on August 5, 2025",
+      type: "main-activity3",
+      description: "A special meeting was held between the LACD delegation from all its U.S. branches and President Michel Aoun in Rabieh.",
+      photos: Array.from({ length: 28 }, (_, i) => ({
+        url: `/activity20/${i + 1}.jpeg`
+      }))
+    }
+  ]
+};
+
+const chaptersData: Chapter[] = [
   {
-    id: "california-chapter",
-    name: "California Chapter",
-    description: "Activities and events from the California Chapter",
+    id: "los-angeles-chapter",
+    name: "Los Angeles Chapter",
+    type: "chapter",
+    description: "Activities and events from the Los Angeles Chapter",
     activities: [
       {
-        id: "saint-charbel-chapel",
-        name: "Inauguration of Saint Charbel's Chapel",
-        date: "December 15, 2023",
-        description: "LACD Participates in the Inauguration of Saint Charbel's Chapel in Murrieta, California",
-        photos: [
-          "/activity1/1.jpg",
-          "/activity1/2.jpg",
-          "/activity1/3.jpg",
-          "/activity1/4.jpg",
-          "/activity1/5.jpg",
-          "/activity1/6.jpg",
-          "/activity1/7.jpg",
-          "/activity1/8.jpg",
-          "/activity1/9.jpg",
-          "/activity1/10.jpg",
-          "/activity1/11.jpg",
-          "/activity1/12.jpg",
-          "/activity1/13.jpg",
-          "/activity1/14.jpg",
-        ],
+        id: "louaize-fundraising",
+        name: "Participation in the fundraising dinner of the Friends of the Louaize Association in California",
+        date: "2025",
+        description: "The Los Angeles Chapter of the Lebanese American Commission for Democracy (LACD) proudly participated in a fundraising dinner organized by Mr. Wadih Daher in support of the Association of Friends of Notre Dame University (AFNDU) in the United States.",
+        type: "chapter-activity",
+        photos: Array.from({ length: 9 }, (_, i) => ({
+          url: `/activity2/${i + 1}.jpg`
+        }))
       },
       {
-        id: "afndu-fundraising",
-        name: "Fundraising Dinner for AFNDU",
-        date: "November 20, 2023",
-        description: "LACD Participates in Fundraising Dinner for AFNDU",
-        photos: [
-          "/activity2/1.jpg",
-          "/activity2/2.jpg",
-          "/activity2/3.jpg",
-          "/activity2/4.jpg",
-          "/activity2/5.jpg",
-          "/activity2/6.jpg",
-          "/activity2/7.jpg",
-          "/activity2/8.jpg",
-          "/activity2/10.jpg",
-        ],
+        id: "st-charbel-chapel",
+        name: "Inauguration of St. Charbel Chapel in Temecula, California",
+        date: "2025",
+        description: "The Los Angeles Chapter of the Lebanese American Commission for Democracy (LACD) proudly participated in the inauguration of the Hermitage and Statue of Saint Charbel at the Convent of the Sisters of the Holy Family in Murrieta, California.",
+        type: "chapter-activity",
+        photos: Array.from({ length: 14 }, (_, i) => ({
+          url: `/activity1/${i + 1}.jpg`
+        }))
       },
+      {
+        id: "st-barbara-fundraising",
+        name: "Participation in the fundraising dinner organized by St. Barbara Association",
+        date: "2025",
+        description: "LACD-Los Angeles Chapter participates in the fundraising dinner organized by St. Barbara association.",
+        type: "chapter-activity",
+        photos: Array.from({ length: 5 }, (_, i) => ({
+          url: `/activity4/${i + 1}.jpg`
+        }))
+      }
     ]
   },
   {
     id: "michigan-chapter",
     name: "Michigan Chapter",
+    type: "chapter",
     description: "Activities and events from the Michigan Chapter",
     activities: [
       {
-        id: "major-general-choucair",
-        name: "Dinner Honoring Major General Hassan Choucair",
-        date: "October 10, 2023",
-        description: "LACD - Michigan Chapter Participates in Dinner Honoring Major General Hassan Choucair",
-        photos: [
-          "/activity3/1.jpg",
-          "/activity3/2.jpg",
-        ],
-      },
-    ]
-  },
-  {
-    id: "los-angeles-chapter",
-    name: "Los Angeles Chapter",
-    description: "Activities and events from the Los Angeles Chapter",
-    activities: [
-      {
-        id: "st-barbara-association",
-        name: "St. Barbara Association Fundraising Dinner",
-        date: "September 25, 2023",
-        description: "LACD-Los Angeles Chapter participates in the fundraising dinner organized by St. Barbara association.",
-        photos: [
-          "/activity4/1.jpg",
-          "/activity4/2.jpg",
-          "/activity4/3.jpg",
-          "/activity4/4.jpg",
-          "/activity4/5.jpg",
-        ],
-      },
+        id: "general-shaqir-dinner",
+        name: "Participation in a dinner held by the Friends of General Hassan Shaqir",
+        date: "2025",
+        description: "The Michigan Chapter of the Lebanese American Commission for Democracy (LACD) proudly participated in a dinner organized by Major General Hassan Choucair's friends to celebrate his recent appointment as the Lebanese General Security Director.",
+        type: "chapter-activity",
+        photos: Array.from({ length: 2 }, (_, i) => ({
+          url: `/activity3/${i + 1}.jpg`
+        }))
+      }
     ]
   }
 ];
 
+const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, title }) => {
+  if (!photos || photos.length === 0) {
+    return (
+      <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
+        <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+        </div>
+        <h3 className="text-lg font-semibold text-gray-800 mb-2">No Photos Available</h3>
+        <p className="text-gray-600">Photos for this activity will be added soon.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-white rounded-2xl shadow-lg p-8">
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">{title}</h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {photos.map((photo, index) => (
+          <div key={index} className="aspect-square overflow-hidden rounded-lg">
+            <Image
+              src={photo.url}
+              alt={`${title} photo ${index + 1}`}
+              width={300}
+              height={300}
+              className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+              onError={(e) => {
+                console.error(`Failed to load image: ${photo.url}`);
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 
 
 export default function PhotosPage() {
-  const [view, setView] = useState<'main' | 'chapters'>('main');
+  const [view, setView] = useState<'main' | 'chapters' | 'activity'>('main');
+  const [selectedMainActivity, setSelectedMainActivity] = useState<MainActivity | null>(null);
+  const [selectedSubActivity, setSelectedSubActivity] = useState<SubActivity | null>(null);
+  const [selectedSubSubActivity, setSelectedSubSubActivity] = useState<SubSubActivity | null>(null);
+  const [selectedChapterActivity, setSelectedChapterActivity] = useState<BaseActivity | null>(null);
+  const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
+
+  const renderActivityCard = (
+    activity: BaseActivity | MainActivity | SubActivity | SubSubActivity | Chapter,
+    onClick: MouseEventHandler<HTMLDivElement> | undefined
+  ) => (
+    <div
+      key={activity.id}
+      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100"
+      onClick={onClick}
+    >
+      <div className="h-40 bg-gradient-to-br from-[#274472] to-[#1e3a5f] flex items-center justify-center relative">
+        <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+
+      </div>
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">{activity.name}</h3>
+        {activity.date && (
+          <p className="text-sm text-gray-500 mb-2">{activity.date}</p>
+        )}
+        {activity.description && (
+          <p className="text-gray-600 text-sm mb-3 line-clamp-2">{activity.description}</p>
+        )}
+
+      </div>
+    </div>
+  );
+
+  const renderContent = () => {
+    if (selectedSubSubActivity) {
+      return (
+        <div className="space-y-8">
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">{selectedSubSubActivity.name}</h3>
+            {selectedSubSubActivity.description && (
+              <div className="prose max-w-none mb-6">
+                {selectedSubSubActivity.description.split('\n\n').map((paragraph: string, index: number) => (
+                  <p key={index} className="text-gray-600 mb-4">{paragraph}</p>
+                ))}
+              </div>
+            )}
+          </div>
+          <PhotoGallery 
+            photos={selectedSubSubActivity.photos} 
+            title="Event Photos" 
+          />
+        </div>
+      );
+    }
+
+    if (selectedSubActivity) {
+      if (selectedSubActivity.subSubActivities && selectedSubActivity.subSubActivities.length > 0) {
+        return (
+          <div>
+            <div className="mb-6">
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">{selectedSubActivity.name}</h2>
+              {selectedSubActivity.description && (
+                <p className="text-gray-600 text-lg">{selectedSubActivity.description}</p>
+              )}
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {selectedSubActivity.subSubActivities.map((subSubActivity: SubSubActivity) => (
+                renderActivityCard(
+                  subSubActivity,
+                  () => setSelectedSubSubActivity(subSubActivity)
+                )
+              ))}
+            </div>
+          </div>
+        );
+      } else {
+        return (
+          <div className="space-y-8">
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">{selectedSubActivity.name}</h3>
+              {selectedSubActivity.date && (
+                <p className="text-sm text-gray-500 mb-4">{selectedSubActivity.date}</p>
+              )}
+              {selectedSubActivity.description && (
+                <div className="prose max-w-none mb-6">
+                  {selectedSubActivity.description.split('\n\n').map((paragraph: string, index: number) => (
+                    <p key={index} className="text-gray-600 mb-4">{paragraph}</p>
+                  ))}
+                </div>
+              )}
+            </div>
+            <PhotoGallery 
+              photos={selectedSubActivity.photos} 
+              title="Event Photos" 
+            />
+          </div>
+        );
+      }
+    }
+
+    if (selectedMainActivity) {
+      if (selectedMainActivity.subActivities && selectedMainActivity.subActivities.length > 0) {
+        return (
+          <div>
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">{selectedMainActivity.name}</h2>
+              {selectedMainActivity.description && (
+                <p className="text-gray-600 text-lg">{selectedMainActivity.description}</p>
+              )}
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {selectedMainActivity.subActivities.map((subActivity: SubActivity) => (
+                renderActivityCard(
+                  subActivity,
+                  () => setSelectedSubActivity(subActivity)
+                )
+              ))}
+            </div>
+          </div>
+        );
+      } else {
+        return (
+          <div className="space-y-8">
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">{selectedMainActivity.name}</h3>
+              {selectedMainActivity.description && (
+                <div className="prose max-w-none mb-6">
+                  {selectedMainActivity.description.split('\n\n').map((paragraph: string, index: number) => (
+                    <p key={index} className="text-gray-600 mb-4">{paragraph}</p>
+                  ))}
+                </div>
+              )}
+            </div>
+            <PhotoGallery 
+              photos={selectedMainActivity.photos} 
+              title="Event Photos" 
+            />
+          </div>
+        );
+      }
+    }
+
+    if (selectedChapterActivity) {
+      return (
+        <div className="space-y-8">
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">{selectedChapterActivity.name}</h3>
+            {selectedChapterActivity.date && (
+              <p className="text-sm text-gray-500 mb-4">{selectedChapterActivity.date}</p>
+            )}
+            {selectedChapterActivity.description && (
+              <div className="prose max-w-none mb-6">
+                <p className="text-gray-600">{selectedChapterActivity.description}</p>
+              </div>
+            )}
+          </div>
+          <PhotoGallery 
+            photos={selectedChapterActivity.photos} 
+            title="Event Photos" 
+          />
+        </div>
+      );
+    }
+
+    // Handle when a chapter is selected (showing its activities)
+    if (view === 'chapters' && !selectedChapterActivity) {
+      return null; // This will show the chapters view instead
+    }
+
+    return null;
+  };
+
+
 
   return (
-    <div className="min-h-screen">
-      <main className="max-w-5xl mx-auto px-6 py-16">
-        
+    <div className="min-h-screen bg-gray-50">
+      <main className="max-w-7xl mx-auto px-6 py-16">
         {/* Page Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
@@ -109,12 +518,44 @@ export default function PhotosPage() {
           </p>
         </div>
 
-        {/* Main View - Two Cards */}
-        {view === 'main' && (
+        {/* Back Button - Only show when viewing specific content */}
+        {(selectedSubSubActivity || selectedSubActivity || selectedMainActivity || selectedChapter || selectedChapterActivity) && (
+          <div className="mb-6">
+            <button
+              onClick={() => {
+                if (selectedSubSubActivity) {
+                  setSelectedSubSubActivity(null);
+                } else if (selectedSubActivity) {
+                  setSelectedSubActivity(null);
+                } else if (selectedMainActivity) {
+                  setSelectedMainActivity(null);
+                } else if (selectedChapterActivity) {
+                  setSelectedChapterActivity(null);
+                } else if (selectedChapter) {
+                  setSelectedChapter(null);
+                }
+              }}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg transition-colors duration-200 border border-gray-300"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back
+            </button>
+          </div>
+        )}
+
+
+
+        {/* Main View */}
+        {view === 'main' && !selectedMainActivity && !selectedSubActivity && !selectedSubSubActivity && !selectedChapter && !selectedChapterActivity && (
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* General LACD Card */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
-              <div className="h-48 bg-[#274472] flex items-center justify-center">
+            {/* LACD Photos Card */}
+            <div
+              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100"
+              onClick={() => setView('activity')}
+            >
+              <div className="h-48 bg-gradient-to-br from-[#274472] to-[#1e3a5f] flex items-center justify-center">
                 <svg className="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
@@ -122,26 +563,23 @@ export default function PhotosPage() {
               <div className="p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">LACD Photos</h2>
                 <p className="text-gray-600 mb-6">
-                  Explore general activities and events organized by LACD across all chapters
+                  Explore general activities and events organized by LACD
                 </p>
-                <Link
-                  href="/activities/photos/general"
-                  className="inline-flex items-center text-blue-600 font-medium group-hover:text-blue-700"
-                >
-                  View General Activities
-                  <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center text-[#274472] font-medium">
+                  <span> View all activities</span>
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </Link>
+                </div>
               </div>
             </div>
 
             {/* LACD Chapters Card */}
             <div 
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100"
               onClick={() => setView('chapters')}
             >
-              <div className="h-48 bg-[#274472] flex items-center justify-center">
+              <div className="h-48 bg-gradient-to-br from-[#274472] to-[#1e3a5f] flex items-center justify-center">
                 <svg className="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
@@ -151,9 +589,9 @@ export default function PhotosPage() {
                 <p className="text-gray-600 mb-6">
                   Browse activities and events organized by specific LACD chapters
                 </p>
-                <div className="inline-flex items-center text-blue-600 font-medium group-hover:text-blue-700">
-                  View Chapters
-                  <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center text-[#274472] font-medium">
+                  <span>View all chapters</span>
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
@@ -162,58 +600,57 @@ export default function PhotosPage() {
           </div>
         )}
 
-        {/* Chapters View */}
-        {view === 'chapters' && (
-          <div className="space-y-8">
-            {/* Back Button */}
-            <div className="max-w-4xl mx-auto">
-              <button
-                onClick={() => setView('main')}
-                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium mb-6"
-              >
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                Back to Main View
-              </button>
+        {/* Activities View */}
+        {view === 'activity' && !selectedMainActivity && !selectedSubActivity && !selectedSubSubActivity && (
+          <div>
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">LACD Activities</h2>
             </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {lacdPhotosData.mainActivities.map((activity: MainActivity) => (
+                renderActivityCard(
+                  activity,
+                  () => setSelectedMainActivity(activity)
+                )
+              ))}
+            </div>
+          </div>
+        )}
 
-            {/* Chapters Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {chaptersData.map((chapter) => (
-                <div key={chapter.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                  <div className="h-40 bg-[#274472] flex items-center justify-center">
-                    <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                    </svg>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{chapter.name}</h3>
-                    <p className="text-gray-600 text-sm mb-4">{chapter.description}</p>
-                    <p className="text-sm text-gray-500 mb-4">
-                      {chapter.activities.length} {chapter.activities.length === 1 ? 'activity' : 'activities'}
-                    </p>
-                    <div className="space-y-2">
-                      {chapter.activities.map((activity) => (
-                        <Link
-                          key={activity.id}
-                          href={`/activities/photos/${activity.id}`}
-                          className="block p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                        >
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <h4 className="font-medium text-gray-800 text-sm">{activity.name}</h4>
-                              <p className="text-xs text-gray-500">{activity.date}</p>
-                            </div>
-                            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+        {/* Dynamic Content Area */}
+        {renderContent()}
+
+        {/* Chapters View */}
+        {view === 'chapters' && !selectedChapter && !selectedChapterActivity && (
+          <div>
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">LACD Chapters</h2>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {chaptersData.map((chapter: Chapter) => {
+                console.log('Rendering chapter:', chapter.name, 'with activities:', chapter.activities.length);
+                return renderActivityCard(
+                  chapter,
+                  () => setSelectedChapter(chapter)
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Chapter Activities View */}
+        {selectedChapter && !selectedChapterActivity && (
+          <div>
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">{selectedChapter.name}</h2>
+              <p className="text-gray-600 text-lg">{selectedChapter.description}</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {selectedChapter.activities.map((activity) => (
+                renderActivityCard(
+                  activity,
+                  () => setSelectedChapterActivity(activity)
+                )
               ))}
             </div>
           </div>

@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabaseServer } from '../../../lib/supabaseServer';
 
 interface FormData {
   firstName: string;
@@ -319,68 +318,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // For event registrations, skip all database operations
-    if (formType === 'event') {
-      // Skip database operations for event registrations
-    } else {
-      // Check if user already exists (only for main registrations)
-      const { data: existingUser, error: checkError } = await supabaseServer
-        .from('users')
-        .select('id')
-        .eq('email', email)
-        .single();
-
-      if (checkError && checkError.code !== 'PGRST116') { // PGRST116 = no rows returned
-        console.error('Error checking existing user:', checkError);
-        return NextResponse.json(
-          { error: 'Database error' },
-          { status: 500 }
-        );
-      }
-
-      if (existingUser) {
-        return NextResponse.json(
-          { error: 'User with this email already exists' },
-          { status: 409 }
-        );
-      }
-    }
-
-    let newUser = null;
-    
-    // Save to Supabase database (only for main registrations)
-    if (formType === 'event') {
-      // Skip database insertion for event registrations
-    } else {
-      const { data: insertedUser, error: insertError } = await supabaseServer
-        .from('users')
-        .insert([
-          {
-            first_name: firstName,
-            last_name: lastName,
-            email,
-            phone,
-            date_of_birth: dateOfBirth,
-            address,
-            city,
-            state,
-            zip_code: zipCode,
-            created_at: new Date().toISOString()
-          }
-        ])
-        .select()
-        .single();
-
-      if (insertError) {
-        console.error('Error inserting user:', insertError);
-        return NextResponse.json(
-          { error: 'Failed to create user account', details: insertError.message },
-          { status: 500 }
-        );
-      }
-
-      newUser = insertedUser;
-    }
+    // Note: Google Sheets doesn't have built-in duplicate checking like a database
+    // Users can register multiple times if needed
 
     // Prepare form data for external services
     const formData = {
@@ -408,18 +347,17 @@ export async function POST(request: NextRequest) {
     const emailResult = await sendRegistrationEmail(formData);
 
     if (!emailResult.success) {
-      console.warn('Email notification failed, but user was saved to database');
+      console.warn('Email notification failed, but registration was saved to Google Sheets');
     } else {
       console.log('Email notification sent successfully');
     }
 
-    console.log('User registered successfully:', newUser);
+    console.log('User registered successfully to Google Sheets');
 
     return NextResponse.json(
       { 
         success: true, 
         message: formType === 'event' ? 'Event registration successful' : 'Registration successful',
-        userId: newUser?.id || null,
         googleSheetSubmitted: googleSheetResult.success,
         emailSent: emailResult.success
       },

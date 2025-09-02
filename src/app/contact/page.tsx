@@ -168,27 +168,7 @@ export default function ContactPage() {
 
               
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Type of Inquiry *
-                </label>
-                <select
-                  name="inquiryType"
-                  value={formData.inquiryType}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="general">General Inquiry</option>
-                  <option value="membership">Membership Information</option>
-                  <option value="events">Events & Activities</option>
-                  <option value="donations">Donations & Support</option>
-                  
-                  <option value="media">Media & Press</option>
-                  <option value="partnership">Partnership Opportunities</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
+              
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">

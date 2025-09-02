@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import Link from "next/link";
 
 interface Event {
   date: string;
@@ -13,14 +14,22 @@ interface Event {
 
 const newsData = {
   latest: {
-    image: "/news-image.jpeg",
-    title: "Nam elit agna, endrerit sit amet, tincidunt ac, viverra sed",
-    author: "admin",
-    date: "October 01, 2013 11:28AM",
+    image: "/stories.jpeg",
+    title: "Security Council Extends UNIFIL's Mandate for the Final Time Until End of 2026, with a Gradual Withdrawal Plan",
+    author: "LACD News",
+    date: "August 28, 2025",
     excerpt:
-      "Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis.",
+      "Unanimously, the Security Council adopted Resolution 2790, extending the mandate of the United Nations Interim Force in Lebanon (UNIFIL) for the final time until December 31, 2026, and called for an orderly and safe reduction and withdrawal of the force within one year starting from that date.",
   },
-  events: [] as Event[], // Empty array for no upcoming events
+  events: [
+    {
+      date: "10",
+      month: "OCT",
+      title: "LACD Annual Convention",
+      time: "All Day",
+      location: "Boston, MA"
+    }
+  ] as Event[],
 };
 
 export default function NewsEvents() {
@@ -102,11 +111,6 @@ export default function NewsEvents() {
                 </p>
                 <p className="my-2 text-[#3e474c]">{newsData.latest.excerpt}</p>
 
-                <div className="flex mt-4">
-                  <button className="bg-[#e2eaf2] text-[#274472] hover:bg-[#63B2F5] hover:text-white text-xs sm:text-sm px-4 py-2 rounded-md border-t border-b border-t-[#f3f7fa] border-b-[#bfc8d7]">
-                    READ MORE
-                  </button>
-                </div>
               </div>
             </div>
           </div>
@@ -204,17 +208,21 @@ export default function NewsEvents() {
               FEATURED VIDEO
             </h3>
             <div className="aspect-video mb-2">
-              <iframe
+              <video 
                 className="w-full h-full rounded-md"
-                src="https://www.youtube.com/embed/6C8R9qzZ_Hk"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+                controls
+                preload="metadata"
+              >
+                <source src="/4.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
-            <button className="text-sm text-[#4174c5] hover:underline text-center w-full mt-2 hover:cursor-pointer">
+            <Link 
+              href="/activities/videos" 
+              className="block text-sm text-[#4174c5] hover:underline text-center w-full mt-2 hover:cursor-pointer"
+            >
               MORE VIDEOS →
-            </button>
+            </Link>
           </div>
 
           {/* Upcoming Events */}
@@ -248,16 +256,17 @@ export default function NewsEvents() {
                 <p className="text-gray-400 text-xs mt-2">Check back soon for new events!</p>
               </div>
             )}
-            <button className="text-sm text-[#274472] hover:text-[#4174c5] w-full mt-6 hover:cursor-pointer">
+            <Link 
+              href="/activities/events" 
+              className="block text-center text-sm text-[#274472] hover:text-[#4174c5] w-full mt-6 hover:cursor-pointer"
+            >
               MORE EVENTS →
-            </button>
+            </Link>
           </div>
 
           {/* Social Media Links */}
           <div className="space-y-2 w-full">
-            <h3 className="font-extralight text-lg mb-2 text-[#3b3b3c] text-center">
-              FOLLOW US
-            </h3>
+            
             
             {/* Facebook Profile */}
             <a

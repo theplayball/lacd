@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   FaCalendarAlt,
   FaCheckSquare,
   FaStar,
 } from "react-icons/fa";
-import Carousel from "./Carousel";
+
 
 const HomePage = () => {
   const [selectedAmount, setSelectedAmount] = useState("");
@@ -17,7 +18,13 @@ const HomePage = () => {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 px-4 lg:pt-6">
         <div className="w-full lg:w-2/3 relative">
           <div className="relative h-full">
-            <Carousel />
+            <Image 
+              src="/main.jpeg" 
+              alt="LACD Main Image" 
+              width={800}
+              height={600}
+              className="w-full h-full object-cover rounded-lg"
+            />
           </div>
         </div>
         <div className="w-full lg:w-1/3 flex flex-col  lg:pr-14 gap-2">
@@ -59,7 +66,10 @@ const HomePage = () => {
                 </button>
               ))}
 
-              <button className="p-2 text-[15px] bg-[#a82512] text-white rounded-md hover:bg-[#be2e17]">
+              <button 
+                onClick={() => window.location.href = '/subscribe'}
+                className="p-2 text-[15px] bg-[#a82512] text-white rounded-md hover:bg-[#be2e17]"
+              >
                 DONATE
               </button>
             </div>

@@ -4,14 +4,43 @@ import Link from "next/link";
 
 const videoData = [
   {
-    id: "general",
-    name: "General LACD Videos",
-    date: "",
-    chapter: "General LACD",
-    title: "General LACD Videos and Content",
-    description: "Various video content and presentations from LACD activities",
-    fullText: "General LACD video content will be displayed here when it becomes available.",
-    videos: [],
+    id: "nada-boustani-visit",
+    name: "MP Nada Boustani's Visit to the United States",
+    date: "2024",
+    chapter: "LACD Boston & Michigan",
+    title: "MP Nada Boustani's Visit to the United States",
+    description: "Highlights from MP Nada Boustani's visit including welcome ceremony, speeches, and honorary recognition",
+    fullText: "MP Nada Boustani's visit to the United States featured several significant events including a welcome ceremony in Boston, participation in the annual dinner organized by LACD Michigan Chapter, remarks during a discussion session with The MENA American Chamber of Commerce, and an honorary plaque presentation by LACD.",
+    videos: [
+      {
+        id: "welcome-boston",
+        title: "Bishop François Beyrouti welcomes MP Nada Boustani in Boston",
+        description: "Welcome ceremony for MP Nada Boustani in Boston, Massachusetts",
+        thumbnail: "/story3.jpeg",
+        videoFile: "/1.mp4"
+      },
+      {
+        id: "michigan-dinner",
+        title: "Speech by MP Nada Boustani during the annual dinner organized by LACD Michigan Chapter",
+        description: "MP Nada Boustani delivers a speech at the LACD Michigan Chapter annual dinner",
+        thumbnail: "/story3.jpeg",
+        videoFile: "/2a.mp4"
+      },
+      {
+        id: "mena-chamber",
+        title: "MP Nada Boustani's remarks during the discussion session organized by The MENA American Chamber of Commerce",
+        description: "MP Nada Boustani participates in a discussion session with The MENA American Chamber of Commerce",
+        thumbnail: "/story3.jpeg",
+        videoFile: "/3.mp4"
+      },
+      {
+        id: "honorary-plaque",
+        title: "An honorary plaque presented by LACD to MP Nada Boustani",
+        description: "LACD presents an honorary plaque to MP Nada Boustani as a token of appreciation and gratitude for her visit to the United States",
+        thumbnail: "/story3.jpeg",
+        videoFile: "/4.mp4"
+      }
+    ],
   },
 ];
 
@@ -31,10 +60,11 @@ export default function VideosPage() {
           </p>
         </div>
 
-              {videoData.filter(activity => activity.date && activity.videos.length > 0).length > 0 && (
+        {/* Video Categories */}
+        {videoData.filter(activity => activity.videos.length > 0).length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {videoData
-              .filter(activity => activity.date && activity.videos.length > 0)
+              .filter(activity => activity.videos.length > 0)
               .map((activity) => (
               <Link
                 href={`/activities/videos/${activity.id}`}
@@ -46,7 +76,7 @@ export default function VideosPage() {
                   <div className="h-48 overflow-hidden flex-shrink-0 bg-gray-100 flex items-center justify-center">
                     <div className="text-center">
                       <svg className="w-16 h-16 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                       </svg>
                       <p className="text-sm text-gray-500">Video Content</p>
                     </div>
@@ -73,18 +103,29 @@ export default function VideosPage() {
                       </div>
                     </div>
 
-                    <div className="mt-auto flex items-center text-blue-600 font-medium group-hover:text-blue-700">
-                      View Videos
-                      <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                    <div className="mt-auto flex items-center justify-between">
+                      <div className="flex items-center text-blue-600 font-medium group-hover:text-blue-700">
+                        View Videos
+                        <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                      <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                        {activity.videos.length} videos
+                      </span>
                     </div>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg">No videos available at the moment.</p>
+          </div>
         )}
+
+
       </main>
     </div>
   );

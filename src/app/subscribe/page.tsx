@@ -6,6 +6,7 @@ export default function SubscribePage() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [note, setNote] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -24,7 +25,8 @@ export default function SubscribePage() {
         body: JSON.stringify({ 
           firstName,
           lastName,
-          email 
+          email,
+          note
         })
       });
 
@@ -41,6 +43,7 @@ export default function SubscribePage() {
       setFirstName('');
       setLastName('');
       setEmail('');
+      setNote('');
       
     } catch (error) {
       console.error('Subscription error:', error);
@@ -132,6 +135,20 @@ export default function SubscribePage() {
                 />
               </div>
 
+              <div>
+                <label htmlFor="note" className="block text-sm font-medium text-gray-700 mb-2">
+                  Note (Optional)
+                </label>
+                <textarea
+                  id="note"
+                  value={note}
+                  onChange={(e) => setNote(e.target.value)}
+                  placeholder="Add any additional notes or comments..."
+                  rows={3}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                />
+              </div>
+
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -142,12 +159,7 @@ export default function SubscribePage() {
             </form>
           )}
 
-          <div className="mt-8 text-center">
-            <p className="text-sm text-gray-500">
-              By subscribing, you agree to receive updates from LACD. 
-              You can unsubscribe at any time.
-            </p>
-          </div>
+          
           </div>
         </div>
       </div>

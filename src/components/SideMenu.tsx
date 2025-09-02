@@ -29,6 +29,12 @@ const SideMenu = () => {
     };
   }, [menuOpen]);
 
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setAboutOpen(false);
+    setActivitiesOpen(false);
+  };
+
   return (
     <div className="relative w-full z-50" ref={menuRef}>
       <button
@@ -55,13 +61,13 @@ const SideMenu = () => {
       {menuOpen && (
         <div className="absolute left-0 top-0 w-full max-w-sm bg-gray-100 border-t border-gray-300 shadow-lg z-40">
           
-          <a
-            href="#home"
-            onClick={() => setMenuOpen(false)}
+          <Link
+            href="/"
+            onClick={closeMenu}
             className="flex items-center border-b border-gray-200 border-l-4 border-l-gray-400 px-6 py-3 hover:bg-sky-200"
           >
             Home
-          </a>
+          </Link>
 
           {/* ABOUT LACD DROPDOWN */}
           <button
@@ -73,20 +79,20 @@ const SideMenu = () => {
           </button>
           {aboutOpen && (
             <div className="bg-gray-50 border-l-4 border-l-gray-400 pl-6">
-              <a
+              <Link
                 href="/about/mission"
-                onClick={() => setMenuOpen(false)}
+                onClick={closeMenu}
                 className="block px-6 py-2 hover:bg-sky-100 text-sm"
               >
                 Mission Statement
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/about/media"
-                onClick={() => setMenuOpen(false)}
+                onClick={closeMenu}
                 className="block px-6 py-2 hover:bg-sky-100 text-sm"
               >
                 LACD in the Media
-              </a>
+              </Link>
             </div>
           )}
 
@@ -104,23 +110,23 @@ const SideMenu = () => {
           </button>
           {activitiesOpen && (
             <div className="bg-gray-50 border-l-4 border-l-gray-400 pl-6">
-              <a
+              <Link
                 href="/activities/events"
-                onClick={() => setMenuOpen(false)}
+                onClick={closeMenu}
                 className="block px-6 py-2 hover:bg-sky-100 text-sm"
               >
                 LACD Events
-              </a>
+              </Link>
               <Link
                 href="/activities/photos"
-                onClick={() => setMenuOpen(false)}
+                onClick={closeMenu}
                 className="block px-6 py-2 hover:bg-sky-100 text-sm"
               >
                 LACD Photos
               </Link>
               <Link
                 href="/activities/videos"
-                onClick={() => setMenuOpen(false)}
+                onClick={closeMenu}
                 className="block px-6 py-2 hover:bg-sky-100 text-sm"
               >
                 LACD Videos
@@ -129,29 +135,29 @@ const SideMenu = () => {
           )}
 
           {/* Contact and Subscribe links */}
-          <a
-            href="#contact"
-            onClick={() => setMenuOpen(false)}
+          <Link
+            href="/contact"
+            onClick={closeMenu}
             className="flex items-center border-b border-gray-200 px-6 py-3 hover:bg-sky-200"
           >
             Contact Us
-          </a>
+          </Link>
 
-          <a
-            href="#subscribe"
-            onClick={() => setMenuOpen(false)}
+          <Link
+            href="/subscribe"
+            onClick={closeMenu}
             className="flex items-center border-b border-gray-200 px-6 py-3 hover:bg-sky-200"
           >
             Subscribe
-          </a>
+          </Link>
 
-          <a
-            href="#donation"
-            onClick={() => setMenuOpen(false)}
+          <Link
+            href="/subscribe"
+            onClick={closeMenu}
             className="block text-white bg-red-700 px-6 py-3 text-center font-semibold hover:bg-red-800"
           >
-            DONATE TODAY
-          </a>
+            DONATE
+          </Link>
         </div>
       )}
     </div>
