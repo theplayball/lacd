@@ -220,26 +220,16 @@ export default function NewsEvents() {
               </div>
             </div>
             
-            <div className="relative group">
-              <div className="aspect-video mb-3 rounded-lg overflow-hidden bg-gray-100">
-                <video 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  controls
-                  preload="metadata"
-                >
-                  <source src="/4.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 rounded-lg flex items-center justify-center">
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center">
-                    <svg className="w-8 h-8 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
+            <div className="mb-4">
+              <video 
+                controls
+                className="w-full rounded-lg"
+                style={{ maxHeight: '300px' }}
+                preload="metadata"
+              >
+                <source src="/4.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
             
             <div className="flex items-center justify-between mb-3">
