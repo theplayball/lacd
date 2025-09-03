@@ -38,6 +38,7 @@ export default function NewsEvents() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [note, setNote] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
@@ -53,7 +54,8 @@ export default function NewsEvents() {
         body: JSON.stringify({ 
           firstName,
           lastName,
-          email 
+          email,
+          note
         })
       });
 
@@ -70,6 +72,7 @@ export default function NewsEvents() {
       setFirstName('');
       setLastName('');
       setEmail('');
+      setNote('');
       
       // Reset success message after 3 seconds
       setTimeout(() => setSubmitSuccess(false), 3000);
@@ -176,6 +179,18 @@ export default function NewsEvents() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="note" className="block text-sm font-medium text-gray-700 mb-1">
+                      Note (Optional)
+                    </label>
+                    <textarea
+                      id="note"
+                      value={note}
+                      onChange={(e) => setNote(e.target.value)}
+                      rows={3}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
                   </div>

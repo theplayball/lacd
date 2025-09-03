@@ -47,11 +47,12 @@ const HomePage = () => {
             link="/register/event"
           />
 
-          <div className="bg-[#f1e5e5] p-4 text-start rounded-md ">
+          {/* Donation Section */}
+          <div className="bg-[#f1e5e5] p-4 text-start rounded-md">
             <p className="text-[#a82512] text-[14px] tracking-wide uppercase mb-2">
               Make a <span className="font-bold">Quick Donation</span> Here
             </p>
-            <div className="flex  gap-2">
+            <div className="flex gap-2">
               {["$25", "$50", "$100"].map((amount) => (
                 <button
                   key={amount}
@@ -73,7 +74,7 @@ const HomePage = () => {
                 DONATE
               </button>
             </div>
-          </div>          
+          </div>
         </div>
       </div>
     </div>
