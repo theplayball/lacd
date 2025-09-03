@@ -211,15 +211,7 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
         }
       ],
     },
-    {
-      id: "diaspora-dinner",
-      name: "Participation of LACD chapters in the U.S. in the Annual Diaspora Dinner organized by the Free Patriotic Movement's Diaspora Sector at Casino du Liban – August 3, 2025",
-      type: "main-activity2",
-      description: "A delegation from LACD, representing all its branches in the United States, participated in the annual diaspora sector dinner held at Casino Lebanon.",
-      photos: Array.from({ length: 25 }, (_, i) => ({
-        url: `/activity19/${i + 1}.jpeg`
-      }))
-    },
+    
     {
       id: "aoun-meeting",
       name: "Meeting between an LACD delegation and President General Michel Aoun in Rabieh – Beirut on August 5, 2025",
