@@ -17,7 +17,7 @@ const HomePage = () => {
     <div className="pt-28 w-full bg-white pl-9 py-10 sm:pt-10">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 px-4 lg:pt-6">
         <div className="w-full lg:w-2/3 relative">
-          <div className="relative h-full">
+          <div className="relative h-96 lg:h-[400px]">
             <Image 
               src="/main.jpeg" 
               alt="LACD Main Image" 
@@ -34,12 +34,12 @@ const HomePage = () => {
             text="Discover upcoming LACD events and community gatherings"
             link="/activities/events"
           />
-          <InfoCard
+          {/* <InfoCard
             icon={<FaCheckSquare className="text-3xl text-[#C6D0DC]" />}
             title="REGISTER"
             text="Join LACD and become a member of our organization"
             link="/register"
-          />
+          /> */}
           <InfoCard
             icon={<FaStar className="text-3xl text-[#C6D0DC]" />}
             title="ANNUAL CONVENTION"
