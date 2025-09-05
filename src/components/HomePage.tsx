@@ -17,7 +17,7 @@ const HomePage = () => {
     <div className="pt-28 w-full bg-white pl-9 py-10 sm:pt-10">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 px-4 lg:pt-6">
         <div className="w-full lg:w-2/3 relative">
-          <div className="relative h-96 lg:h-[400px]">
+          <div className="relative h-full">
             <Image 
               src="/main.jpeg" 
               alt="LACD Main Image" 
