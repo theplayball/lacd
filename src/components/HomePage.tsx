@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   FaCalendarAlt,
-  FaCheckSquare,
   FaStar,
 } from "react-icons/fa";
 
