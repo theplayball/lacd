@@ -46,6 +46,7 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
       name: "MP Nada Boustani's Tour in the United States – May 24 to 29, 2025",
       type: "main-activity1",
       description: "A comprehensive tour across multiple states in the United States",
+      headerImage: "/activity18/1.jpeg",
       subActivities: [
         {
           id: "new-york-nj",
@@ -62,6 +63,7 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
           name: "Visit of MP Nada Boustani to Boston, Massachusetts on May 25, 2025",
           type: "subactivity2",
           description: "Visit to Boston including religious and community events",
+          headerImage: "/activity7/3.jpeg",
           subSubActivities: [
             {
               id: "divine-liturgy",
@@ -90,6 +92,7 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
           name: "Visit of MP Nada Boustani to Ohio – May 26, 2025",
           type: "subactivity3",
           description: "Official meetings and community events in Ohio",
+          headerImage: "/activity9/9.jpeg",
           subSubActivities: [
             {
               id: "consul-meeting",
@@ -118,6 +121,7 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
           name: "Visit of MP Nada Boustani to Michigan – May 27, 2025",
           type: "subactivity4",
           description: "Comprehensive visit to Michigan's religious, diplomatic, and community institutions",
+          headerImage: "/activity13/5.jpeg",
           subSubActivities: [
             {
               id: "st-sharbel",
@@ -186,6 +190,7 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
           name: "Visit of MP Nada Boustani to the state of Florida – May 28, 2025",
           type: "subactivity5",
           description: "Official and community events in Florida",
+          headerImage: "/activity17/25.jpeg",
           subSubActivities: [
             {
               id: "consul-bahri",
@@ -219,7 +224,8 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
       description: "A special meeting was held between the LACD delegation from all its U.S. branches and President Michel Aoun in Rabieh.",
       photos: Array.from({ length: 28 }, (_, i) => ({
         url: `/activity20/${i + 1}.jpeg`
-      }))
+      })),
+      headerImage: "/activity20/27.jpeg"
     }
   ]
 };

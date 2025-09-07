@@ -5,13 +5,6 @@ interface FormData {
   lastName: string;
   email: string;
   phone?: string;
-  dateOfBirth?: string;
-  address?: string;
-  city?: string;
-  state?: string;
-  zipCode?: string;
-  emergencyContact?: string;
-  emergencyPhone?: string;
   lacdChapter?: string;
   otherState?: string;
   paymentMethod?: string;
@@ -20,14 +13,23 @@ interface FormData {
 
 // Google Sheets API submission function
 async function submitToGoogleSheet(formData: FormData, formType?: string) {
-  const GOOGLE_SHEET_ID = '1wQiWHpQd4Ub8tluqxYCJIbVtdxm9i0dKpUbOK3bmtb0';
-  const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n');
+  // Use the registration-specific Google Sheet (the _2 variables)
+  const GOOGLE_SHEET_ID = process.env.GOOGLE_SHEET_ID_2 || '1wQiWHpQd4Ub8tluqxYCJIbVtdxm9i0dKpUbOK3bmtb0';
+  const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL_2 || process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+  
+  // Use the private key from environment variables
+  const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY_2?.replace(/\\n/g, '\n');
+
 
   if (!GOOGLE_SHEET_ID || !GOOGLE_SERVICE_ACCOUNT_EMAIL || !GOOGLE_PRIVATE_KEY) {
-    console.error('Missing Google Sheets configuration');
+    console.error('Missing Google Sheets configuration:', {
+      GOOGLE_SHEET_ID: !!GOOGLE_SHEET_ID,
+      GOOGLE_SERVICE_ACCOUNT_EMAIL: !!GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      GOOGLE_PRIVATE_KEY: !!GOOGLE_PRIVATE_KEY
+    });
     return { success: false, error: 'Google Sheets not configured' };
   }
+
 
   try {
     // Create JWT token for Google Sheets API
@@ -60,44 +62,24 @@ async function submitToGoogleSheet(formData: FormData, formType?: string) {
       throw new Error('Failed to get access token');
     }
 
-    // Prepare data for Google Sheets based on form type
-    let rowData;
+    // Prepare data for Google Sheets (event registration only)
+    const chapterInfo = formData.lacdChapter === 'Other' 
+      ? `Other: ${formData.otherState || ''}` 
+      : formData.lacdChapter || '';
     
-    if (formType === 'event') {
-      // Event registration data
-      const chapterInfo = formData.lacdChapter === 'Other' 
-        ? `Other: ${formData.otherState || ''}` 
-        : formData.lacdChapter || '';
-      
-      rowData = [
-        new Date().toISOString(), // Timestamp
-        formData.firstName,
-        formData.lastName,
-        formData.email,
-        formData.phone || '',
-        chapterInfo,
-        formData.paymentMethod || '',
-        formData.dietaryRestrictions || '',
-        '2025 LACD Annual Convention', // Event name
-        '$200' // Registration cost
-      ];
-    } else {
-      // Main registration data (keeping for backward compatibility)
-      rowData = [
-        new Date().toISOString(), // Timestamp
-        formData.firstName,
-        formData.lastName,
-        formData.email,
-        formData.phone || '',
-        formData.dateOfBirth,
-        formData.address,
-        formData.city,
-        formData.state,
-        formData.zipCode,
-        formData.emergencyContact,
-        formData.emergencyPhone
-      ];
-    }
+    const rowData = [
+      new Date().toISOString(), // Timestamp
+      formData.firstName,
+      formData.lastName,
+      formData.email,
+      formData.phone || '',
+      chapterInfo,
+      formData.paymentMethod || '',
+      formData.dietaryRestrictions || '',
+      '2025 LACD Annual Convention', // Event name
+      '$200' // Registration cost
+    ];
+
 
         // Append data to Google Sheet
   const sheetsResponse = await fetch(
@@ -116,11 +98,12 @@ async function submitToGoogleSheet(formData: FormData, formType?: string) {
 
   if (!sheetsResponse.ok) {
     const errorData = await sheetsResponse.json();
+    console.error('Google Sheets API error:', errorData);
     throw new Error(`Google Sheets API error: ${JSON.stringify(errorData)}`);
   }
 
   await sheetsResponse.json();
-    return { success: true };
+  return { success: true };
   } catch (error) {
     console.error('Error submitting to Google Sheet:', error);
     return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
@@ -137,21 +120,16 @@ async function sendRegistrationEmail(formData: FormData) {
   }
 
   try {
-    // For now, we'll use a simple email service like Resend or SendGrid
-    // You can configure this later with your preferred email service
-    
-    // Determine if this is an event registration based on the presence of lacdChapter
-    const isEventRegistration = !!formData.lacdChapter;
     const chapterInfo = formData.lacdChapter === 'Other' 
       ? `Other: ${formData.otherState || ''}` 
       : formData.lacdChapter || '';
 
     const emailData = {
       to: ADMIN_EMAIL,
-      subject: isEventRegistration ? 'New LACD Event Registration' : 'New LACD Registration',
+      subject: 'New LACD Event Registration',
       html: `
-        <h2>${isEventRegistration ? 'New Event Registration' : 'New Registration'} Received</h2>
-        <p>A new user has registered with LACD${isEventRegistration ? ' for the 2025 Annual Convention' : ''}.</p>
+        <h2>New Event Registration Received</h2>
+        <p>A new user has registered with LACD for the 2025 Annual Convention.</p>
         
         <h3>Registration Details:</h3>
         <table style="border-collapse: collapse; width: 100%;">
@@ -167,7 +145,6 @@ async function sendRegistrationEmail(formData: FormData) {
             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Phone:</td>
             <td style="padding: 8px; border: 1px solid #ddd;">${formData.phone || 'Not provided'}</td>
           </tr>
-          ${isEventRegistration ? `
           <tr>
             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">LACD Chapter:</td>
             <td style="padding: 8px; border: 1px solid #ddd;">${chapterInfo}</td>
@@ -180,48 +157,13 @@ async function sendRegistrationEmail(formData: FormData) {
             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Dietary Restrictions:</td>
             <td style="padding: 8px; border: 1px solid #ddd;">${formData.dietaryRestrictions || 'None specified'}</td>
           </tr>
-          ` : `
-          <tr>
-            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Date of Birth:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.dateOfBirth || 'Not provided'}</td>
-          </tr>
-          <tr style="background-color: #f8f9fa;">
-            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Address:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.address || 'Not provided'}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">City:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.city || 'Not provided'}</td>
-          </tr>
-          <tr style="background-color: #f8f9fa;">
-            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">State:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.state || 'Not provided'}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">ZIP Code:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.zipCode || 'Not provided'}</td>
-          </tr>
-          <tr style="background-color: #f8f9fa;">
-            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Emergency Contact:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.emergencyContact || 'Not provided'}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Emergency Phone:</td>
-            <td style="padding: 8px; border: 1px solid #ddd;">${formData.emergencyPhone || 'Not provided'}</td>
-          </tr>
-          `}
         </table>
         
-        <p style="margin-top: 20px; color: #666;">
-          Registration submitted on: ${new Date().toLocaleString()}
-        </p>
+        <p><strong>Registration Time:</strong> ${new Date().toLocaleString()}</p>
       `
     };
 
-    // For now, we'll use a simple fetch to an email service
-    // You can replace this with your preferred email service (SendGrid, Mailgun, etc.)
-    
-    // Option 1: Using Resend (free tier available)
+    // Try Resend first if configured (same as subscription API)
     if (process.env.RESEND_API_KEY) {
       const resendResponse = await fetch('https://api.resend.com/emails', {
         method: 'POST',
@@ -240,34 +182,43 @@ async function sendRegistrationEmail(formData: FormData) {
       if (resendResponse.ok) {
         console.log('Email sent successfully via Resend');
         return { success: true };
+      } else {
+        console.error('Resend failed:', await resendResponse.text());
       }
     }
 
-    // Option 2: Using SendGrid (if you have an API key)
+    // Fallback to SendGrid if Resend fails or is not configured
     if (process.env.SENDGRID_API_KEY) {
-      const sendgridResponse = await fetch('https://api.sendgrid.com/v3/mail/send', {
+      const sendGridResponse = await fetch('https://api.sendgrid.com/v3/mail/send', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${process.env.SENDGRID_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          personalizations: [{ to: [{ email: ADMIN_EMAIL }] }],
-          from: { email: 'noreply@yourdomain.com' },
-          subject: emailData.subject,
-          content: [{ type: 'text/html', value: emailData.html }],
+          personalizations: [{
+            to: [{ email: ADMIN_EMAIL }],
+            subject: emailData.subject,
+          }],
+          from: { email: 'noreply@lacd.org' },
+          content: [{
+            type: 'text/html',
+            value: emailData.html,
+          }],
         }),
       });
 
-      if (sendgridResponse.ok) {
+      if (sendGridResponse.ok) {
         console.log('Email sent successfully via SendGrid');
         return { success: true };
+      } else {
+        console.error('SendGrid failed:', await sendGridResponse.text());
       }
     }
 
-    // If no email service is configured, log the email content
-    console.log('Email service not configured. Email content:', emailData);
+    console.error('No email service configured');
     return { success: false, error: 'No email service configured' };
+
 
   } catch (error) {
     console.error('Error sending email:', error);
@@ -280,33 +231,30 @@ export async function POST(request: NextRequest) {
     console.log('Register API called');
     
     const body = await request.json();
-    const { firstName, lastName, email, phone, dateOfBirth, address, city, state, zipCode, emergencyContact, emergencyPhone, formType, lacdChapter, otherState, paymentMethod, dietaryRestrictions } = body;
+    const { firstName, lastName, email, phone, formType, lacdChapter, otherState, paymentMethod, dietaryRestrictions } = body;
 
-    // Validate required fields based on form type
-    if (formType === 'event') {
-      // Event registration validation
-      if (!firstName || !lastName || !email || !phone || !lacdChapter || !paymentMethod) {
-        return NextResponse.json(
-          { error: 'Missing required fields for event registration' },
-          { status: 400 }
-        );
-      }
-      
-      // If "Other" is selected, otherState is required
-      if (lacdChapter === 'Other' && !otherState) {
-        return NextResponse.json(
-          { error: 'State is required when selecting "Other" chapter' },
-          { status: 400 }
-        );
-      }
-    } else {
-      // Main registration validation
-      if (!firstName || !lastName || !email || !dateOfBirth || !address || !city || !state || !zipCode) {
-        return NextResponse.json(
-          { error: 'Missing required fields for main registration' },
-          { status: 400 }
-        );
-      }
+    // Only support event registration
+    if (!formType || formType !== 'event') {
+      return NextResponse.json(
+        { error: 'Only event registration is supported' },
+        { status: 400 }
+      );
+    }
+
+    // Event registration validation
+    if (!firstName || !lastName || !email || !phone || !lacdChapter || !paymentMethod) {
+      return NextResponse.json(
+        { error: 'Missing required fields for event registration' },
+        { status: 400 }
+      );
+    }
+    
+    // If "Other" is selected, otherState is required
+    if (lacdChapter === 'Other' && !otherState) {
+      return NextResponse.json(
+        { error: 'State is required when selecting "Other" chapter' },
+        { status: 400 }
+      );
     }
 
     // Validate email format
@@ -321,19 +269,12 @@ export async function POST(request: NextRequest) {
     // Note: Google Sheets doesn't have built-in duplicate checking like a database
     // Users can register multiple times if needed
 
-    // Prepare form data for external services
+    // Prepare form data for external services (event registration only)
     const formData = {
       firstName,
       lastName,
       email,
       phone,
-      dateOfBirth,
-      address,
-      city,
-      state,
-      zipCode,
-      emergencyContact,
-      emergencyPhone,
       lacdChapter,
       otherState,
       paymentMethod,

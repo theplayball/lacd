@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const videoData = [
   {
@@ -74,12 +75,13 @@ export default function VideosPage() {
                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group-hover:scale-[1.02] h-full flex flex-col">
                   {/* Preview - Video Thumbnail */}
                   <div className="h-48 overflow-hidden flex-shrink-0 bg-gray-100 flex items-center justify-center">
-                    <div className="text-center">
-                      <svg className="w-16 h-16 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                      </svg>
-                      <p className="text-sm text-gray-500">Video Content</p>
-                    </div>
+                    <Image 
+                      src="/videobag.jpeg" 
+                      alt="Video Content" 
+                      width={300}
+                      height={192}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
 
                   {/* Content */}
