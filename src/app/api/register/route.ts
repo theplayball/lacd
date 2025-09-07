@@ -12,7 +12,7 @@ interface FormData {
 }
 
 // Google Sheets API submission function
-async function submitToGoogleSheet(formData: FormData, formType?: string) {
+async function submitToGoogleSheet(formData: FormData) {
   // Use the registration-specific Google Sheet (the _2 variables)
   const GOOGLE_SHEET_ID = process.env.GOOGLE_SHEET_ID_2 || '1wQiWHpQd4Ub8tluqxYCJIbVtdxm9i0dKpUbOK3bmtb0';
   const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL_2 || process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
@@ -282,7 +282,7 @@ export async function POST(request: NextRequest) {
     };
 
     // Submit to Google Sheet
-    const googleSheetResult = await submitToGoogleSheet(formData, formType);
+    const googleSheetResult = await submitToGoogleSheet(formData);
 
     // Send email notification
     const emailResult = await sendRegistrationEmail(formData);
