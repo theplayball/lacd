@@ -270,6 +270,7 @@ export default function VideosPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {videoData
               .filter(activity => activity.videos.length > 0)
+              .sort((a, b) => parseInt(b.date) - parseInt(a.date))
               .map((activity) => (
               <Link
                 href={`/activities/videos/${activity.id}`}
