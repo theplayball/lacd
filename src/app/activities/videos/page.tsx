@@ -43,6 +43,210 @@ const videoData = [
       }
     ],
   },
+  {
+    id: "lacd-boston-gala-2019",
+    name: "LACD Boston Chapter Gala Dinner 2019",
+    date: "2019",
+    chapter: "LACD Boston",
+    title: "LACD Boston Chapter Gala Dinner 2019",
+    description: "Highlights from the LACD Boston Chapter Gala Dinner 2019",
+    fullText: "The LACD Boston Chapter Gala Dinner 2019 was a memorable event bringing together the Lebanese-American community in Boston for an evening of celebration and networking.",
+    videos: [
+      {
+        id: "gala-dinner-2019",
+        title: "LACD Boston Chapter Gala Dinner 2019",
+        description: "Highlights from the LACD Boston Chapter Gala Dinner 2019",
+        videoFile: "/videos/1.mp4"
+      }
+    ],
+  },
+  {
+    id: "elie-azar-speech-2019",
+    name: "Elie Azar Speech - Diaspora Energy Conference 2019",
+    date: "2019",
+    chapter: "LACD Washington",
+    title: "Elie Azar Speech - Diaspora Energy Conference 2019",
+    description: "A speech by former LACD President Elie Azar from Washington during his participation at the head of a delegation in the 2019 Diaspora Energy Conference",
+    fullText: "Former LACD President Elie Azar delivered a powerful speech during the 2019 Diaspora Energy Conference, representing the Lebanese-American community and discussing important issues affecting Lebanon and the diaspora.",
+    videos: [
+      {
+        id: "elie-azar-speech",
+        title: "Elie Azar Speech - Diaspora Energy Conference 2019",
+        description: "A speech by former LACD President Elie Azar from Washington during his participation at the head of a delegation in the 2019 Diaspora Energy Conference",
+        videoFile: "/videos/2.mp4"
+      }
+    ],
+  },
+  {
+    id: "children-support-aoun-2019",
+    name: "Children Support for President Michel Aoun - November 2019",
+    date: "2019",
+    chapter: "LACD Boston",
+    title: "Children Support for President Michel Aoun - November 2019",
+    description: "Children from the LACD Boston chapter express their support for President Michel Aoun on November 8, 2019",
+    fullText: "Children from the LACD Boston chapter came together to express their support and solidarity for President Michel Aoun, demonstrating the community's commitment to Lebanon's leadership.",
+    videos: [
+      {
+        id: "children-support-aoun",
+        title: "Children Support for President Michel Aoun - November 2019",
+        description: "Children from the LACD Boston chapter express their support for President Michel Aoun on November 8, 2019",
+        videoFile: "/videos/3.mp4"
+      }
+    ],
+  },
+  {
+    id: "georges-choueiry-interview-2020",
+    name: "Georges Choueiry Interview - August 2020",
+    date: "2020",
+    chapter: "LACD Washington DC",
+    title: "Georges Choueiry Interview - August 2020",
+    description: "Former Coordinator of LACD Washington DC Chapter Mr Georges Choueiry interviews the mother of fallen Soldier Georges Bou Saab",
+    fullText: "Former Coordinator of LACD Washington DC Chapter Mr Georges Choueiry conducted a touching interview with the mother of fallen Soldier Georges Bou Saab, honoring the sacrifice of Lebanese heroes.",
+    videos: [
+      {
+        id: "choueiry-interview",
+        title: "Georges Choueiry Interview - August 2020",
+        description: "Former Coordinator of LACD Washington DC Chapter Mr Georges Choueiry interviews the mother of fallen Soldier Georges Bou Saab. 1 aug 2020",
+        videoFile: "/videos/4.mp4"
+      }
+    ],
+  },
+  {
+    id: "memorial-mass-october-2020",
+    name: "Memorial Mass for October 13th - October 2020",
+    date: "2020",
+    chapter: "LACD Washington",
+    title: "Memorial Mass for October 13th - October 2020",
+    description: "A memorial Mass organized by the association for October 13th, held at Our Lady of Lebanon Church in Washington",
+    fullText: "A solemn memorial Mass was organized by LACD for October 13th, held at Our Lady of Lebanon Church in Washington on October 14, 2020, honoring the memory of those who lost their lives.",
+    videos: [
+      {
+        id: "memorial-mass",
+        title: "Memorial Mass for October 13th - October 2020",
+        description: "A memorial Mass organized by the association for October 13th, held at Our Lady of Lebanon Church in Washington, on October 14, 2020",
+        videoFile: "/videos/5.mp4"
+      }
+    ],
+  },
+  {
+    id: "maroun-souma-interview-2020",
+    name: "Maroun Souma Interview - Beirut Port Explosion Aid - August 2020",
+    date: "2020",
+    chapter: "LACD Boston",
+    title: "Maroun Souma Interview - Beirut Port Explosion Aid - August 2020",
+    description: "An interview on the OTV program 'Hiwar Al-Yawm' with Maroun Souma from the LACD Boston chapter to discuss aid provided to Lebanon after the Beirut Port explosion",
+    fullText: "Maroun Souma from the LACD Boston chapter appeared on OTV's 'Hiwar Al-Yawm' program to discuss the aid provided to Lebanon after the devastating Beirut Port explosion, showcasing the community's solidarity and support.",
+    videos: [
+      {
+        id: "souma-interview",
+        title: "Maroun Souma Interview - Beirut Port Explosion Aid - August 2020",
+        description: "An interview on the OTV program 'Hiwar Al-Yawm' with Maroun Souma from the LACD Boston chapter to discuss aid provided to Lebanon after the Beirut Port explosion, on August 29, 2020",
+        videoFile: "/videos/6.mp4"
+      }
+    ],
+  },
+  {
+    id: "nathalie-homsi-womens-day-2019",
+    name: "Nathalie Homsi - International Women's Day 2019",
+    date: "2019",
+    chapter: "LACD Boston",
+    title: "Nathalie Homsi - International Women's Day 2019",
+    description: "A former Coordinator of the LACD Boston chapter, Mrs. Nathalie Homsi, speaking about the event organized for International Women's Day 2019",
+    fullText: "Former Coordinator of the LACD Boston chapter, Mrs. Nathalie Homsi, spoke about the special event organized for International Women's Day 2019, celebrating the achievements and contributions of women in the community.",
+    videos: [
+      {
+        id: "homsi-womens-day",
+        title: "Nathalie Homsi - International Women's Day 2019",
+        description: "A former Coordinator of the LACD Boston chapter, Mrs. Nathalie Homsi, speaking about the event organized for International Women's Day 2019",
+        videoFile: "/videos/7.mp4"
+      }
+    ],
+  },
+  {
+    id: "covid-19-lebanon-2021",
+    name: "LACD Faces COVID-19 - Lebanon Remains at Heart - June 2021",
+    date: "2021",
+    chapter: "LACD",
+    title: "LACD Faces COVID-19 - Lebanon Remains at Heart - June 2021",
+    description: "The association faces COVID-19 once again — Lebanon remains at the heart of events",
+    fullText: "As the world continued to face the challenges of COVID-19, LACD remained committed to supporting Lebanon and its people, demonstrating that Lebanon remains at the heart of all our efforts and events.",
+    videos: [
+      {
+        id: "covid-19-lebanon",
+        title: "LACD Faces COVID-19 - Lebanon Remains at Heart - June 2021",
+        description: "The association faces COVID-19 once again — Lebanon remains at the heart of events. June 16, 2021",
+        videoFile: "/videos/8.mp4"
+      }
+    ],
+  },
+  {
+    id: "new-england-aid-collection-2021",
+    name: "New England Chapter Aid Collection - May 2021",
+    date: "2021",
+    chapter: "LACD New England",
+    title: "New England Chapter Aid Collection - May 2021",
+    description: "LACD New England Chapter organizes aid collection for needy families across Lebanon",
+    fullText: "The LACD New England Chapter organized a comprehensive aid collection campaign for needy families across Lebanon, demonstrating the community's commitment to supporting those in need back home.",
+    videos: [
+      {
+        id: "new-england-aid",
+        title: "New England Chapter Aid Collection - May 2021",
+        description: "LACD New England Chapter organizes aid collection for needy families across Lebanon. May 13, 2021",
+        videoFile: "/videos/9.mp4"
+      }
+    ],
+  },
+  {
+    id: "high-school-graduates-2021",
+    name: "LACD High School Graduates - June 2021",
+    date: "2021",
+    chapter: "LACD",
+    title: "LACD High School Graduates - June 2021",
+    description: "LACD High School Graduates celebration",
+    fullText: "LACD celebrated the achievements of high school graduates, recognizing their hard work and dedication while encouraging them to continue contributing to their communities.",
+    videos: [
+      {
+        id: "high-school-graduates",
+        title: "LACD High School Graduates - June 2021",
+        description: "LACD High School Graduates 10juin 2021",
+        videoFile: "/videos/10.mp4"
+      }
+    ],
+  },
+  {
+    id: "new-york-picnic-2021",
+    name: "LACD New York & New Jersey Chapter Annual Picnic 2021",
+    date: "2021",
+    chapter: "LACD New York & New Jersey",
+    title: "LACD New York & New Jersey Chapter Annual Picnic 2021",
+    description: "LACD New York & New Jersey Chapter Annual Picnic 2021",
+    fullText: "The LACD New York & New Jersey Chapter held their annual picnic, bringing together community members for a day of fellowship, food, and celebration of Lebanese culture and heritage.",
+    videos: [
+      {
+        id: "ny-picnic",
+        title: "LACD New York & New Jersey Chapter Annual Picnic 2021",
+        description: "LACD New York, New jersey Chapter – Annual Picnic 2021",
+        videoFile: "/videos/11.mp4"
+      }
+    ],
+  },
+  {
+    id: "mothers-day-greeting-2021",
+    name: "Mother's Day Greeting from LACD Children - 2021",
+    date: "2021",
+    chapter: "LACD",
+    title: "Mother's Day Greeting from LACD Children - 2021",
+    description: "A Mother's Day greeting from LACD children to all mothers",
+    fullText: "LACD children came together to create a special Mother's Day greeting, expressing their love and appreciation for all mothers in the community and beyond.",
+    videos: [
+      {
+        id: "mothers-day-greeting",
+        title: "Mother's Day Greeting from LACD Children - 2021",
+        description: "A Mother's Day greeting from LACD children to all mothers",
+        videoFile: "/videos/12.mp4"
+      }
+    ],
+  },
 ];
 
 export default function VideosPage() {
@@ -75,13 +279,22 @@ export default function VideosPage() {
                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group-hover:scale-[1.02] h-full flex flex-col">
                   {/* Preview - Video Thumbnail */}
                   <div className="h-48 overflow-hidden flex-shrink-0 bg-gray-100 flex items-center justify-center">
-                    <Image 
-                      src="/videobag.jpeg" 
-                      alt="Video Content" 
-                      width={300}
-                      height={192}
-                      className="w-full h-full object-contain"
-                    />
+                    {activity.id === "nada-boustani-visit" ? (
+                      <Image 
+                        src="/videobag.jpeg" 
+                        alt="Video Content" 
+                        width={300}
+                        height={192}
+                        className="w-full h-full object-contain"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center justify-center text-gray-400">
+                        <svg className="w-16 h-16 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span className="text-sm font-medium">Video Content</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Content */}
