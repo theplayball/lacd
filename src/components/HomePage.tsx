@@ -17,7 +17,8 @@ const HomePage = () => {
   
   const carouselImages = [
     { src: "/carousel1.jpeg", alt: "LACD Carousel Image 1" },
-    { src: "/carousel2.jpeg", alt: "LACD Carousel Image 2" }
+    { src: "/carousel2.jpeg", alt: "LACD Carousel Image 2" },
+    { src: "/carousel3.jpeg", alt: "LACD Carousel Image 3" }
   ];
 
   const goToPrevious = () => {
