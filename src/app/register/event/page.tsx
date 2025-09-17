@@ -90,7 +90,7 @@ export default function EventRegisterPage() {
             <h1 className="text-3xl font-bold text-gray-800 mb-4">Event Registration Submitted!</h1>
             <p className="text-gray-600 mb-6">
               Thank you for registering for the 2025 LACD Annual Convention. Your registration has been submitted successfully.
-              Please complete your payment of $200 using one of the payment methods below to confirm your spot.
+              Please complete your payment of $100 using one of the payment methods below to confirm your spot.
             </p>
             <div className="bg-blue-50 rounded-lg p-6 mb-6">
               <h3 className="font-semibold text-blue-800 mb-4">Payment Instructions:</h3>
@@ -176,7 +176,7 @@ export default function EventRegisterPage() {
               </div>
               <div>
                 <p className="font-semibold text-gray-800">Registration Cost:</p>
-                <p className="text-gray-600">$200 per person</p>
+                <p className="text-gray-600">$100 per person</p>
               </div>
               <div>
                 <p className="font-semibold text-gray-800">Hotel:</p>
@@ -338,7 +338,7 @@ export default function EventRegisterPage() {
             <div className="border-b border-gray-200 pb-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-4 ">Payment Information</h3>
                           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-              <p className="text-yellow-800 font-semibold mb-2">Registration Fee: $200 per person</p>
+              <p className="text-yellow-800 font-semibold mb-2">Registration Fee: $100 per person</p>
               <p className="text-yellow-700 text-sm mb-2">The package includes:</p>
               <ul className="text-yellow-700 text-sm list-disc list-inside space-y-1">
                 <li>Saturday lunch, coffee break and Gala dinner.</li>
