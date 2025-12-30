@@ -244,6 +244,58 @@ const videoData = [
       }
     ],
   },
+
+
+  {
+  id: "message-michel-aoun-2025",
+  name: "Message from President Michel Aoun to the Lebanese Diaspora - 2025",
+  date: "2025",
+  chapter: "LACD",
+  title: "Message from President Michel Aoun to the Lebanese Diaspora - 2025",
+  description:
+    "A Message from President Michel Aoun to the Lebanese Diaspora in the United States, presented at the LACD's annual dinner on October 11, 2025.",
+  fullText:
+    "A Message from President Michel Aoun to the Lebanese Diaspora in the United States, presented at the LACD's annual dinner on October 11, 2025.",
+  videos: [
+    {
+      id: "michel-aoun-message",
+      title:
+        "A Message from President Michel Aoun to the Lebanese Diaspora in the United States",
+      description:
+        "A Message from President Michel Aoun to the Lebanese Diaspora in the United States, presented at the LACD's annual dinner on October 11, 2025.",
+      videoFile: "/videos/13.mp4",
+    },
+  ],
+},
+
+
+ {
+  id: "otv-lacd-conference-2025",
+  name: "OTV Report on LACD Conference - Boston 2025",
+  date: "2025",
+  chapter: "LACD",
+  title: "OTV Report on LACD Conference - Boston 2025",
+  description:
+    "A Report broadcast by OTV, a Lebanese station, about the conference organized by LACD in Boston on October 11th 2025.",
+  fullText:
+    "A Report broadcast by OTV, a Lebanese station, about the conference organized by LACD in Boston on October 11th 2025.",
+  headerImage: "/conference.jpeg", // ✅ COVER IMAGE
+  videos: [
+    {
+      id: "otv-report",
+      title:
+        "A Report broadcast by OTV about the LACD Conference in Boston",
+      description:
+        "A Report broadcast by OTV, a Lebanese station, about the conference organized by LACD in Boston on October 11th 2025.",
+      videoFile: "/videos/14.mp4",
+    },
+  ],
+},
+
+
+
+
+
 ];
 
 export default function VideoCategoryPage({ params }: { params: Promise<{ id: string }> }) {

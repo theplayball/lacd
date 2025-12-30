@@ -226,7 +226,72 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
         url: `/activity20/${i + 1}.jpeg`
       })),
       headerImage: "/activity20/27.jpeg"
-    }
+    },
+
+   {
+  id: "lacd-annual-convention-boston-2025",
+  name: "LACD Annual Convention – Boston – October 11, 2025",
+  type: "main-activity",
+  description: `The Lebanese American Commission for Democracy (LACD) held its annual conference in Boston, USA, on October 11, 2025. The event was attended by Members of Parliament Georges Atallah and Nada Boustani. Discussions focused on the Lebanese electoral law and the importance of voter registration for Lebanese expats.
+
+The conference featured speeches from LACD USA Coordinator Georges Moussa, a presentation of the association’s new website by member Mr. Nagy Khawaja, and a talk by activist Fadi Saad on how to use social media effectively during the parliamentary elections.
+
+MPs Nada Boustani and Georges Atallah also addressed key national issues, including electricity and water infrastructure, the Syrian refugee crisis, and banking challenges related to depositors’ funds.`,
+  photos: Array.from({ length: 28 }, (_, i) => ({
+    url: `/activity21/${i + 1}.jpg`,
+  })),
+  headerImage: "/activity21/1.jpg", // ✅ COVER IMAGE
+},
+
+{
+  id: "lacd-annual-dinner-boston-2025",
+  name: "LACD Annual Dinner – Boston – October 11, 2025",
+  type: "main-activity",
+  description: `LACD hosted its annual gala dinner in Boston, USA, with the participation of MPs Nada Boustani and Georges Atallah, along with many members of the Lebanese-American community.
+
+The evening began with the Lebanese and American national anthems, followed by welcoming remarks from Boston Coordinator Sheikh Wissam Tarabay. Speeches were then delivered by LACD Coordinator Georges Moussa and MP Georges Atallah. The dinner concluded with a message from President General Michel Aoun addressed to the Lebanese diaspora in the United States.
+
+During the evening, Claudine Khoury was announced as the recipient of the $2,000 academic scholarship sponsored by Maurice and Juliette Assi.`,
+  photos: Array.from({ length: 28 }, (_, i) => ({
+    url: `/activity22/${i + 1}.jpeg`,
+  })),
+  headerImage: "/activity22/1.jpeg", // ✅ COVER IMAGE (FIRST PHOTO)
+},
+
+
+{
+  id: "october-13-memorial-mass-2025",
+  name: "Memorial Mass of October 13 – St. George Maronite Church – October 12, 2025",
+  type: "main-activity",
+  description: `LACD commemorated the October 13 anniversary with a Divine Liturgy held at St. George Maronite Church in Boston, presided over by the parish priest, Father Tony Saab.
+
+In his homily, Father Saab emphasized the importance of praying for the souls of the fallen martyrs and for Lebanon, a country that has long endured hardship, with hope that it may emerge from its ongoing crisis.
+
+Following the liturgy, a luncheon was held in the church hall, attended by MPs Nada Boustani and Georges Atallah, along with members of the Lebanese-American community in the United States.`,
+  photos: Array.from({ length: 32 }, (_, i) => ({
+    url: `/activity23/${i + 1}.jpeg`,
+  })),
+  headerImage: "/activity23/1.jpeg", // ✅ COVER IMAGE (FIRST PHOTO)
+},
+
+
+
+    {
+  id: "nada-boustani-us-congress-meetings-2025",
+  name: "MP Nada Boustani Meets with Members of the US Congress in Washington",
+  type: "main-activity",
+  description: `During her visit to Washington, MP Nada Boustani met with U.S. Congress members Debbie Dingell and Greg Stanton to discuss the current situation in Lebanon.
+
+Boustani also attended a reception hosted by the Lebanese Embassy in Washington, D.C.
+
+Her visit to the United States was part of a conference organized by the Lebanese American Commission for Democracy (LACD), in which she participated, along with several other engagements and activities held in the city of Boston.`,
+  photos: Array.from({ length: 24 }, (_, i) => ({
+    url: `/activity24/${i + 1}.jpeg`,
+  })),
+  headerImage: "/activity24/1.jpeg", // ✅ COVER IMAGE (FIRST PHOTO)
+},
+
+
   ]
 };
 
@@ -273,26 +338,44 @@ const chaptersData: Chapter[] = [
     ],
     headerImage: "/activity1/1.jpg"
   },
+
   {
-    id: "michigan-chapter",
-    name: "Michigan Chapter",
-    type: "chapter",
-    description: "Activities and events from the Michigan Chapter",
-    activities: [
-      {
-        id: "general-shaqir-dinner",
-        name: "Participation in a dinner held by the Friends of General Hassan Shaqir",
-        date: "2025",
-        description: "The Michigan Chapter of the Lebanese American Commission for Democracy (LACD) proudly participated in a dinner organized by Major General Hassan Choucair's friends to celebrate his recent appointment as the Lebanese General Security Director.",
-        type: "chapter-activity",
-        photos: Array.from({ length: 2 }, (_, i) => ({
-          url: `/activity3/${i + 1}.jpg`
-        })),
-        headerImage: "/activity3/1.jpg"
-      }
-    ],
-    headerImage: "/activity3/1.jpg"
-  }
+  id: "michigan-chapter",
+  name: "Michigan Chapter",
+  type: "chapter",
+  description: "Activities and events from the Michigan Chapter",
+  activities: [
+    {
+      id: "general-shaqir-dinner",
+      name: "Participation in a dinner held by the Friends of General Hassan Shaqir",
+      date: "2025",
+      description:
+        "The Michigan Chapter of the Lebanese American Commission for Democracy (LACD) proudly participated in a dinner organized by Major General Hassan Choucair's friends to celebrate his recent appointment as the Lebanese General Security Director.",
+      type: "chapter-activity",
+      photos: Array.from({ length: 2 }, (_, i) => ({
+        url: `/activity3/${i + 1}.jpg`
+      })),
+      headerImage: "/activity3/1.jpg"
+    },
+
+    //  ACTIVITY 25 
+    {
+      id: "lebanon-independence-82-michigan",
+      name:
+        "Participation in Lebanon’s 82nd Independence Day – Michigan",
+      date: "2025",
+      description:
+        "A delegation from LACD – Michigan Chapter participated in the program of the 82nd Independence Day celebration of Lebanon, organized by the Lebanese Consulate in Detroit, Michigan. The event was attended by Consul General Ibrahim Charara and Dearborn Mayor Mr. Abdullah Hammoud.",
+      type: "chapter-activity",
+      photos: Array.from({ length: 9 }, (_, i) => ({
+        url: `/activity25/${i + 1}.jpeg`
+      })),
+      headerImage: "/activity25/3.jpeg" //  3rd photo as cover
+    }
+  ],
+  headerImage: "/activity3/1.jpg"
+}
+  
 ];
 
 const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, title }) => {

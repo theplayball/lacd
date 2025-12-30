@@ -247,6 +247,53 @@ const videoData = [
       }
     ],
   },
+
+  {
+  id: "message-michel-aoun-2025",
+  name: "Message from President Michel Aoun to the Lebanese Diaspora - 2025",
+  date: "2025",
+  chapter: "LACD",
+  title: "Message from President Michel Aoun to the Lebanese Diaspora - 2025",
+  description: "A Message from President Michel Aoun to the Lebanese Diaspora in the United States, presented at the LACD's annual dinner on October 11, 2025.",
+  fullText: "A Message from President Michel Aoun to the Lebanese Diaspora in the United States, presented at the LACD's annual dinner on October 11, 2025.",
+  headerImage: "/message.jpeg", // ✅ COVER IMAGE
+  videos: [
+    {
+      id: "michel-aoun-message",
+      title: "A Message from President Michel Aoun to the Lebanese Diaspora in the United States",
+      description: "A Message from President Michel Aoun to the Lebanese Diaspora in the United States, presented at the LACD's annual dinner on October 11, 2025.",
+      videoFile: "/videos/13.mp4"
+    }
+  ],
+},
+
+{
+  id: "otv-lacd-conference-2025",
+  name: "OTV Report on LACD Conference - Boston 2025",
+  date: "2025",
+  chapter: "LACD",
+  title: "OTV Report on LACD Conference - Boston 2025",
+  description:
+    "A Report broadcast by OTV, a Lebanese station, about the conference organized by LACD in Boston on October 11th 2025.",
+  fullText:
+    "A Report broadcast by OTV, a Lebanese station, about the conference organized by LACD in Boston on October 11th 2025.",
+  headerImage: "/conference.jpeg", // ✅ COVER IMAGE
+  videos: [
+    {
+      id: "otv-report",
+      title:
+        "OTV Report on the LACD Conference in Boston",
+      description:
+        "A Report broadcast by OTV, a Lebanese station, about the conference organized by LACD in Boston on October 11th 2025.",
+      videoFile: "/videos/14.mp4",
+    },
+  ],
+},
+
+
+
+  
+
 ];
 
 export default function VideosPage() {
@@ -279,24 +326,33 @@ export default function VideosPage() {
               >
                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group-hover:scale-[1.02] h-full flex flex-col">
                   {/* Preview - Video Thumbnail */}
-                  <div className="h-48 overflow-hidden flex-shrink-0 bg-gray-100 flex items-center justify-center">
-                    {activity.id === "nada-boustani-visit" ? (
-                      <Image 
-                        src="/videobag.jpeg" 
-                        alt="Video Content" 
-                        width={300}
-                        height={192}
-                        className="w-full h-full object-contain"
-                      />
-                    ) : (
-                      <div className="flex flex-col items-center justify-center text-gray-400">
-                        <svg className="w-16 h-16 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span className="text-sm font-medium">Video Content</span>
-                      </div>
-                    )}
-                  </div>
+                  <div className="h-48 overflow-hidden flex-shrink-0 bg-gray-100 relative">
+  {activity.headerImage ? (
+    <Image
+      src={activity.headerImage}
+      alt={activity.name}
+      fill
+      className="object-contain bg-black"
+    />
+  ) : activity.id === "nada-boustani-visit" ? (
+    <Image
+      src="/videobag.jpeg"
+      alt={activity.name}
+      fill
+      className="object-contain"
+    />
+  ) : (
+    <div className="h-full flex flex-col items-center justify-center text-gray-400">
+      <svg className="w-16 h-16 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+          d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span className="text-sm font-medium">Video Content</span>
+    </div>
+  )}
+</div>
+
+
 
                   {/* Content */}
                   <div className="p-6 flex-1 flex flex-col">
