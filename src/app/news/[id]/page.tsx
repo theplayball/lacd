@@ -2,12 +2,13 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { newsData } from "@/data/news";
 
-export default function NewsPage({
+export default async function NewsPage({
   params,
 }: {
-  params: { id: string };
+   params: Promise<{ id: string }>;
 }) {
-  const article = newsData.find((n) => n.id === params.id);
+  const { id } = await params; 
+ const article = newsData.find((n) => n.id === id);
 
   if (!article) return notFound();
 

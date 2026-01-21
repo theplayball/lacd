@@ -16,7 +16,7 @@ const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const carouselImages = [
-  { src: "/thanksgiving.jpeg", alt: "LACD Carousel Image 3" },
+  { src: "/Christmas.jpeg", alt: "LACD Christmas Event"},
   { src: "/convention-indep.jpeg", alt: "LACD Annual Convention & Independence Event" },
 
 ];

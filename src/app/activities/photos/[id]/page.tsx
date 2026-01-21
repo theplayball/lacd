@@ -63,6 +63,7 @@ This memorable event is a testament to the enduring faith and unity of the Leban
       "/activity1/10.jpg",
       "/activity1/11.jpg",
       "/activity1/12.jpg",
+      
       "/activity1/13.jpg",
       "/activity1/14.jpg",
     ],
@@ -106,27 +107,35 @@ The participation of LACD underscores its ongoing commitment to recognizing Leba
       "/activity3/2.jpg",
     ],
   },
-  "st-barbara-association": {
-    id: "st-barbara-association",
-    name: "St. Barbara Association Fundraising Dinner",
-    date: "September 25, 2023",
-    chapter: "Los Angeles Chapter",
-    description: "LACD-Los Angeles Chapter participates in the fundraising dinner organized by St. Barbara association.",
-    fullText: `LACD-Los Angeles Chapter participates in the fundraising dinner organized by St. Barbara association.`,
-    photos: [
-      "/activity4/1.jpg",
-      "/activity4/2.jpg",
-      "/activity4/3.jpg",
-      "/activity4/4.jpg",
-      "/activity4/5.jpg",
-    ],
-  },
-  "general": {
-    id: "general",
-    name: "General LACD Activities and Events",
-    date: "Ongoing",
-    chapter: "General LACD",
-    description: "Various activities and events across all LACD chapters",
+      "st-barbara-association": {
+      id: "st-barbara-association",
+      name: "St. Barbara Association Fundraising Dinner",
+      date: "September 25, 2023",
+      chapter: "Los Angeles Chapter",
+      description: "LACD-Los Angeles Chapter participates in the fundraising dinner organized by St. Barbara association.",
+      fullText: `LACD-Los Angeles Chapter participates in the fundraising dinner organized by St. Barbara association.`,
+      photos: [
+        "/activity4/1.jpg",
+        "/activity4/2.jpg",
+        "/activity4/3.jpg",
+        "/activity4/4.jpg",
+        "/activity4/5.jpg",
+      ],
+    },
+    "christmas-celebration-2025": {
+      id: "christmas-celebration-2025",
+      name: "Christmas Celebration for Children",
+      date: "2025",
+      chapter: "Ohio Cleveland Chapter",
+      description: "A Christmas celebration for children was held, featuring a dinner attended by members of the LACD and concluding with the distribution of gifts to the children.",
+      fullText: "A Christmas celebration for children was held, featuring a dinner attended by members of the LACD and concluding with the distribution of gifts to the children.",
+      photos: Array.from({ length: 51 }, (_, i) => `/activity26/Christmas _photo${i + 1}.jpeg`),
+    },
+    "general": {
+      id: "general",
+      name: "General LACD Activities and Events",
+      date: "Ongoing",
+      chapter: "General LACD",    description: "Various activities and events across all LACD chapters",
     fullText: `The Lebanese American Commission for Democracy (LACD) is a dynamic organization that engages in a wide range of activities and initiatives across all chapters to promote democracy, civic engagement, and community building.
 
 Our comprehensive activities include:

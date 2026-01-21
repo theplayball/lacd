@@ -3,6 +3,24 @@
 import React, { useState, MouseEventHandler } from "react";
 import Image from "next/image";
 
+// Modal component
+const Modal = ({ src, alt, onClose }: { src: string, alt: string, onClose: () => void }) => {
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50" onClick={onClose}>
+      <div className="relative max-w-4xl max-h-4xl" onClick={(e) => e.stopPropagation()}>
+        <Image
+          src={src}
+          alt={alt}
+          width={1200}
+          height={800}
+          className="object-contain"
+        />
+        <button onClick={onClose} className="absolute top-0 right-0 m-4 text-white text-2xl">&times;</button>
+      </div>
+    </div>
+  );
+};
+
 interface Photo {
   url: string;
   caption?: string;
@@ -375,10 +393,34 @@ const chaptersData: Chapter[] = [
   ],
   headerImage: "/activity3/1.jpg"
 }
+,
+  {
+    id: "ohio-cleveland-chapter",
+    name: "Ohio Cleveland Chapter",
+    type: "chapter",
+    description: "Activities and events from the Ohio Cleveland Chapter",
+    activities: [
+      {
+        id: "christmas-celebration-2025",
+        name: "Christmas Celebration for Children",
+        date: "2025",
+        description: "A Christmas celebration for children was held, featuring a dinner attended by members of the LACD and concluding with the distribution of gifts to the children.",
+        type: "chapter-activity",
+        photos: Array.from({ length: 51 }, (_, i) => ({
+          url: `/activity26/Christmas _photo${i + 1}.jpeg`
+        })),
+        headerImage: "/activity26/Christmas _photo8.jpeg"
+      }
+    ],
+    headerImage: "/activity26/Christmas _photo8.jpeg"
+    
+  }
   
 ];
 
 const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, title }) => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   if (!photos || photos.length === 0) {
     return (
       <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
@@ -398,7 +440,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, title }) => {
       <h2 className="text-2xl font-bold text-gray-900 mb-6">{title}</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {photos.map((photo, index) => (
-          <div key={index} className="aspect-square overflow-hidden rounded-lg">
+          <div key={index} className="aspect-square overflow-hidden rounded-lg cursor-pointer" onClick={() => setSelectedImage(photo.url)}>
             <Image
               src={photo.url}
               alt={`${title} photo ${index + 1}`}
@@ -413,6 +455,9 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, title }) => {
           </div>
         ))}
       </div>
+      {selectedImage && (
+        <Modal src={selectedImage} alt="Full-size" onClose={() => setSelectedImage(null)} />
+      )}
     </div>
   );
 };

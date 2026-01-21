@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
-import { newsData, upcomingEvents, NewsItem } from "@/data/news";
+import { newsData , NewsItem } from "@/data/news";
 
 function NewsCard({ item }: { item: NewsItem }) {
   return (
@@ -252,12 +252,12 @@ export default function NewsEvents() {
             </div>
           </div>
 
-          {/* Upcoming Events */}
-          <div className="bg-white rounded-xl p-4 shadow-lg border border-gray-100 w-full">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+ {/* Upcoming Events */}
+          <div className="bg-white rounded-xl p-3 shadow-lg border border-gray-100 w-full">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-7 h-7 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
                 <svg
-                  className="w-4 h-4 text-white"
+                  className="w-3.5 h-3.5 text-white"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -265,86 +265,41 @@ export default function NewsEvents() {
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-800 text-base">
+                <h3 className="font-semibold text-gray-800 text-sm">
                   UPCOMING EVENTS
                 </h3>
                 <p className="text-xs text-gray-500">Don&apos;t miss out!</p>
               </div>
             </div>
 
-            {upcomingEvents.length > 0 ? (
-              <div className="space-y-2">
-                {upcomingEvents.map((event, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200"
-                  >
-                    <div className="p-3 border-b border-gray-100">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                          <svg
-                            className="w-4 h-4 text-white"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" />
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-gray-900 text-sm">
-                            {event.title}
-                          </h4>
-                          <p className="text-xs text-gray-500">LACD Official</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="p-3 text-center">
-                      <a
-                        href={`/activities/events?date=${event.calendarDate}`}
-                        className="block"
-                      >
-                        <h3 className="text-base font-semibold text-gray-900 hover:text-blue-600 transition-colors duration-200 cursor-pointer">
-                          {event.title}
-                        </h3>
-                      </a>
-                      <p className="text-xs text-gray-500 mt-2">
-                        {event.calendarDate}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+            <div className="text-center py-4">
+              <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg
+                  className="w-6 h-6 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
               </div>
-            ) : (
-              <div className="text-center py-8">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-8 h-8 text-gray-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <p className="text-gray-500 text-sm font-medium">
-                  No upcoming events
-                </p>
-                <p className="text-gray-400 text-xs mt-1">
-                  Check back soon for new events!
-                </p>
-              </div>
-            )}
+              <p className="text-gray-500 text-sm font-medium">
+                No upcoming events
+              </p>
+              <p className="text-gray-400 text-xs mt-1">
+                Check back soon for new events!
+              </p>
+            </div>
 
-            <div className="mt-4 pt-3 border-t border-gray-100">
+            <div className="mt-3 pt-2 border-t border-gray-100">
               <Link
                 href="/activities/events"
-                className="inline-flex items-center justify-center gap-2 w-full py-2 px-4 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg font-medium transition-colors duration-200 group"
+                className="inline-flex items-center justify-center gap-2 w-full py-2 px-3 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg text-sm font-medium transition-colors duration-200 group"
               >
                 <span>VIEW ALL EVENTS</span>
                 <svg
@@ -363,7 +318,7 @@ export default function NewsEvents() {
               </Link>
             </div>
           </div>
-
+          
           {/* Social */}
           <div className="space-y-2 w-full">
             
@@ -479,7 +434,7 @@ export default function NewsEvents() {
   </div>
 </a>
 
-
+     {/* instagram*/}
 
             <a
               href="https://www.instagram.com/lacd_official?igsh=MWw5anc2c2t4OHhmaw=="
@@ -488,14 +443,14 @@ export default function NewsEvents() {
               className="group block w-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
               <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
-                <div className="bg-gradient-to-r from-[#E4405F] to-[#C13584] p-2">
+          <div className="bg-gradient-to-br from-[#833AB4] via-[#E1306C] to-[#FD1D1D] p-2">
                   <div className="flex items-center space-x-2">
-                    <svg
+                  <svg
                       className="w-5 h-5 text-white"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z" />
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98C.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
                     </svg>
                     <div>
                       <h3 className="text-sm font-bold text-white">
