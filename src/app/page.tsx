@@ -1,6 +1,6 @@
 import HomePage from "@/components/HomePage";
 import NewsEvents from "@/components/NewsEvents";
-
+ 
 export default function Home() {
   return (
     <div className="w-full flex flex-col">
