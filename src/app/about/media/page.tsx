@@ -90,7 +90,7 @@ export default function MediaPage() {
         </div>
         */}
 
-        {/*TWO TOPIC BOXES */}
+        {/*4 TOPIC BOXES */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
 
           {/* Box 1: US Tour */}
@@ -111,7 +111,7 @@ export default function MediaPage() {
             </Link>
           </div>
 
-          {/* -------- Box 2: Washington Meeting -------- */}
+          {/*Box 2: Washington Meeting*/}
           <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow">
             <h2 className="text-2xl font-bold text-gray-900 mb-3">
               MP Nada Boustani&apos;s Meetings in Washington
@@ -123,11 +123,53 @@ export default function MediaPage() {
 
             {/* Link to Washington Meeting page */}
             <Link
+              href="/about/media/2"
+              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+            >
+              Click here →
+            </Link>
+          </div>
+
+
+          {/*Box 3: convention and annual dinner in Boston*/}
+          <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+            <h2 className="text-2xl font-bold text-gray-900 mb-3">
+           The Convention and Annual Dinner in Boston 
+            </h2>
+
+            <p className="text-gray-700 mb-4">
+              Coverage of the convention and annual dinner organized by LACD in Boston
+            </p>
+
+            {/* Link to annual dinner page */}
+            <Link
               href="/about/media/3"
               className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
             >
               Click here →
             </Link>
+
+          </div>
+
+
+          {/*Box 4: Participation in annual dinner organized by WLCU*/}
+          <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+            <h2 className="text-2xl font-bold text-gray-900 mb-3">
+           Participation in the annual dinner organized by WLCU to honor Najad Fares.
+            </h2>
+
+            <p className="text-gray-700 mb-4">
+              Coverage of the annual dinner organized by WLCU in Los Angeles
+            </p>
+
+            {/* Link to the dinner page */}
+            <Link
+              href="/about/media/4"
+              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+            >
+              Click here →
+            </Link>
+
           </div>
 
         </div>

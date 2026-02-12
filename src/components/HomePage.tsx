@@ -103,12 +103,13 @@ const HomePage = () => {
             text="Join LACD and become a member of our organization"
             link="/register"
           /> */}
-          <InfoCard
+          
+         {/*<InfoCard
             icon={<FaStar className="text-3xl text-[#C6D0DC]" />}
             title="ANNUAL CONVENTION"
             text="Register for the 2025 LACD Annual Convention in Boston"
             link="/register/event"
-          />
+          />*/}
 
           {/* Donation Section */}
           <div className="bg-[#f1e5e5] p-4 text-start rounded-md">

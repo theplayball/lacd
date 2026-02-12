@@ -7,24 +7,24 @@ import { newsData , NewsItem } from "@/data/news";
 
 function NewsCard({ item }: { item: NewsItem }) {
   return (
-    <Link href={`/news/${item.id}`} className="block">
-      <div className="bg-white rounded-lg shadow hover:shadow-lg transition cursor-pointer">
+    <Link href={`/news/${item.id}`} className="block h-full">
+      <div className="bg-white rounded-lg shadow hover:shadow-lg transition cursor-pointer h-full flex flex-col">
         <Image
           src={item.image}
           alt={item.title}
           width={600}
           height={400}
-          className="rounded-t-lg object-cover w-full h-[220px]"
+          className="rounded-t-lg object-cover w-full h-[220px] flex-shrink-0"
         />
 
-        <div className="p-5">
+        <div className="p-5 flex flex-col flex-grow">
           <p className="text-xs text-gray-500 mb-1">{item.date}</p>
 
           <h3 className="text-lg font-semibold text-[#4174c5] mb-2">
             {item.title}
           </h3>
 
-          <p className="text-sm text-gray-700 line-clamp-3">{item.fullText}</p>
+       <p className="text-sm text-gray-700 line-clamp-3 flex-grow leading-relaxed">{item.fullText}</p>
 
           <p className="mt-3 text-sm font-medium text-[#003366]">
             Click to read more →
@@ -220,11 +220,12 @@ export default function NewsEvents() {
             <div className="mb-4">
               <video
                 controls
+                poster="/message.jpeg"
                 className="w-full rounded-lg"
                 style={{ maxHeight: "300px" }}
                 preload="metadata"
               >
-                <source src="/4.mp4" type="video/mp4" />
+             <source src="/videos/13.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

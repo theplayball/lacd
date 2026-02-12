@@ -6,16 +6,22 @@ import Image from "next/image";
 // Modal component
 const Modal = ({ src, alt, onClose }: { src: string, alt: string, onClose: () => void }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50" onClick={onClose}>
-      <div className="relative max-w-4xl max-h-4xl" onClick={(e) => e.stopPropagation()}>
+    <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4" onClick={onClose}>
+      <div className="relative w-full h-full flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
         <Image
           src={src}
           alt={alt}
-          width={1200}
-          height={800}
-          className="object-contain"
+          width={1920}
+          height={1080}
+          className="max-w-full max-h-full object-contain"
+          style={{ width: 'auto', height: 'auto' }}
         />
-        <button onClick={onClose} className="absolute top-0 right-0 m-4 text-white text-2xl">&times;</button>
+        <button 
+          onClick={onClose} 
+          className="absolute top-4 right-4 text-white text-4xl font-light hover:text-gray-300 transition-colors w-12 h-12 flex items-center justify-center"
+        >
+           ×
+        </button>
       </div>
     </div>
   );
@@ -61,14 +67,14 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
   mainActivities: [
     {
       id: "nada-boustani-tour",
-      name: "MP Nada Boustani's Tour in the United States – May 24 to 29, 2025",
+      name: "MP Nada Boustani's Tour in the United States - May 24 to 29, 2025",
       type: "main-activity1",
       description: "A comprehensive tour across multiple states in the United States",
       headerImage: "/activity18/1.jpeg",
       subActivities: [
         {
           id: "new-york-nj",
-          name: "Visit of MP Nada Boustani to New York – New Jersey on May 24, 2025",
+          name: "Visit of MP Nada Boustani to New York - New Jersey on May 24, 2025",
           type: "subactivity1",
           description: "As part of the tour organized by LACD for MP Nada Boustani, the second stop took place in the state of New Jersey, hosted at the Assi family's residence, where a luncheon was held in her honor with the participation of several members of LACD – New Jersey.",
           photos: Array.from({ length: 7 }, (_, i) => ({
@@ -107,7 +113,7 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
         },
         {
           id: "ohio",
-          name: "Visit of MP Nada Boustani to Ohio – May 26, 2025",
+          name: "Visit of MP Nada Boustani to Ohio - May 26, 2025",
           type: "subactivity3",
           description: "Official meetings and community events in Ohio",
           headerImage: "/activity9/9.jpeg",
@@ -248,11 +254,11 @@ const lacdPhotosData: { mainActivities: MainActivity[] } = {
 
    {
   id: "lacd-annual-convention-boston-2025",
-  name: "LACD Annual Convention – Boston – October 11, 2025",
+  name: "LACD Annual Convention - Boston - October 11, 2025",
   type: "main-activity",
   description: `The Lebanese American Commission for Democracy (LACD) held its annual conference in Boston, USA, on October 11, 2025. The event was attended by Members of Parliament Georges Atallah and Nada Boustani. Discussions focused on the Lebanese electoral law and the importance of voter registration for Lebanese expats.
 
-The conference featured speeches from LACD USA Coordinator Georges Moussa, a presentation of the association’s new website by member Mr. Nagy Khawaja, and a talk by activist Fadi Saad on how to use social media effectively during the parliamentary elections.
+The conference featured speeches from LACD USA Coordinator Georges Moussa, a presentation of the association's new website by member Mr. Nagy Khawaja, and a talk by activist Fadi Saad on how to use social media effectively during the parliamentary elections.
 
 MPs Nada Boustani and Georges Atallah also addressed key national issues, including electricity and water infrastructure, the Syrian refugee crisis, and banking challenges related to depositors’ funds.`,
   photos: Array.from({ length: 28 }, (_, i) => ({
@@ -306,7 +312,7 @@ Her visit to the United States was part of a conference organized by the Lebanes
   photos: Array.from({ length: 24 }, (_, i) => ({
     url: `/activity24/${i + 1}.jpeg`,
   })),
-  headerImage: "/activity24/1.jpeg", // ✅ COVER IMAGE (FIRST PHOTO)
+  headerImage: "/activity24/1.jpeg", // COVER IMAGE (FIRST PHOTO)
 },
 
 
@@ -352,6 +358,21 @@ const chaptersData: Chapter[] = [
           url: `/activity4/${i + 1}.jpg`
         })),
         headerImage: "/activity4/1.jpg"
+      },
+   //activity 27
+      {
+   
+      
+        id: "WLCU dinner",
+        name: "Participation in a WLCU dinner honoring Lebanese businessman Najad Fares",
+        date: "2025",
+        description: "LACD participates in a WLCU dinner honoring Lebanese businessman Najad Fares.The Lebanese American Commission for Democracy (LACD) participated in the dinner hosted by the World Lebanese Culture Union (WLCU) in Los Angeles, held in honor of Lebanese businessman Najad Fares, in the presence of a distinguished gathering of Lebanese diaspora figures. On this occasion, LACD extended its warmest congratulations to Mr. Fares on this well-deserved recognition, in appreciation of his distinguished professional journey and his continued commitment to serving his community. LACD affirmed that this honor stands as a source of pride for the Lebanese diaspora and a reflection of the positive impact Lebanese leaders continue to make across the world.",
+        type: "chapter-activity",
+        photos: Array.from({ length: 8 }, (_, i) => ({
+          url: `/activity27/WLCU_dinner${i + 1}.jpeg`
+        })),
+        headerImage: "/activity27/WLCU_dinner2.jpeg"
+    
       }
     ],
     headerImage: "/activity1/1.jpg"
@@ -380,10 +401,10 @@ const chaptersData: Chapter[] = [
     {
       id: "lebanon-independence-82-michigan",
       name:
-        "Participation in Lebanon’s 82nd Independence Day – Michigan",
+        "Participation in Lebanon's 82nd Independence Day - Michigan",
       date: "2025",
       description:
-        "A delegation from LACD – Michigan Chapter participated in the program of the 82nd Independence Day celebration of Lebanon, organized by the Lebanese Consulate in Detroit, Michigan. The event was attended by Consul General Ibrahim Charara and Dearborn Mayor Mr. Abdullah Hammoud.",
+        "A delegation from LACD - Michigan Chapter participated in the program of the 82nd Independence Day celebration of Lebanon, organized by the Lebanese Consulate in Detroit, Michigan. The event was attended by Consul General Ibrahim Charara and Dearborn Mayor Mr. Abdullah Hammoud.",
       type: "chapter-activity",
       photos: Array.from({ length: 9 }, (_, i) => ({
         url: `/activity25/${i + 1}.jpeg`
@@ -394,6 +415,7 @@ const chaptersData: Chapter[] = [
   headerImage: "/activity3/1.jpg"
 }
 ,
+   //activity 26
   {
     id: "ohio-cleveland-chapter",
     name: "Ohio Cleveland Chapter",

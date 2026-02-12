@@ -21,9 +21,7 @@ export const mediaData: MediaItem[] = [
     description:
       "Comprehensive coverage of MP Nada Boustani's visit to the United States, including her meetings with the Lebanese community in New England, Massachusetts, and Michigan.",
     sources: [
-     // { name: "Tayyar.org", url: "https://www.tayyar.org/News/Lebanon/666849/", language: "Arabic" },
       { name: "National News Agency (NNA)", url: "https://nna-leb.gov.lb/ar/%D8%B3%D9%8A%D8%A7%D8%B3%D8%A9/783552/%D8%A7%D9%84%D9%86%D8%A7%D8%A6%D8%A8%D8%A9-%D8%A7%D9%84%D8%A8%D8%B3%D8%AA%D8%A7%D9%86%D9%8A-%D8%AA%D9%88%D8%A7%D8%B5%D9%84-%D8%AC%D9%88%D9%84%D8%AA%D9%87%D8%A7-%D8%A7%D9%84%D8%A3%D9%85%D9%8A%D8%B1%D9%83%D9%8A%D8%A9-%D9%88%D9%84%D9%82%D8%A7%D8%A1-%D9%85%D8%B9-%D8%A7", language: "Arabic" },
-     // { name: "El Nashra", url: "https://www.elnashra.com/news/show/1725682/", language: "Arabic" },
       { name: "Tayyar.org - New England Visit", url: "https://www.tayyar.org/News/Lebanon/666849/%D8%A8%D8%A7%D9%84%D8%B5%D9%88%D8%B1--%D9%81%D9%8A-%D8%A5%D8%B7%D8%A7%D8%B1-%D8%AC%D9%88%D9%84%D8%AA%D9%87%D8%A7-%D8%A7%D9%84%D8%A3%D9%85%D9%8A%D8%B1%D9%83%D9%8A%D8%A9", language: "Arabic" },
       { name: "El Nashra - New England Coverage", url: "https://www.elnashra.com/news/show/1725682/%D8%A7%D9%84%D8%A8%D8%B3%D8%AA%D8%A7%D9%86%D9%8A-%D9%88%D8%A7%D8%B5%D9%84%D8%AA", language: "Arabic" },
       { name: "Lebanon Files", url: "https://www.lebanonfiles.com/articles/%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D9%85%D8%AD%D9%84%D9%8A%D9%91%D8%A9/%D8%A8%D8%A5%D8%B7%D8%A7%D8%B1-%D8%AC%D9%88%D9%84%D8%AA%D9%87%D8%A7-%D8%A7%D9%84%D8%A3%D9%85%D9%8A%D8%B1%D9%83%D9%8A%D8%A9-%D8%A7%D9%84%D8%A8%D8%B3%D8%AA%D8%A7%D9%86%D9%8A-%D8%AA%D9%88%D8%A7%D8%B5/", language: "Arabic" },
@@ -38,21 +36,6 @@ export const mediaData: MediaItem[] = [
 
   {
     id: 2,
-    title: "The Convention and Annual Dinner organized by LACD in Boston on October 11-2025",
-    date: "11 Oct 2025",
-    description:
-      "Some of what was reported in the media about the convention and annual dinner organized by LACD, with the participation of MPs Nada Boustani and George Atallah, in Boston, USA.",
-    sources: [
-      { name: "El Nashra", url: "https://www.elnashra.com/news/show/1745622", language: "Arabic" },
-      { name: "Instagram Reel", url: "https://www.instagram.com/reel/DPyhfrRDmhe/", language: "Media" },
-      { name: "NNA", url: "https://www.nna-leb.gov.lb/ar/%D8%B3%D9%8A%D8%A7%D8%B3%D8%A9/815885", language: "Arabic" },
-      { name: "Tayyar.org", url: "https://www.tayyar.org/News/Lebanon/688483/_guid=688483", language: "Arabic" },
-      { name: "Lebanon Files", url: "https://www.lebanonfiles.com?p=1947198", language: "Arabic" },
-      { name: "Beirut Times", url: "https://beiruttimes.com/article/49604", language: "English" },
-    ],
-  },
-  {
-    id: 3,
     title: "MP Nada Boustani's Meetings in Washington",
     date: "",
     description:
@@ -65,8 +48,43 @@ export const mediaData: MediaItem[] = [
       { name: "tayyar.org", url: "https://share.google/ewFXRc6r2bYBdskz3", language: "Arabic" },
       { name: "Ch23 news", url: "https://ch23.com/Article/305043/ندى-البستاني-من-واشنطن:-للقيام-بالاصلاحات-المطلوبة-بالقطاع-المصرفي-من-أجل-اعادة-حقوق-المودعين", language: "Arabic" },
       { name: "Al markazia", url: "https://almarkazia.com/ar/%D9%86%D8%AF%D9%89-%D8%A7%D9%84%D8%A8%D8%B3%D8%AA%D8%A7%D9%86%D9%8A-%D9%85%D9%86-%D9%88%D8%A7%D8%B4%D9%86%D8%B7%D9%86-%D9%84%D9%84%D9%82%D9%8A%D8%A7%D9%85-%D8%A8%D8%A7%D9%84%D8%A7%D8%B5%D9%84%D8%A7%D8%AD%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%B7%D9%84%D9%88%D8%A8%D8%A9-1", language: "Arabic" },
-      { name: "ElNashra", url: "https://www.elnashra.com/news/show/1746482/%D8%A7%D9%84%D8%A8%D8%B3%D8%AA%D8%A7%D9%86%D9%8A-%D9%88%D8%A7%D8%B4%D9%86%D8%B7%D9%86-%D9%84%D9%84%D9%82%D9%8A%D8%A7%D9%85-%D8%A8%D8%A7%D9%84%D8%A7%D8%B5%D9%84%D8%A7%D8%AD%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%B7%D9%84%D9%88%D8%A8%D8%A9-%D8%A8%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9", language: "Arabic" },
+      { name: "El Nashra", url: "https://www.elnashra.com/news/show/1746482/%D8%A7%D9%84%D8%A8%D8%B3%D8%AA%D8%A7%D9%86%D9%8A-%D9%88%D8%A7%D8%B4%D9%86%D8%B7%D9%86-%D9%84%D9%84%D9%82%D9%8A%D8%A7%D9%85-%D8%A8%D8%A7%D9%84%D8%A7%D8%B5%D9%84%D8%A7%D8%AD%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%B7%D9%84%D9%88%D8%A8%D8%A9-%D8%A8%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9", language: "Arabic" },
       { name: "LBC", url: "https://share.google/o8D0miamw9GCGE4TM", language: "Arabic" },
     ],
   },
+
+  {
+    id: 3,
+    title: "The Convention and Annual Dinner organized by LACD in Boston on October 11-2025",
+    date: "11 Oct 2025",
+    description:
+      "Some of what was reported in the media about the convention and annual dinner organized by LACD, with the participation of MPs Nada Boustani and George Atallah, in Boston, USA.",
+    sources: [
+      { name: "El Nashra", url: "https://www.elnashra.com/news/show/1745622", language: "Arabic" },
+      { name: "Instagram Reel", url: "https://www.instagram.com/reel/DPyhfrRDmhe/", language: "Media" },
+      { name: "NNA", url: "https://www.nna-leb.gov.lb/ar/%D8%B3%D9%8A%D8%A7%D8%B3%D8%A9/815885", language: "Arabic" },
+      { name: "Tayyar.org", url: "https://www.tayyar.org/News/Lebanon/688483/_guid=688483", language: "Arabic" },
+      { name: "Lebanon Files", url: "https://www.lebanonfiles.com?p=1947198", language: "Arabic" },
+      { name: "Beirut Times", url: "https://beiruttimes.com/article/49604", language: "Arabic" },
+    ],
+  },
+
+  {
+
+    id: 4,
+    title: "Lacd participated in the annual dinner organized by WLCU to honor Najad Fares.",
+    date: "",
+    description:
+      "News of lacd's participation in the World Lebanese Cultural Union (WLCU) dinner to honor Najad Fares in Los Angeles, as reported in some media outlets",
+    sources: [
+      { name: "Al markazia", url: "https://almarkazia.com/ar/%D8%AC%D9%85%D8%B9%D9%8A%D8%A9-LACD-%D8%AA%D8%B4%D8%A7%D8%B1%D9%83-%D9%81%D9%8A-%D8%B9%D8%B4%D8%A7%D8%A1-WLCU-%D9%84%D8%AA%D9%83%D8%B1%D9%8A%D9%85-1", language: "Arabic" },
+      { name: "tayyar.org", url: "https://www.tayyar.org/News/Lebanon/703596/%D8%AC%D9%85%D8%B9%D9%8A%D8%A9-LACD-%D8%AA%D8%B4%D8%A7%D8%B1%D9%83-%D9%81%D9%8A-%D8%B9%D8%B4%D8%A7%D8%A1-WLCU-%D9%84%D8%AA%D9%83%D8%B1%D9%8A%D9%85-%D8%B1%D8%AC-%D9%86%D8%AC%D8%A7%D8%AF-%D9%81%D8%A7%D8%B1%D8%B3", language: "Arabic" },
+      { name: "akhbar al yawm", url: "https://www.akhbaralyawm.com/news/514169/%D8%AC%D9%85%D8%B9%D9%8A%D8%A9-LACD-%D8%AA%D8%B4%D8%A7%D8%B1%D9%83-%D9%81%D9%8A-%D8%B9%D8%B4%D8%A7%D8%A1-WLCU-%D9%84%D8%AA%D9%83%D8%B1%D9%8A%D9%85-%D9%86%D8%AC%D8%A7%D8%AF-%D9%81%D8%A7%D8%B1%D8%B3", language: "Arabic" },
+      { name: "El Nashra", url: "https://www.elnashra.com/news/show/1760312/%D8%A7%D9%84%D8%AC%D9%85%D8%B9%D9%8A%D8%A9-%D8%A7%D9%84%D9%84%D8%A8%D9%86%D8%A7%D9%86%D9%8A%D8%A9-%D8%A7%D9%84%D8%A3%D9%85%D9%8A%D8%B1%D9%83%D9%8A%D8%A9-%D9%84%D9%84%D8%AF%D9%8A%D9%85%D9%82%D8%B1%D8%A7%D8%B7%D9%8A%D8%A9-%D8%B4%D8%A7%D8%B1%D9%83%D8%AA-%D8%B9%D8%B4%D8%A7%D8%A1", language: "Arabic" },
+      { name: "infinity news", url: "https://infinity24.news/214004", language: "Arabic" },
+      { name: "OTV", url: "https://otv.com.lb/news/120160/%D8%AC%D9%85%D8%B9%D9%8A%D8%A9-LACD-%D8%AA%D8%B4%D8%A7%D8%B1%D9%83-%D9%81%D9%8A-%D8%B9%D8%B4%D8%A7%D8%A1-WLCU-%D9%84%D8%AA%D9%83%D8%B1%D9%8A%D9%85-%D9%86%D8%AC%D8%A7%D8%AF-%D9%81%D8%A7%D8%B1%D8%B3-1", language: "Arabic" },
+      { name: "Lebanon files", url: "https://www.lebanonfiles.com/2026/articles/مجتمع-مدني-وثقافة/جمعية-lacd-تشارك-في-عشاء-wlcu-لتكريم-نجاد-فارس/", language: "Arabic" },
+    ]
+  }
+  
 ];

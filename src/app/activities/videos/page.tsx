@@ -80,7 +80,7 @@ const videoData = [
   {
     id: "children-support-aoun-2019",
     name: "Children Support for President Michel Aoun - November 2019",
-    date: "2019",
+    date:  "08/11/2019",
     chapter: "LACD Boston",
     title: "Children Support for President Michel Aoun - November 2019",
     description: "Children from the LACD Boston chapter express their support for President Michel Aoun on November 8, 2019",
@@ -97,7 +97,7 @@ const videoData = [
   {
     id: "georges-choueiry-interview-2020",
     name: "Georges Choueiry Interview - August 2020",
-    date: "2020",
+    date: "01/08/2020",
     chapter: "LACD Washington DC",
     title: "Georges Choueiry Interview - August 2020",
     description: "Former Coordinator of LACD Washington DC Chapter Mr Georges Choueiry interviews the mother of fallen Soldier Georges Bou Saab",
@@ -114,7 +114,7 @@ const videoData = [
   {
     id: "memorial-mass-october-2020",
     name: "Memorial Mass for October 13th - October 2020",
-    date: "2020",
+    date: "14/10/2020",
     chapter: "LACD Washington",
     title: "Memorial Mass for October 13th - October 2020",
     description: "A memorial Mass organized by the association for October 13th, held at Our Lady of Lebanon Church in Washington",
@@ -131,7 +131,7 @@ const videoData = [
   {
     id: "maroun-souma-interview-2020",
     name: "Maroun Souma Interview - Beirut Port Explosion Aid - August 2020",
-    date: "2020",
+    date: "29/08/2020",
     chapter: "LACD Boston",
     title: "Maroun Souma Interview - Beirut Port Explosion Aid - August 2020",
     description: "An interview on the OTV program 'Hiwar Al-Yawm' with Maroun Souma from the LACD Boston chapter to discuss aid provided to Lebanon after the Beirut Port explosion",
@@ -165,7 +165,7 @@ const videoData = [
   {
     id: "covid-19-lebanon-2021",
     name: "LACD Faces COVID-19 - Lebanon Remains at Heart - June 2021",
-    date: "2021",
+    date: "16/06/2021",
     chapter: "LACD",
     title: "LACD Faces COVID-19 - Lebanon Remains at Heart - June 2021",
     description: "The association faces COVID-19 once again — Lebanon remains at the heart of events",
@@ -182,7 +182,7 @@ const videoData = [
   {
     id: "new-england-aid-collection-2021",
     name: "New England Chapter Aid Collection - May 2021",
-    date: "2021",
+    date: "13/05/2021",
     chapter: "LACD New England",
     title: "New England Chapter Aid Collection - May 2021",
     description: "LACD New England Chapter organizes aid collection for needy families across Lebanon",
@@ -199,7 +199,7 @@ const videoData = [
   {
     id: "high-school-graduates-2021",
     name: "LACD High School Graduates - June 2021",
-    date: "2021",
+    date: "10/06/2021",
     chapter: "LACD",
     title: "LACD High School Graduates - June 2021",
     description: "LACD High School Graduates celebration",
@@ -225,7 +225,7 @@ const videoData = [
       {
         id: "ny-picnic",
         title: "LACD New York & New Jersey Chapter Annual Picnic 2021",
-        description: "LACD New York, New jersey Chapter – Annual Picnic 2021",
+        description: "LACD New York, New jersey Chapter - Annual Picnic 2021",
         videoFile: "/videos/11.mp4"
       }
     ],
@@ -251,12 +251,12 @@ const videoData = [
   {
   id: "message-michel-aoun-2025",
   name: "Message from President Michel Aoun to the Lebanese Diaspora - 2025",
-  date: "2025",
+  date: "11/10/2025",
   chapter: "LACD",
   title: "Message from President Michel Aoun to the Lebanese Diaspora - 2025",
-  description: "A Message from President Michel Aoun to the Lebanese Diaspora in the United States, presented at the LACD's annual dinner on October 11, 2025.",
+  description: "President Michel Aoun's speech at the annual dinner organized by LACD in Boston- 11 oct 2025",
   fullText: "A Message from President Michel Aoun to the Lebanese Diaspora in the United States, presented at the LACD's annual dinner on October 11, 2025.",
-  headerImage: "/message.jpeg", // ✅ COVER IMAGE
+  headerImage: "/message.jpeg",
   videos: [
     {
       id: "michel-aoun-message",
@@ -266,33 +266,45 @@ const videoData = [
     }
   ],
 },
-
 {
   id: "otv-lacd-conference-2025",
   name: "OTV Report on LACD Conference - Boston 2025",
-  date: "2025",
+  date: "11/10/2025",
   chapter: "LACD",
   title: "OTV Report on LACD Conference - Boston 2025",
-  description:
-    "A Report broadcast by OTV, a Lebanese station, about the conference organized by LACD in Boston on October 11th 2025.",
-  fullText:
-    "A Report broadcast by OTV, a Lebanese station, about the conference organized by LACD in Boston on October 11th 2025.",
-  headerImage: "/conference.jpeg", // ✅ COVER IMAGE
+  description: "OTV report on the annual LACD conference held in Boston- oct 2025",
+  fullText: "A Report broadcast by OTV, a Lebanese station, about the conference organized by LACD in Boston on October 11th 2025.",
+  headerImage: "/conference.jpeg",
   videos: [
     {
       id: "otv-report",
-      title:
-        "OTV Report on the LACD Conference in Boston",
-      description:
-        "A Report broadcast by OTV, a Lebanese station, about the conference organized by LACD in Boston on October 11th 2025.",
+      title: "OTV Report on the LACD Conference in Boston",
+      description: "A Report broadcast by OTV, a Lebanese station, about the conference organized by LACD in Boston on October 11th 2025.",
       videoFile: "/videos/14.mp4",
     },
   ],
 },
 
 
-
-  
+ {
+  id: "lacd-journey-milestones",
+  name: "LACD's Journey: Key Milestones and Activities",
+  date: "",
+  chapter: "LACD",
+  title: "LACD's Journey: Key Milestones and Activities",
+  description: "LACD's activities since its founding in a video",
+  fullText: "A video showing the LACD's journey and the key milestones and activities it has undertaken.",
+  headerImage: "/LACD's_activities.jpeg",
+  videos: [
+    {
+      id: "lacd-activities-video",
+      title: "LACD's activities since its founding in a video",
+      description: "A video showing the LACD's journey and the key milestones and activities it has undertaken.",
+      videoFile: "/videos/15.mp4"
+    }
+  ],
+ },
+ 
 
 ];
 
@@ -356,7 +368,7 @@ export default function VideosPage() {
 
                   {/* Content */}
                   <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors min-h-[84px]">
                       {activity.name}
                     </h3>
 
