@@ -2,6 +2,12 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { newsData } from "@/data/news";
 
+// Function to detect if text contains Arabic characters
+function isArabic(text: string): boolean {
+  const arabicPattern = /[\u0600-\u06FF]/;
+  return arabicPattern.test(text);
+}
+
 export default async function NewsPage({
   params,
 }: {
@@ -36,7 +42,12 @@ export default async function NewsPage({
       <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
         {paragraphs.map((para, index) => (
           <div key={index}>
-            <p>{para}</p>
+            <p 
+              className={isArabic(para) ? "text-right" : "text-left"}
+              style={isArabic(para) ? { direction: 'rtl' } : { direction: 'ltr' }}
+            >
+              {para}
+            </p>
 
             {/* 👇 INSERT IMAGE AFTER FIRST PARAGRAPH ONLY */}
             {article.id === "pope-shrines" && index === 0 && (
@@ -49,7 +60,7 @@ export default async function NewsPage({
                   className="rounded-lg object-cover w-full"
                 />
                 <figcaption className="text-sm text-gray-500 mt-2 text-center">
-                  Faithful gather during Pope Leo XIV’s visit to Lebanon
+                  Faithful gather during Pope Leo XIV's visit to Lebanon
                 </figcaption>
               </figure>
             )}

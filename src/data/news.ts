@@ -14,6 +14,40 @@ export interface EventItem {
 }
 
 export const newsData: NewsItem[] = [
+
+ {
+    id: "election_2026",
+    image: "/election_2026.jpeg",
+    title: "LACD Calls on Political Forces to Keep Diaspora Elections Free from Political Disputes",
+    date: "13 Feb 2026", 
+    fullText: ` Warns: Undermining Expat Voting Sends a Negative Message to Millions of Lebanese Supporting the National Economy
+
+The Lebanese American Commission for Democracy (LACD) reaffirmed its full commitment to the right of Lebanese citizens abroad to vote, stressing that it is a constitutionally guaranteed right that cannot be diminished or circumvented under any political or technical pretext.
+
+LACD emphasized that the participation of Lebanese expatriates in their homeland's democratic life is not a privilege granted by anyone, but rather a concrete expression of full national partnership and a reflection of their deep-rooted connection to Lebanon, despite geographical distance.
+
+LACD also expressed its full support for the draft law currently on the agenda of the Lebanese Parliament entitled “The Lebanese Election Integrity and Diaspora Voting Protection Act of 2026.” The proposed legislation aims to safeguard diaspora voting and ensure the conduct of elections abroad within a clear legal framework, including the imposition of sanctions on any individual or foreign entity that obstructs or delays the electoral process in Lebanon, particularly any actions that restrict or prevent Lebanese citizens residing abroad from participating in parliamentary elections.
+
+Furthermore, LACD holds Lebanese officials fully accountable for any attempt to cancel, obstruct, or undermine diaspora elections, or to infringe upon the right of expatriates to exercise their electoral role. The organization considers any such step a serious setback to Lebanon’s democratic trajectory and a negative message to millions of Lebanese abroad who constitute a fundamental pillar in supporting the national economy and preserving Lebanon’s image and interests worldwide.
+
+LACD called on all political forces to shield diaspora elections from internal political disputes and to adopt the necessary legal guarantees to protect this right, in line with the Constitution and the principles of justice and equality among all Lebanese citizens.
+
+“The voice of the diaspora is not a detail,  it is an integral part of the national decision.”
+
+
+
+تؤكد الجمعية اللبنانية الأميركية للديمقراطية (LACD) تمسّكها الكامل بحق اللبنانيين المنتشرين في الاقتراع، باعتباره حقاً دستورياً مكتسباً لا يجوز الانتقاص منه أو الالتفاف عليه تحت أي ذريعة سياسية أو تقنية، مشيرة الى أن "مشاركة اللبنانيين في الانتشار في الحياة الديمقراطية لوطنهم ليست منّة من أحد، بل هي تجسيد فعلي لمبدأ الشراكة الوطنية الكاملة وترجمة لارتباطهم العميق بلبنان رغم المسافات".
+
+وتعلن LACD دعمها الكامل لمشروع القانون المُدرج على جدول أعمال مجلس النواب الاميركي بعنوان "قانون نزاهة الانتخابات اللبنانية وحماية تصويت الانتشار لعام 2026"، والهادف إلى حماية تصويت الانتشار وضمان إجراء الانتخابات في الخارج عبر وضع العقوبات على أي شخص أو كيان أجنبي يعرقل أو يؤخّر العملية الانتخابية في لبنان ولا سيّما ما يتصل بتقييد أو منع اللبنانيين المقيمين في الخارج من المشاركة في الانتخابات النيابية.
+
+كما تحمّل LACD المسؤولين اللبنانيين كامل المسؤولية الوطنية والدستورية في حال تطيير انتخابات الانتشار أو تعطيلها، أو المساس بحق المنتشرين في ممارسة دورهم الانتخابي، مشيرة الى إن أي خطوة من هذا النوع ستُعدّ انتكاسة خطيرة للمسار الديمقراطي، ورسالة سلبية إلى ملايين اللبنانيين الذين يشكّلون ركيزة أساسية في دعم الاقتصاد الوطني والحفاظ على صورة لبنان في العالم.
+
+وتدعو LACD جميع القوى السياسية إلى تحييد حق المنتشرين عن التجاذبات، وإقرار الضمانات القانونية الكفيلة بحمايته، بما ينسجم مع الدستور وروحية العدالة والمساواة بين جميع اللبنانيين، مؤكدة أن " صوت المنتشر ليس تفصيلاً  بل هو جزء لا يتجزأ من القرار الوطني".
+      
+    `
+
+  },
+
   {
     id: "simon-karam",
     image: "/simon-karam.jpeg",
@@ -64,7 +98,7 @@ Earlier, the Pope had urged the Lebanese people in his sermon to unite their eff
     title:
       "What is the significance of the three religious shrines visited by Pope Leo XIV in Lebanon?",
     date: "1 Dec 2025",
-    fullText: `With Pope Leo XIV’s visit to Lebanon, attention is focused on the three main religious shrines that form the official stops of his trip: the Shrine of Our Lady of Lebanon in Harissa, the Monastery of Saint Maron in Annaya where Saint Charbel is buried, and the Monastery of the Cross in Jal El Dib which houses the tomb of Blessed Father Yacoub.
+    fullText: `With Pope Leo XIV's visit to Lebanon, attention is focused on the three main religious shrines that form the official stops of his trip: the Shrine of Our Lady of Lebanon in Harissa, the Monastery of Saint Maron in Annaya where Saint Charbel is buried, and the Monastery of the Cross in Jal El Dib which houses the tomb of Blessed Father Yacoub.
 
 These sites are not just religious destinations; they are part of a vast spiritual, social, and economic network in Lebanon, and they reflect different paths to holiness in a country of diverse sects and religious identities.
 
