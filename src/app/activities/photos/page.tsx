@@ -373,7 +373,45 @@ const chaptersData: Chapter[] = [
         })),
         headerImage: "/activity27/WLCU_dinner2.jpeg"
     
+      },
+       
+      //activity 28
+      {
+        id: "Welcome Reception",
+        name: "LACD Delegation Attends Welcome Reception Honoring Los Angeles Consul General Charbel Nassar at the House of Lebanon.",
+        date: "2026",
+        description: `The Lebanese American Commission for Democracy (LACD) attended the reception hosted by house of lebanon in Los Angeles honoring the appointment of H.E. Charbel Nassar as Consul General of Lebanon in Los Angeles, alongside members of the Lebanese community.
+         We warmly welcome Consul Nassar and wish him every success in his new mission to serve the Lebanese community and strengthen the bonds between Lebanon and its diaspora, particularly among the younger generations.
+         During the reception, Consul Nassar presented House of Lebanon President Wafa Hoballah with a symbolic gift representing the traditional Lebanese house, celebrating Lebanon's rich heritage and cultural identity.
+         The Lebanese diaspora continues to serve as a living bridge connecting Lebanon to the world.`,
+        type: "chapter-activity",
+        photos: Array.from({ length: 7}, (_, i) => ({
+          url: `/activity28/${i + 1}.jpeg`
+        })),
+        headerImage: "/activity28/3.jpeg"
+    
+      },
+
+      {
+        id: "Dinner honoring lebanese consul",
+        name: "LACD Delegation Participates in Dinner Honoring New Lebanese Consul General in Los Angeles, Charbel Nassar",
+        date: "2026",
+        description: `LACD participated in a dinner reception organized by Mr. Tony Abboud in honor of the newly appointed Lebanese Consul General in Los Angeles, Charbel Nassar, in the presence of prominent religious and community figures from the Lebanese diaspora.
+        Among those attending the gathering were Bishop Elias Zaidan and Honorary Consul George Ayoub, along with representatives of Lebanese parties and organizations within the Lebanese community in the United States, in an atmosphere reflecting the spirit of connection and solidarity among members of the Lebanese diaspora.
+        At the beginning of the event, Mr. Tony Abboud welcomed Consul General Charbel Nassar, who expressed his gratitude for the warm reception he received in Los Angeles, stressing his commitment to strengthening communication with the Lebanese community and working to serve Lebanese citizens abroad.
+        Bishop Elias Zaidan also wished the new consul general a successful and fruitful tenure in serving Lebanon and the Lebanese community.
+        This gathering reflects the strong presence of Lebanese abroad and their role in strengthening ties with their homeland and supporting Lebanon's presence in the world.
+        LACD's participation in the event comes within the framework of its ongoing commitment to supporting the Lebanese diaspora and enhancing the role of expatriates in Lebanon's national and democratic life.`,
+        type: "chapter-activity",
+        photos: Array.from({ length: 12}, (_, i) => ({
+          url: `/activity29/${i + 1}.jpeg`
+        })),
+        headerImage: "/activity29/7.jpeg"
+    
       }
+
+
+
     ],
     headerImage: "/activity1/1.jpg"
   },
