@@ -391,7 +391,8 @@ const chaptersData: Chapter[] = [
         headerImage: "/activity28/3.jpeg"
     
       },
-
+      
+       //activity 29
       {
         id: "Dinner honoring lebanese consul",
         name: "LACD Delegation Participates in Dinner Honoring New Lebanese Consul General in Los Angeles, Charbel Nassar",
@@ -408,9 +409,24 @@ const chaptersData: Chapter[] = [
         })),
         headerImage: "/activity29/7.jpeg"
     
+      },
+       
+      //activity 30
+      {
+
+        id: "NDU fundraising dinner",
+        name: "LACD- Los Angeles Chapter Attends NDU Fundraising Dinner",
+        date: "2026",
+        description: `A delegation from the LACD Los Angeles Chapter attended the fundraising dinner organized by the American Friends of Notre Dame University- Louaize (NDU) in support of the university's educational mission and its role in preparing the next generation in Lebanon.
+        The dinner was held in the presence of NDU President Rev. Bechara Khoury, Lebanese Consul General in Los Angeles Charbel Nassar, and Lebanese MP Farid Boustany, along with academic, social, and economic figures from the Lebanese community in the United States.
+        During the dinner, Dr. Saleh Nsouli, former Director at the International Monetary Fund (IMF), and Dr. Ramen Chmait, Professor at the Keck School of Medicine at USC and Director of the Fetal Surgery Program, were honored in recognition of their professional and academic contributions.
+        The participation of LACD in the dinner reflects its continued commitment to supporting Lebanese academic institutions and strengthening the role of the Lebanese diaspora in investing in education as a key pillar for Lebanon's future.`,
+        type: "chapter-activity",
+        photos: Array.from({ length: 15}, (_, i) => ({
+          url: `/activity30/${i + 1}.jpeg`
+        })),
+        headerImage: "/activity30/10.jpeg"
       }
-
-
 
     ],
     headerImage: "/activity1/1.jpg"
@@ -447,8 +463,24 @@ const chaptersData: Chapter[] = [
       photos: Array.from({ length: 9 }, (_, i) => ({
         url: `/activity25/${i + 1}.jpeg`
       })),
-      headerImage: "/activity25/3.jpeg" //  3rd photo as cover
+      headerImage: "/activity25/3.jpeg" 
+    },
+
+    //activity 31
+    {
+      id: "visit of bishop Michel Aoun",
+      name:"LACD Michigan Chapter Attends the Visit of Bishop Michel Aoun",
+      date: "2026",
+      description:`A delegation from the LACD Michigan Chapter participated in the welcoming ceremony and Divine Liturgy marking the visit of His Excellency Bishop Michel Aoun, Bishop of the Eparchy of Byblos, Lebanon, to St. Sharbel Church.
+      The visit brought together members of the Lebanese community and parishioners, reflecting the strong spiritual and cultural ties between Lebanon and the Lebanese diaspora in the United States.
+      The participation of LACD Michigan highlights its continued engagement with the Lebanese community and its support for initiatives that strengthen the bonds between Lebanon and its diaspora.`,
+      type: "chapter-activity",
+      photos: Array.from({ length: 2 }, (_, i) => ({
+        url: `/activity31/${i + 1}.jpeg`
+      })),
+      headerImage: "/activity31/2.jpeg" 
     }
+    
   ],
   headerImage: "/activity3/1.jpg"
 }
