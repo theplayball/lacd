@@ -426,6 +426,24 @@ const chaptersData: Chapter[] = [
           url: `/activity30/${i + 1}.jpeg`
         })),
         headerImage: "/activity30/10.jpeg"
+      },
+
+      //activity 32
+      {
+
+         id: "Divine Liturgy led by Bishop Michel Aoun",
+        name: "LACD- Los Angeles chapter Attends Divine Liturgy for Lebanon Led by Bishop Michel Aoun",
+        date: "2026",
+        description: `A delegation from LACD - Los Angeles chapter participated in the Divine Liturgy celebrated by His Excellency Bishop Michel Aoun, Bishop of the Maronite Eparchy of Jbeil, at Our Lady of Mount Lebanon Cathedral in Los Angeles.
+        During the liturgy, Bishop Aoun offered prayers for Lebanon amid the difficult circumstances it is facing, calling for steadfast faith, hope, and solidarity with the homeland during this critical time.
+        At the conclusion of the service, a gathering was held in the church hall, bringing together members of the Lebanese community.
+        The meeting emphasized the importance of unity among Lebanese both in Lebanon and across the diaspora, as well as their role in supporting and standing by their country.
+        Bishop Aoun's visit to Los Angeles comes as part of a broader tour across several U.S. states, aimed at meeting members of the Lebanese Maronite community and strengthening spiritual and national ties with them.`,
+        type: "chapter-activity",
+        photos: Array.from({ length: 4}, (_, i) => ({
+          url: `/activity32/${i + 1}.jpeg`
+        })),
+        headerImage: "/activity32/2.jpeg"
       }
 
     ],
